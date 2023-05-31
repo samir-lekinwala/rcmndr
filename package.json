@@ -1,0 +1,25 @@
+{
+  "name": "rcmndr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node server",
+    "dev": "run-p dev:client dev:server",
+    "dev:client": "vite",
+    "dev:server": "nodemon server",
+    "test": "vitest",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint --ext .ts,.js src",
+    "format": "prettier --write \"src/**/*.{js,ts,json,md}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "author": "dev-academy",
+  "license": "ISC",
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "browserslist": "> 2%, not dead"
+}
