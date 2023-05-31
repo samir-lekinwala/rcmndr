@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom'
 
 document.addEventListener('DOMContentLoaded', () => {
-  createRoot(document.getElementById('root')!).render(<p>Hello World</p>)
+  createRoot(document.getElementById('app')!).render(<p>Hello World</p>)
 })
