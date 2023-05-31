@@ -2,7 +2,7 @@
   "name": "rcmndr",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/index.ts",
   "scripts": {
     "start": "ts-node server",
     "dev": "run-p dev:client dev:server",
