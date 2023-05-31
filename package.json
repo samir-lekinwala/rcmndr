@@ -5,9 +5,10 @@
   "main": "server/index.ts",
   "scripts": {
     "start": "ts-node server",
-    "dev": "run-p dev:client dev:server",
+    "dev": "run-p dev:client dev:server dev:css",
     "dev:client": "vite",
     "dev:server": "nodemon server",
+    "dev:css": "tailwindcss -i client/css/main.css -o server/public/main.css --watch",
     "test": "vitest",
     "build": "vite build",
     "preview": "vite preview",
