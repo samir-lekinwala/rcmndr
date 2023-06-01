@@ -1,5 +1,7 @@
-import { createRoot } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 
 document.addEventListener('DOMContentLoaded', () => {
-  createRoot(document.getElementById('app')!).render(<p>Hello World</p>)
+  createRoot(document.getElementById('app') as HTMLElement).render(
+    <p>Hello World</p>
+  )
 })
