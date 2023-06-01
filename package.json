@@ -13,7 +13,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "knex": "knex --knexfile ./server/db/knexfile.js",
-    "lint": "eslint --ext .ts,.js src",
+    "lint": "eslint --rule 'no-console: 2' --ext .ts,.js,.tsx,.jsx .",
     "format": "prettier --write \"./**/*.{js,ts,jsx,tsx,json,md}\"",
     "typecheck": "tsc --noEmit"
   },
