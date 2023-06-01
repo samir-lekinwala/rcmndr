@@ -8,7 +8,7 @@
     "dev": "run-p dev:client dev:server dev:css",
     "dev:client": "vite",
     "dev:server": "nodemon server",
-    "dev:css": "tailwindcss -i client/styles/main.css -o server/public/main.css --watch",
+    "dev:css": "tailwindcss -i client/styles/main.css -o public/main.css --watch",
     "test": "vitest",
     "build": "vite build",
     "preview": "vite preview",
