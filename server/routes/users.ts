@@ -1,4 +1,5 @@
 import express from 'express'
+import { validateAccessToken } from '../auth0'
 
 const router = express.Router()
 
@@ -10,6 +11,12 @@ router.get('/:id', (req, res) => {
   }
 
   res.status(200).json({ message: `You requested user ${id}` })
+})
+
+router.post('/', validateAccessToken, (req, res) => {
+  const form = req.body
+
+  res.status(200).json({ message: form })
 })
 
 export default router
