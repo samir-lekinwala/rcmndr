@@ -8,7 +8,7 @@
     "dev": "run-p dev:client dev:server dev:css",
     "dev:client": "vite",
     "dev:server": "nodemon server/index.ts",
-    "dev:css": "tailwindcss -i client/styles/main.css -o main.css --watch",
+    "dev:css": "tailwindcss -i client/styles/main.css -o public/main.css --watch",
     "test": "vitest",
     "build": "vite build",
     "preview": "vite preview",
@@ -16,7 +16,8 @@
     "lint": "eslint --rule 'no-console: 2' --ext .ts,.js,.tsx,.jsx .",
     "format": "prettier --write \"./**/*.{js,ts,jsx,tsx,json,md}\"",
     "typecheck": "tsc --noEmit",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "run-p watch:storybook dev:css",
+    "watch:storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {

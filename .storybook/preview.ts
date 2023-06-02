@@ -1,7 +1,7 @@
 import type { Preview } from '@storybook/react'
 // import the generated tailwind css file so that
 // we can use tailwind classes in our stories
-import '../main.css'
+import '../public/main.css'
 
 const preview: Preview = {
   parameters: {
