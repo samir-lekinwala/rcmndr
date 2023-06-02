@@ -1,11 +1,13 @@
 import { Outlet } from 'react-router-dom'
+import Nav from './Nav'
 
-function App() {
+function AppLayout() {
   return (
     <>
+      <Nav />
       <Outlet />
     </>
   )
 }
 
-export default App
+export default AppLayout
