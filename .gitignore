@@ -132,3 +132,4 @@ dist
 .yarn/install-state.gz
 .pnp.*
 server/db/dev.sqlite3
+public/main.css
