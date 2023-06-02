@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
       clientId="6GbkK4Z4WyNAcRadrPYsWLrgaFT7Gaoa"
       cacheLocation="localstorage"
       authorizationParams={{
+        audience: 'https://rcmndr/api',
         redirect_uri: window.location.origin,
       }}
     >
