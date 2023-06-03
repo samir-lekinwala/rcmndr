@@ -54,11 +54,11 @@ function AddSongs() {
         </div>
         <div>
           <label htmlFor="genre">Genre</label>
-          <TextBox name="genre" id="genre" required />
+          <TextBox name="genre" id="genre" />
         </div>
         <div>
           <label htmlFor="link">Link</label>
-          <TextBox name="link" id="link" required />
+          <TextBox name="link" id="link" />
         </div>
         <Button>Save</Button>
       </form>
