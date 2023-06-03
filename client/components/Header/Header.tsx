@@ -1,4 +1,5 @@
 import { useState } from 'react'
+
 import Logo from '../Logo/Logo'
 import Nav from '../Nav'
 
@@ -6,22 +7,27 @@ function Header() {
   const [navOpened, setNavOpened] = useState(false)
 
   function toggleMenu() {
-    setNavOpened(!navOpened)
+    setNavOpened(() => !navOpened)
   }
 
   return (
     <div className="pl-4 pt-3 flex justify-between items-center">
       <Logo />
-      <button className="app-header__nav-toggle" onClick={toggleMenu}>
-        <span className={`fa fa-${navOpened ? 'times' : 'bars'}`}></span>
-      </button>
-      <nav
-        // className={`nav${navOpened ? ' nav--open' : ''}`}
-        className="fixed top-[-100vh] h-screen left-0 right-0 transition-top duration-400 flex items-center bg-[rgba(var(--col-background),0.8)] p-2 sm:p-4 backdrop-filter backdrop-blur-md"
-        onClick={toggleMenu}
-      >
-        <Nav />
-      </nav>
+      {navOpened && (
+        <button onClick={toggleMenu}>
+          <i className="fa-solid fa-bars"></i>
+        </button>
+      )}
+      {!navOpened && (
+        <button onClick={toggleMenu}>
+          <i className="fa-solid fa-times"></i>
+        </button>
+      )}
+      {!navOpened && (
+        <nav className="fixed top-16 left-4 h-full w-full backdrop-filter backdrop-blur-md bg-opacity-5 bg-gray-100">
+          <Nav />
+        </nav>
+      )}
     </div>
   )
 }
