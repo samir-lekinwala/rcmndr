@@ -4,7 +4,7 @@ import LoginButton from './Login'
 
 function Nav() {
   return (
-    <nav className="pl-4 pt-3 flex justify-between items-center">
+    <nav className="pt-3 flex justify-between items-center">
       <ul className="text-3xl">
         <li>
           <Link to="profile">My tracks</Link>
