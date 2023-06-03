@@ -18,4 +18,10 @@ router.get('/', validateAccessToken, (req, res) => {
   res.json(songs)
 })
 
+// POST /api/v1/songs/
+router.post('/', validateAccessToken, (req, res) => {
+  console.log(req.body)
+  res.sendStatus(200)
+})
+
 export default router
