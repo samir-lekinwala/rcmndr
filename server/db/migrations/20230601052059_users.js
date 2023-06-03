@@ -1,4 +1,4 @@
-exports.up = async function(knex) {
+exports.up = async function (knex) {
   await knex.schema.createTable('users', (table) => {
     table.string('auth0_id').primary()
     table.string('nickname').notNullable().unique()
@@ -7,6 +7,6 @@ exports.up = async function(knex) {
   })
 }
 
-exports.down = async function(knex) {
+exports.down = async function (knex) {
   await knex.schema.dropTable('users')
 }

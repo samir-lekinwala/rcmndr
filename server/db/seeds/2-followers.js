@@ -1,4 +1,4 @@
-exports.seed = async function(knex) {
+exports.seed = async function (knex) {
   await knex('followers').insert([
     { follower_id: 'auth0|103', following_id: 'auth0|102' },
     { follower_id: 'auth0|103', following_id: 'auth0|104' },

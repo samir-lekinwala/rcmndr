@@ -1,4 +1,4 @@
-exports.up = async function(knex) {
+exports.up = async function (knex) {
   await knex.schema.createTable('followers', (table) => {
     // this is a composite primary key
     table.primary(['follower_id', 'following_id'])
@@ -7,6 +7,6 @@ exports.up = async function(knex) {
   })
 }
 
-exports.down = async function(knex) {
+exports.down = async function (knex) {
   await knex.schema.dropTable('followers')
 }
