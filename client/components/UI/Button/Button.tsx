@@ -1,12 +1,13 @@
-import React from 'react'
+import { HtmlHTMLAttributes } from 'react'
 
-interface Props {
-  children: React.ReactNode
-}
+type ButtonProps = HtmlHTMLAttributes<HTMLButtonElement>
 
-function Button({ children }: Props) {
+function Button({ children, ...rest }: ButtonProps) {
   return (
-    <button className="w-auto hover:font-semibold bg-primary text-white py-2 px-4 rounded-lg">
+    <button
+      className="w-auto hover:font-semibold bg-primary text-white py-2 px-4 rounded-lg"
+      {...rest}
+    >
       {children}
     </button>
   )
