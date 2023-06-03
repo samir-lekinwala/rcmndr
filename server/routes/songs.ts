@@ -4,7 +4,7 @@ import { validateAccessToken } from '../auth0'
 const router = express.Router()
 
 // GET /api/v1/songs/
-router.get('/', (req, res) => {
+router.get('/', validateAccessToken, (req, res) => {
   const songs = [
     {
       id: 1,
