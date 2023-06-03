@@ -4,8 +4,8 @@ exports.up = async function(knex) {
     table.string('user_id').references('users.id').notNullable()
     table.string('title').notNullable()
     table.string('artist').notNullable()
-    table.string('genre').notNullable()
-    table.string('link').notNullable()
+    table.string('genre')
+    table.string('link')
   })
 }
 
