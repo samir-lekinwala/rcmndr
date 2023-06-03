@@ -1,17 +1,17 @@
-import { useAuth0 } from '@auth0/auth0-react'
-import { useEffect } from 'react'
+import LoginButton from './components/Login'
 
 function Home() {
-  const { isAuthenticated, getAccessTokenSilently } = useAuth0()
-
-  useEffect(() => {
-    async function getAccessToken() {
-      if (!isAuthenticated) return
-      const token = await getAccessTokenSilently()
-    }
-    getAccessToken()
-  }, [isAuthenticated])
-  return <div>Home</div>
+  return (
+    <div>
+      <div>
+        <p>collate.</p>
+        <p>recommend.</p>
+        <p>discover.</p>
+      </div>
+      <LoginButton />
+      <button>Register</button>
+    </div>
+  )
 }
 
 export default Home
