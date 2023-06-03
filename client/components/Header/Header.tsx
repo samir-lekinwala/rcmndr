@@ -15,12 +15,12 @@ function Header() {
       <Logo />
       {!navOpened && (
         <button onClick={toggleMenu}>
-          <i className="fa-solid fa-bars"></i>
+          <i className="fa-solid fa-bars text-3xl"></i>
         </button>
       )}
       {navOpened && (
         <button onClick={toggleMenu}>
-          <i className="fa-solid fa-times"></i>
+          <i className="fa-solid fa-times text-3xl"></i>
         </button>
       )}
       {navOpened && (
