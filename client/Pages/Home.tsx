@@ -2,11 +2,11 @@ import LoginButton from '../components/Login'
 
 function Home() {
   return (
-    <div>
+    <div className="pt-44 pl-4">
       <div>
         <p className="text-3xl">collate.</p>
-        <p>recommend.</p>
-        <p>discover.</p>
+        <p className="text-3xl">recommend.</p>
+        <p className="text-3xl">discover.</p>
       </div>
       <LoginButton />
       <button>Register</button>
