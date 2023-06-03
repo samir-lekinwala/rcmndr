@@ -1,4 +1,5 @@
 import LoginButton from '../components/Login'
+import RegisterButton from '../components/Register'
 
 function Home() {
   return (
@@ -9,7 +10,7 @@ function Home() {
         <p className="text-3xl">discover.</p>
       </div>
       <LoginButton />
-      <button>Register</button>
+      <RegisterButton />
     </div>
   )
 }
