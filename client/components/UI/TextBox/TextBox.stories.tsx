@@ -4,14 +4,14 @@ import TextBox from './TextBox'
 import Background from '../Background/Background'
 
 const meta: Meta<typeof TextBox> = {
-  title: 'Text Box',
+  title: 'TextBox',
   component: TextBox,
 }
 
 type Story = StoryObj<typeof TextBox>
 
 export const MyPrimary: Story = {
-  name: 'Input',
+  name: 'Single',
   render: () => (
     <Background>
       <TextBox
