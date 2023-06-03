@@ -13,7 +13,7 @@ import Code from './components/Code'
 import { Auth0Provider } from '@auth0/auth0-react'
 import ProtectedComponent from './components/ProtectedComponent'
 import Profile from './components/Profile'
-import Home from './Home'
+import Home from './Pages/Home'
 import MyTracks from './Pages/MyTracks'
 import AddSongs from './Pages/AddSongs'
 

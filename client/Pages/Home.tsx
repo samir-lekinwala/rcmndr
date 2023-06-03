@@ -1,10 +1,10 @@
-import LoginButton from './components/Login'
+import LoginButton from '../components/Login'
 
 function Home() {
   return (
     <div>
       <div>
-        <p>collate.</p>
+        <p className="text-3xl">collate.</p>
         <p>recommend.</p>
         <p>discover.</p>
       </div>
