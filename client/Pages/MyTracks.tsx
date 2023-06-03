@@ -16,7 +16,7 @@ function MyTracks() {
   })
 
   return (
-    <div className="pl-4 pr-4 h-screen">
+    <div className="pl-4 pr-4">
       <h1 className="text-3xl">Brenegade</h1>
       <h2 className="text-xs">These are the tracks you have recommended</h2>
       <ul className="flex flex-col gap-4 mt-8">

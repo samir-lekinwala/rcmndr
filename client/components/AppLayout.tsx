@@ -4,7 +4,7 @@ import Title from './Title'
 
 function AppLayout() {
   return (
-    <div className="bg-darkPurple h-full text-white">
+    <div className="bg-darkPurple h-screen text-white">
       {/* <Nav /> */}
       <Title />
       <Outlet />
