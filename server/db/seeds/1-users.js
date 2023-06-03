@@ -1,7 +1,7 @@
 exports.seed = async function(knex) {
   await knex('users').insert([
     {
-      auth0_id: 'auth0|100',
+      auth0_id: 'auth0|6478f3fd75374ee3d7bc4d94',
       nickname: 'andrew',
       first_name: 'Andrew',
       last_name: 'Carter',
