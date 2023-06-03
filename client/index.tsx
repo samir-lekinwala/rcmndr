@@ -6,11 +6,11 @@ import {
   Route,
 } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { Auth0Provider } from '@auth0/auth0-react'
 
 import AppLayout from './components/AppLayout'
 import Test from './components/Test'
 import Code from './components/Code'
-import { Auth0Provider } from '@auth0/auth0-react'
 import ProtectedComponent from './components/ProtectedComponent'
 import Profile from './components/Profile'
 import Home from './Pages/Home'
