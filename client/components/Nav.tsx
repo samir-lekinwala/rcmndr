@@ -1,6 +1,4 @@
 import { Link } from 'react-router-dom'
-import LogoutButton from './Logout'
-import LoginButton from './Login'
 
 function Nav() {
   return (
@@ -19,10 +17,10 @@ function Nav() {
           <Link to="show-qr">Share QR code</Link>
         </li>
         <li>
-          <LogoutButton />
+          <button>Log in</button>
         </li>
         <li>
-          <LoginButton />
+          <button>Log out</button>
         </li>
       </ul>
     </nav>
