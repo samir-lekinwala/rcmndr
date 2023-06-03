@@ -56,3 +56,26 @@ afterAll(async () => {
   await testDb.destroy()
 })
 
+describe('songs', () => {
+  it('query songs for a given user', async () => {
+    const userId = '1'
+    const songs = await db.getSongs(userId)
+    expect(songs).toHaveLength(2)
+    expect(songs).toMatchObject([
+      {
+        id: 1,
+        title: 'Song 1',
+        artist: 'Artist 1',
+        genre: 'Genre 1',
+        link: 'link1',
+      },
+      {
+        id: 2,
+        title: 'Song 2',
+        artist: 'Artist 2',
+        genre: 'Genre 2',
+        link: 'link2',
+      },
+    ])
+  })
+})
