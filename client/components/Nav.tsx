@@ -5,7 +5,7 @@ import LoginButton from './Login'
 function Nav() {
   return (
     <nav>
-      <ul>
+      <ul className="text-3xl">
         <li>
           <Link to="profile">My tracks</Link>
         </li>
