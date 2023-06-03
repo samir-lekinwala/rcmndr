@@ -15,6 +15,7 @@ import ProtectedComponent from './components/ProtectedComponent'
 import Profile from './components/Profile'
 import Home from './Home'
 import MyTracks from './Pages/MyTracks'
+import AddSongs from './Pages/AddSongs'
 
 function AppProvider() {
   const router = createBrowserRouter(
@@ -23,7 +24,14 @@ function AppProvider() {
         <Route index element={<Home />} />
         <Route path="test" element={<Test />} />
         <Route path="code/:code" element={<Code />} />
-        <Route path="my-tracks" element={<MyTracks />} />
+        <Route
+          path="my-songs"
+          element={<ProtectedComponent component={MyTracks} />}
+        />
+        <Route
+          path="add-songs"
+          element={<ProtectedComponent component={AddSongs} />}
+        />
         <Route
           path="profile"
           element={<ProtectedComponent component={Profile} />}
