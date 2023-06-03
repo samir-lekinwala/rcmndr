@@ -1,15 +1,15 @@
 import * as z from 'zod'
 
-export const songDraft = z.object({
+export const songDraftSchema = z.object({
   title: z.string(),
   artist: z.string(),
-  genre: z.string(),
-  link: z.string(),
+  genre: z.string().nullable(),
+  link: z.string().nullable(),
 })
 
-export const song = songDraft.extend({
+export const song = songDraftSchema.extend({
   id: z.string(),
 })
 
-export type SongDraft = z.infer<typeof songDraft>
+export type SongDraft = z.infer<typeof songDraftSchema>
 export type Song = z.infer<typeof song>
