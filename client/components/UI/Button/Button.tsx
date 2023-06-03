@@ -6,7 +6,7 @@ interface Props {
 
 function Button({ children }: Props) {
   return (
-    <button className="w-full hover:font-semibold bg-primary text-white py-2 px-4 rounded-lg">
+    <button className="w-auto hover:font-semibold bg-primary text-white py-2 px-4 rounded-lg">
       {children}
     </button>
   )
