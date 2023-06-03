@@ -1,8 +1,5 @@
-import knex from 'knex'
-import { development } from './knexfile'
+import db from './connection'
 import { Song, SongDraft } from '../../types/Song'
-
-const db = knex(development)
 
 export async function getSongs(userId: string) {
   return (await db('songs')

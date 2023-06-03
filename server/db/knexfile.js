@@ -14,6 +14,17 @@ module.exports = {
     useNullAsDefault: true,
   },
 
+  test: {
+    client: 'sqlite3',
+    connection: {
+      filename: ':memory:',
+    },
+    pool: {
+      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
+    },
+    useNullAsDefault: true,
+  },
+
   production: {
     client: 'pg',
     connection: {
