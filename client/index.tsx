@@ -5,6 +5,7 @@ import {
   createRoutesFromElements,
   Route,
 } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 import AppLayout from './components/AppLayout'
 import Test from './components/Test'
@@ -32,7 +33,9 @@ function AppProvider() {
   )
   return <RouterProvider router={router} />
 }
+
 document.addEventListener('DOMContentLoaded', () => {
+  const queryClient = new QueryClient()
   createRoot(document.getElementById('app') as HTMLElement).render(
     <Auth0Provider
       domain="rcmndr-dev-academy.au.auth0.com"
@@ -43,7 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
         redirect_uri: window.location.origin,
       }}
     >
-      <AppProvider />
+      <QueryClientProvider client={queryClient}>
+        <AppProvider />
+      </QueryClientProvider>
     </Auth0Provider>
   )
 })
