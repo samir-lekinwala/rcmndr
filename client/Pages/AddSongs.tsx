@@ -21,7 +21,7 @@ function AddSongs() {
     e.preventDefault()
 
     const formData = new FormData(e.currentTarget)
-    const title = formData.get('name') as string
+    const title = formData.get('title') as string
     const artist = formData.get('artist') as string
     const link = formData.get('link') as string
     const genre = formData.get('generes') as string
