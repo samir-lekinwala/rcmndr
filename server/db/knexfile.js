@@ -12,6 +12,12 @@ module.exports = {
       afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
     },
     useNullAsDefault: true,
+    seeds: {
+      directory: path.join(__dirname, 'seeds'),
+    },
+    migrations: {
+      directory: path.join(__dirname, 'migrations'),
+    },
   },
 
   test: {
@@ -23,6 +29,12 @@ module.exports = {
       afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
     },
     useNullAsDefault: true,
+    seeds: {
+      directory: path.join(__dirname, 'seeds'),
+    },
+    migrations: {
+      directory: path.join(__dirname, 'migrations'),
+    },
   },
 
   production: {
