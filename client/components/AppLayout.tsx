@@ -5,7 +5,7 @@ import Title from './Title'
 function AppLayout() {
   return (
     <div className="bg-darkPurple h-screen text-white">
-      {/* <Nav /> */}
+      <Nav />
       <Title />
       <Outlet />
     </div>

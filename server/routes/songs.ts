@@ -32,7 +32,6 @@ router.post('/', validateAccessToken, async (req, res) => {
       user_id: userId,
       ...songDraftSchema.parse(req.body),
     }
-    console.log(song)
 
     await db.insertSong(song)
     res.sendStatus(201)

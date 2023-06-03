@@ -9,7 +9,6 @@ function Test() {
   const handleScan = (result) => {
     if (result) {
       setData((prevData) => result.text)
-      console.log(result.text)
       navigate(`/code/${result.text}`)
     }
   }

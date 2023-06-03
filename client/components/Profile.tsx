@@ -6,7 +6,6 @@ function Profile() {
   const { user, isAuthenticated, isLoading, getAccessTokenSilently } =
     useAuth0()
 
-  console.log({ user, isAuthenticated, isLoading })
   if (isLoading) {
     return <div>Loading ...</div>
   }
@@ -27,7 +26,6 @@ function Profile() {
     })
 
     if (response.ok) {
-      console.log('success')
     }
   }
 

@@ -7,7 +7,6 @@ function Code() {
 
   async function handleFollow() {
     const token = await getAccessTokenSilently()
-    console.log(token)
   }
 
   return (

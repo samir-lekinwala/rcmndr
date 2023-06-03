@@ -8,7 +8,6 @@ function Home() {
     async function getAccessToken() {
       if (!isAuthenticated) return
       const token = await getAccessTokenSilently()
-      console.log(token)
     }
     getAccessToken()
   }, [isAuthenticated])
