@@ -14,10 +14,12 @@ export const populated: Story = {
   name: 'Populated text box',
   render: () => (
     <Background>
-      <TextBox
-        defaultValue="Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
-        placeholder="Enter here"
-      />
+      <div className="flex justify-center items-center h-screen p-40">
+        <TextBox
+          defaultValue="Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+          placeholder="Enter here"
+        />
+      </div>
     </Background>
   ),
 }
@@ -26,20 +28,36 @@ export const emptyTextBox: Story = {
   name: 'Empty text box',
   render: () => (
     <Background>
-      <TextBox placeholder="Enter here" />
+      <div className="flex justify-center items-center h-screen p-40">
+        <TextBox placeholder="Enter here" />
+      </div>
     </Background>
   ),
 }
 
-export const multipleTextBoxes: Story = {
-  name: 'Multiple text boxes',
+export const multipleEmptyTextBoxes: Story = {
+  name: 'Multiple empty text boxes',
   render: () => (
     <Background>
-      <div className="space-y-2">
+      <div className="flex gap-4 flex-col justify-center items-center h-screen p-40">
         <TextBox placeholder="The full title of the song" />
         <TextBox placeholder="Name of the artist / singer / group" />
         <TextBox placeholder="Genre of music (optional)" />
         <TextBox placeholder="A link so others can listen (optional)" />
+      </div>
+    </Background>
+  ),
+}
+
+export const multiplePopulatedTextBoxes: Story = {
+  name: 'Multiple populated text boxes',
+  render: () => (
+    <Background>
+      <div className="flex gap-4 flex-col justify-center items-center h-screen p-40">
+        <TextBox defaultValue="Reropolis" />
+        <TextBox defaultValue="Zayne Murrel" />
+        <TextBox defaultValue="Retrowave" />
+        <TextBox defaultValue="https://www.youtube.com/watch?v=-JdOeRAqNBU" />
       </div>
     </Background>
   ),
