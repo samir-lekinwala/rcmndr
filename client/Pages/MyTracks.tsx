@@ -37,8 +37,8 @@ function MyTracks() {
                 <Icon>
                   <i className="fa-solid fa-pen" />
                 </Icon>
-                <Icon>
-                  <i className="fa-solid fa-trash bg-warning" />
+                <Icon className="bg-warning">
+                  <i className="fa-solid fa-trash" />
                 </Icon>
               </div>
             </li>

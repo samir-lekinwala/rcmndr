@@ -1,10 +1,17 @@
-interface Props {
-  children: React.ReactNode
-}
+import { HtmlHTMLAttributes } from 'react'
+import { twMerge } from 'tailwind-merge'
 
-function Icon({ children }: Props) {
+type Props = HtmlHTMLAttributes<HTMLDivElement>
+
+function Icon({ children, className, ...rest }: Props) {
   return (
-    <div className="flex flex-col justify-center bg-extraLightPurple rounded-full text-black text-xs w-6 h-6">
+    <div
+      className={twMerge(
+        'flex flex-col justify-center bg-extraLightPurple rounded-full text-black text-xs w-6 h-6',
+        className
+      )}
+      {...rest}
+    >
       {children}
     </div>
   )
