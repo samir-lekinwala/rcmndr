@@ -9,6 +9,7 @@ module.exports = {
         darkPurple: '#1B0636',
         lightPurple: '#B07CF2',
         extraLightPurple: '#E0C8FF',
+        warning: '#F27C7C',
       },
       fontFamily: {
         serif: ['"Roboto Slab"', 'serif'],
