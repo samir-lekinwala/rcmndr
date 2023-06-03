@@ -3,8 +3,8 @@ import Nav from './Nav'
 
 function AppLayout() {
   return (
-      <Nav />
     <div className="bg-darkPurple h-screen text-white">
+      {/* <Nav /> */}
       <Outlet />
     </div>
   )
