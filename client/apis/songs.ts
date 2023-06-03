@@ -1,5 +1,7 @@
 import request from 'superagent'
 
+import { SongDraft } from '../../types/Song'
+
 const baseUrl = '/api/v1/songs'
 
 export async function getSongs() {
@@ -8,9 +10,9 @@ export async function getSongs() {
   return response.body
 }
 
-export async function addSong(id: number, token: string) {
+export async function addSong(song: SongDraft, token: string) {
   await request
     .post(`${baseUrl}`)
     .set('Authorization', `Bearer ${token}`)
-    .send({ id })
+    .send(song)
 }
