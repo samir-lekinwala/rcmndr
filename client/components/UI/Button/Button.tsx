@@ -1,11 +1,15 @@
 import { HtmlHTMLAttributes } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 type ButtonProps = HtmlHTMLAttributes<HTMLButtonElement>
 
-function Button({ children, ...rest }: ButtonProps) {
+function Button({ children, className, ...rest }: ButtonProps) {
   return (
     <button
-      className="w-auto hover:font-semibold bg-primary text-white py-2 px-4 rounded-lg"
+      className={twMerge(
+        'w-auto hover:font-semibold bg-primary text-white py-2 px-4 rounded-lg',
+        className
+      )}
       {...rest}
     >
       {children}
