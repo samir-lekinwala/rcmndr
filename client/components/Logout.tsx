@@ -1,9 +1,9 @@
 import { useAuth0 } from '@auth0/auth0-react'
 
 function LogoutButton() {
-  const { logout, isAuthenticated } = useAuth0()
+  const { logout } = useAuth0()
 
-  return isAuthenticated ? (
+  return (
     <button
       onClick={() =>
         logout({ logoutParams: { returnTo: window.location.origin } })
@@ -11,7 +11,7 @@ function LogoutButton() {
     >
       Log Out
     </button>
-  ) : null
+  )
 }
 
 export default LogoutButton
