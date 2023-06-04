@@ -20,14 +20,18 @@ function Header() {
       )}
       {navOpened && (
         <button onClick={toggleMenu}>
-          <i className="fa-solid fa-times text-3xl"></i>
+          <i
+            className={`fa-solid fa-times text-3xl transition ease-in-out focus:-rotate-45 duration-300`}
+          ></i>
         </button>
       )}
-      {navOpened && (
-        <nav className="fixed top-16 left-4 h-full w-full backdrop-filter backdrop-blur-md bg-opacity-5 bg-gray-100">
-          <Nav />
-        </nav>
-      )}
+
+      <nav
+        className={`fixed left-0 top-12 h-full w-full backdrop-filter backdrop-blur-md bg-opacity-5 shadow-transparent transition-all ease-in-out duration-200 ${navOpened ? 'opacity-100' : 'hidden'
+          }`}
+      >
+        <Nav />
+      </nav>
     </div>
   )
 }
