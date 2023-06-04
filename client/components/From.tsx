@@ -32,7 +32,15 @@ function Form(props: Props) {
     <div>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4">
         <div>
-          <label htmlFor="first-name">First Name</label>
+          <label htmlFor="nickname">Nickname *</label>
+          <TextBox
+            type="text"
+            name="nickname"
+            id="nickname"
+            required
+            defaultValue={props.profile?.nickname}
+          />
+          <label htmlFor="first-name">First Name *</label>
           <TextBox
             type="text"
             name="firstName"
@@ -45,16 +53,7 @@ function Form(props: Props) {
             type="text"
             name="lastName"
             id="last-name"
-            required
             defaultValue={props.profile?.lastName}
-          />
-          <label htmlFor="nickname">Nickname</label>
-          <TextBox
-            type="text"
-            name="nickname"
-            id="nickname"
-            required
-            defaultValue={props.profile?.nickname}
           />
         </div>
         <div className="mx-auto">
