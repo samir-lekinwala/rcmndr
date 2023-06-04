@@ -14,7 +14,7 @@ import Code from './components/Code'
 import ProtectedComponent from './components/ProtectedComponent'
 import Profile from './Pages/Profile'
 import Home from './Pages/Home'
-import MyTracks from './Pages/MyTracks'
+import MySongs from './Pages/MySongs'
 import AddSongs from './Pages/AddSongs'
 
 function AppProvider() {
@@ -29,7 +29,7 @@ function AppProvider() {
         />
         <Route
           path="my-songs"
-          element={<ProtectedComponent component={MyTracks} />}
+          element={<ProtectedComponent component={MySongs} />}
         />
         <Route
           path="add-songs"

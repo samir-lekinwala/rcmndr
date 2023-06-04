@@ -4,7 +4,7 @@ import Icon from '../components/UI/Icon/Icon'
 import { getSongs } from '../apis/songs'
 import { useAuth0 } from '@auth0/auth0-react'
 
-function MyTracks() {
+function MySongs() {
   const { getAccessTokenSilently } = useAuth0()
 
   const { data, isLoading } = useQuery({
@@ -48,4 +48,4 @@ function MyTracks() {
   )
 }
 
-export default MyTracks
+export default MySongs
