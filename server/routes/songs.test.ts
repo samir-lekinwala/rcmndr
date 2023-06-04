@@ -8,6 +8,7 @@ import { getMockToken } from './mockToken'
 vi.mock('../db/songs')
 
 beforeEach(() => {
+  // eslint-disable-next-line no-console
   console.error = vi.fn()
 })
 
