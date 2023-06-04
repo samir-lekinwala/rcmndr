@@ -1,8 +1,8 @@
 import { useAuth0 } from '@auth0/auth0-react'
-
-import Form from '../components/From'
-import { ProfileDraft } from '../../types/Profile'
 import { useNavigate } from 'react-router-dom'
+
+import Form from '../components/Form'
+import { ProfileDraft } from '../../types/Profile'
 
 function Profile() {
   const { user, isAuthenticated, isLoading, getAccessTokenSilently } =
