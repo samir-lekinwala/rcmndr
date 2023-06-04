@@ -35,7 +35,6 @@ function Profile() {
 
   return (
     <div>
-      <p>{user?.email}</p>
       <Form handleSubmit={handleSubmit} />
     </div>
   )
