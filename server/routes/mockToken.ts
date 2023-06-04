@@ -1,7 +1,7 @@
 // for more information about mocking tokens
 // https://carterbancroft.com/mocking-json-web-tokens-and-auth0/
 
-import jwt from 'jsonwebtoken'
+import jwt, { SignOptions } from 'jsonwebtoken'
 import nock from 'nock'
 
 // this private key is for testing purposes only so that we can mock tokens
@@ -63,9 +63,8 @@ export const getMockToken = () => {
     sub: 'auth0|123',
   }
 
-  const options = {
-    header: { kid: '0' },
-    algorithm: 'RS256',
+  const options: SignOptions = {
+    header: { kid: '0', alg: 'RS256' },
     expiresIn: '1d',
     audience: 'https://rcmndr/api',
     issuer: 'https://rcmndr-dev-academy.au.auth0.com/',
