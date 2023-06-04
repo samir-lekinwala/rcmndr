@@ -29,6 +29,9 @@ function Nav() {
           <Link to="edit-profile">Edit my profile</Link>
         </li>
         <li>
+          <Link to="scan">Scan</Link>
+        </li>
+        <li>
           <Link to="show-qr">Share QR code</Link>
         </li>
         <li>

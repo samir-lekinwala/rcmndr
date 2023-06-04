@@ -22,7 +22,7 @@ function AppProvider() {
     createRoutesFromElements(
       <Route path="/" element={<AppLayout />}>
         <Route index element={<Home />} />
-        <Route path="test" element={<ProtectedComponent component={Test} />} />
+        <Route path="scan" element={<ProtectedComponent component={Test} />} />
         <Route
           path="code/:code"
           element={<ProtectedComponent component={Code} />}
