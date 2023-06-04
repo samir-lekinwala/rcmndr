@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 function Nav() {
   return (
-    <nav className="pt-3 flex justify-between items-center">
+    <nav className="pt-16 flex items-center align-middle">
       <ul className="text-3xl">
         <li>
           <Link to="profile">My tracks</Link>
