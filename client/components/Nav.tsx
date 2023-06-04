@@ -17,7 +17,7 @@ function Nav() {
   }
 
   return (
-    <nav className="pt-16 flex items-center align-middle">
+    <nav className="pt-16 pl-4 flex">
       <ul className="text-3xl">
         <li>
           <Link to="profile">My tracks</Link>
