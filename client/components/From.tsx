@@ -1,4 +1,6 @@
 import { Profile, ProfileDraft } from '../../types/Profile'
+import Button from './UI/Button/Button'
+import TextBox from './UI/TextBox/TextBox'
 
 interface Props {
   profile?: Profile
@@ -28,10 +30,10 @@ function Form(props: Props) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4">
         <div>
           <label htmlFor="first-name">First Name</label>
-          <input
+          <TextBox
             type="text"
             name="firstName"
             id="first-name"
@@ -39,7 +41,7 @@ function Form(props: Props) {
             defaultValue={props.profile?.firstName}
           />
           <label htmlFor="last-name">Last Name</label>
-          <input
+          <TextBox
             type="text"
             name="lastName"
             id="last-name"
@@ -47,7 +49,7 @@ function Form(props: Props) {
             defaultValue={props.profile?.lastName}
           />
           <label htmlFor="nickname">Nickname</label>
-          <input
+          <TextBox
             type="text"
             name="nickname"
             id="nickname"
@@ -55,8 +57,8 @@ function Form(props: Props) {
             defaultValue={props.profile?.nickname}
           />
         </div>
-        <div>
-          <button type="submit">Save</button>
+        <div className="mx-auto">
+          <Button>Save</Button>
         </div>
       </form>
     </div>
