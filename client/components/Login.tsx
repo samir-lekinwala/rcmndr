@@ -5,7 +5,15 @@ import Button from './UI/Button/Button'
 function LoginButton() {
   const { loginWithRedirect } = useAuth0()
 
-  return <Button onClick={() => loginWithRedirect()}>Log In</Button>
+  function handleLogin() {
+    loginWithRedirect({
+      authorizationParams: {
+        redirect_uri: `${window.location.origin}/my-songs`,
+      },
+    })
+  }
+
+  return <Button onClick={handleLogin}>Log In</Button>
 }
 
 export default LoginButton

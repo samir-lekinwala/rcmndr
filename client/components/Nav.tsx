@@ -1,6 +1,21 @@
+import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 
 function Nav() {
+  const { isAuthenticated, logout, loginWithRedirect } = useAuth0()
+
+  function handleLogin() {
+    loginWithRedirect({
+      authorizationParams: {
+        redirect_uri: `${window.location.origin}/my-songs`,
+      },
+    })
+  }
+
+  function handleLogout() {
+    logout({ logoutParams: { returnTo: window.location.origin } })
+  }
+
   return (
     <nav className="pt-16 flex items-center align-middle">
       <ul className="text-3xl">
@@ -17,10 +32,10 @@ function Nav() {
           <Link to="show-qr">Share QR code</Link>
         </li>
         <li>
-          <button>Log in</button>
+          {!isAuthenticated && <button onClick={handleLogin}>Log in</button>}
         </li>
         <li>
-          <button>Log out</button>
+          {isAuthenticated && <button onClick={handleLogout}>Log out</button>}
         </li>
       </ul>
     </nav>
