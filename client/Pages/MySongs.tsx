@@ -1,9 +1,9 @@
 import { useQuery } from 'react-query'
+import { Link } from 'react-router-dom'
 
 import Icon from '../components/UI/Icon/Icon'
 import { getSongs } from '../apis/songs'
 import { useAuth0 } from '@auth0/auth0-react'
-import Button from '../components/UI/Button/Button'
 
 function MySongs() {
   const { getAccessTokenSilently } = useAuth0()
@@ -47,10 +47,10 @@ function MySongs() {
             ))}
         </ul>
       </div>
-      <div className="fixed bottom-0 right-0">
-        <Button className="fa-solid fa-plus text-xl bg-none w-8 h-8 p-2 rounded-full mb-4 mr-4">
-          <i className="fa-solid fa-plus"></i>
-        </Button>
+      <div className="fixed bottom-4 right-0">
+        <Link to="/add-songs">
+          <i className="fa-solid fa-plus text-xl bg-primary w-8 h-8 p-2 rounded-full mr-4"></i>
+        </Link>
       </div>
     </div>
   )
