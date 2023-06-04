@@ -1,13 +1,9 @@
-import { useAuth0 } from '@auth0/auth0-react'
 import { useParams } from 'react-router-dom'
 
 function Code() {
   const { code } = useParams()
-  const { getAccessTokenSilently } = useAuth0()
 
-  async function handleFollow() {
-    const token = await getAccessTokenSilently()
-  }
+  async function handleFollow() { }
 
   return (
     <>
