@@ -1,4 +1,4 @@
-import { Profile, ProfileDraft } from '../../models/Profile'
+import { Profile, ProfileDraft } from '../../types/Profile'
 
 interface Props {
   profile?: Profile
