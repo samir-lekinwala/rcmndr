@@ -2,10 +2,12 @@ import { useAuth0 } from '@auth0/auth0-react'
 
 import Form from '../components/From'
 import { ProfileDraft } from '../../types/Profile'
+import { useNavigate } from 'react-router-dom'
 
 function Profile() {
   const { user, isAuthenticated, isLoading, getAccessTokenSilently } =
     useAuth0()
+  const navigate = useNavigate()
 
   if (isLoading) {
     return <div>Loading ...</div>
@@ -27,6 +29,7 @@ function Profile() {
     })
 
     if (response.ok) {
+      navigate('/my-songs')
     }
   }
 
