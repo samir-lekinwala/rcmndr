@@ -1,6 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react'
 
-import Form from './From'
+import Form from '../components/From'
 import { ProfileDraft } from '../../types/Profile'
 
 function Profile() {
