@@ -29,40 +29,7 @@
     "zod": "^3.21.4"
   },
   "eslintConfig": {
-    "extends": [
-      "@",
-      "d",
-      "e",
-      "v",
-      "a",
-      "c",
-      "a",
-      "d",
-      "e",
-      "m",
-      "y",
-      "/",
-      "e",
-      "s",
-      "l",
-      "i",
-      "n",
-      "t",
-      "-",
-      "c",
-      "o",
-      "n",
-      "f",
-      "i",
-      "g",
-      "/",
-      "r",
-      "e",
-      "a",
-      "c",
-      "t",
-      "plugin:storybook/recommended"
-    ]
+    "extends": "@devacademy/eslint-config/react"
   },
   "devDependencies": {
     "@auth0/auth0-react": "^2.1.0",
