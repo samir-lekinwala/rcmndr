@@ -1,7 +1,7 @@
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 
 interface Props {
-  component: React.ComponentType<any>
+  component: React.ComponentType<unknown>
 }
 
 // This is a very handy wrapper component that will redirect the user to the login page
