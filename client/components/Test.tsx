@@ -4,29 +4,20 @@ import { useNavigate } from 'react-router-dom'
 
 function Test() {
   const navigate = useNavigate()
-  const [data, setData] = useState('No result')
 
-  const handleScan = (result) => {
+  function handleScan(result: any) {
     if (result) {
-      setData((prevData) => result.text)
       navigate(`/code/${result.text}`)
     }
-  }
-
-  const handleError = (err) => {
-    console.error(err)
   }
 
   return (
     <>
       <QrReader
-        delay={300}
-        onError={handleError}
-        onScan={handleScan}
+        constraints={{ width: 100 }}
+        scanDelay={300}
         onResult={handleScan}
-        style={{ width: '100%' }}
       />
-      <p>{data}</p>
     </>
   )
 }
