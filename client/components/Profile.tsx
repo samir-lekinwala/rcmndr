@@ -1,6 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react'
+
 import Form from './From'
-import { ProfileDraft } from '../../models/Profile'
+import { ProfileDraft } from '../../types/Profile'
 
 function Profile() {
   const { user, isAuthenticated, isLoading, getAccessTokenSilently } =
