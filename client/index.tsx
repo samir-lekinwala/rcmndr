@@ -43,6 +43,8 @@ function AppProvider() {
           path="add-songs"
           element={<ProtectedComponent component={AddSongs} />}
         />
+        <Route path="my-friends" element={<p>my friends here</p>} />
+
         <Route
           path="profile"
           element={<ProtectedComponent component={Profile} />}
@@ -57,11 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const queryClient = new QueryClient()
   createRoot(document.getElementById('app') as HTMLElement).render(
     <Auth0Provider
-      domain="rcmndr-dev-academy.au.auth0.com"
-      clientId="6GbkK4Z4WyNAcRadrPYsWLrgaFT7Gaoa"
+      domain={import.meta.env.VITE_AUTH0_DOMAIN as string}
+      clientId={import.meta.env.VITE_AUTH0_CLIENT_ID as string}
       cacheLocation="localstorage"
       authorizationParams={{
-        audience: 'https://rcmndr/api',
+        audience: import.meta.env.VITE_AUTH0_AUDIENCE as string,
         redirect_uri: window.location.origin,
       }}
     >
