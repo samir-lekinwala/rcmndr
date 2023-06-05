@@ -9,8 +9,8 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { Auth0Provider } from '@auth0/auth0-react'
 
 import AppLayout from './components/AppLayout/AppLayout'
-import Test from './components/ScanQr/ScanQr'
-import Code from './components/Code/Code'
+import ScanQr from './components/ScanQr/ScanQr'
+import ConfirmScan from './Pages/ConfirmScan/ConfirmScan'
 import ProtectedComponent from './components/UI/ProtectedComponent'
 import Profile from './Pages/Profile/Profile'
 import Home from './Pages/Home/Home'
@@ -23,10 +23,13 @@ function AppProvider() {
     createRoutesFromElements(
       <Route path="/" element={<AppLayout />}>
         <Route index element={<Home />} />
-        <Route path="scan" element={<ProtectedComponent component={Test} />} />
+        <Route
+          path="scan"
+          element={<ProtectedComponent component={ScanQr} />}
+        />
         <Route
           path="code/:code"
-          element={<ProtectedComponent component={Code} />}
+          element={<ProtectedComponent component={ConfirmScan} />}
         />
         <Route
           path="show-qr"
