@@ -1,20 +1,28 @@
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+
+import Button from '../UI/Button/Button'
 
 function Code() {
   const { code } = useParams()
 
-  async function handleFollow() { }
+  useEffect(() => {
+    console.log(code)
+  }, [code])
+
+  async function handleFollow() {}
 
   return (
-    <>
+    <div className="flex flex-col pl-4 h-screen items-center justify-center space-y-4">
       <p>
-        We found <b>charlie</b>({code}) in the database{' '}
+        We found <b>charlie</b> in the database{' '}
       </p>
       <p>Would you like to follow charlie</p>
-      <button className="border-slate-50 border-2" onClick={handleFollow}>
-        Follow?
-      </button>
-    </>
+      <div className="space-x-4">
+        <Button onClick={handleFollow}>Follow</Button>
+        <Button className="bg-white text-primary">Cancel</Button>
+      </div>
+    </div>
   )
 }
 
