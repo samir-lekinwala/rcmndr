@@ -10,7 +10,7 @@ router.get('/:id', (req, res) => {
     res.status(400).json({ message: 'Please provide an id' })
   }
 
-  res.status(200).json({ message: `You requested user ${id}` })
+  res.status(200).json({ nickname: 'test' })
 })
 
 router.post('/', validateAccessToken, (req, res) => {
