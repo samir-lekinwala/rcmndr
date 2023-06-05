@@ -19,4 +19,14 @@ router.post('/', validateAccessToken, (req, res) => {
   res.status(200).json({ message: form })
 })
 
+router.post('/:userId/follow', validateAccessToken, async (req, res) => {
+  const userId = req.params.userId
+
+  if (!userId) {
+    res.status(400).json({ message: 'Please provide an id' })
+  }
+
+  res.sendStatus(201)
+})
+
 export default router
