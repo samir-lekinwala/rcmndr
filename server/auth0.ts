@@ -4,6 +4,6 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 export const validateAccessToken = auth({
-  issuerBaseURL: `https://${process.env.AUTH0_DOMAIN}`,
-  audience: process.env.AUTH0_AUDIENCE,
+  issuerBaseURL: `https://${process.env.VITE_AUTH0_DOMAIN}`,
+  audience: process.env.VITE_AUTH0_AUDIENCE,
 })
