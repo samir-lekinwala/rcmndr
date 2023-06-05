@@ -59,10 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const queryClient = new QueryClient()
   createRoot(document.getElementById('app') as HTMLElement).render(
     <Auth0Provider
+      // @ts-ignore
       domain={import.meta.env.VITE_AUTH0_DOMAIN as string}
+      // @ts-ignore
       clientId={import.meta.env.VITE_AUTH0_CLIENT_ID as string}
       cacheLocation="localstorage"
       authorizationParams={{
+        // @ts-ignore
         audience: import.meta.env.VITE_AUTH0_AUDIENCE as string,
         redirect_uri: window.location.origin,
       }}
