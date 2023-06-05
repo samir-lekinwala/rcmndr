@@ -16,6 +16,7 @@ import Profile from './Pages/Profile'
 import Home from './Pages/Home'
 import MySongs from './Pages/MySongs'
 import AddSongs from './Pages/AddSongs'
+import ShowQR from './Pages/ShowQR/ShowQR'
 
 function AppProvider() {
   const router = createBrowserRouter(
@@ -26,6 +27,10 @@ function AppProvider() {
         <Route
           path="code/:code"
           element={<ProtectedComponent component={Code} />}
+        />
+        <Route
+          path="show-qr"
+          element={<ProtectedComponent component={ShowQR} />}
         />
         <Route
           path="my-songs"
