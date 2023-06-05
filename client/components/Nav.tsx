@@ -1,8 +1,13 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-function Nav() {
+interface Props {
+  toggleMenu: () => void
+}
+
+function Nav(props: Props) {
   const { isAuthenticated, logout, loginWithRedirect } = useAuth0()
+  const navigate = useNavigate()
 
   function handleLogin() {
     loginWithRedirect({
@@ -16,23 +21,28 @@ function Nav() {
     logout({ logoutParams: { returnTo: window.location.origin } })
   }
 
+  function goTo(link: string) {
+    props.toggleMenu()
+    navigate(link)
+  }
+
   return (
     <nav className="pt-16 pl-4 flex">
       <ul className="text-3xl">
         <li>
-          <Link to="profile">My tracks</Link>
+          <button onClick={() => goTo('/my-songs')}>My songs</button>
         </li>
         <li>
-          <Link to="my-tracks">My friends</Link>
+          <button onClick={() => goTo('/my-friends')}>My friends</button>
         </li>
         <li>
-          <Link to="edit-profile">Edit my profile</Link>
+          <button onClick={() => goTo('/profile')}>Edit Profile</button>
         </li>
         <li>
-          <Link to="scan">Scan</Link>
+          <button onClick={() => goTo('/scan')}>Scan QR code</button>
         </li>
         <li>
-          <Link to="show-qr">Share QR code</Link>
+          <button onClick={() => goTo('/show-qr')}>Share QR code</button>
         </li>
         <li>
           {!isAuthenticated && <button onClick={handleLogin}>Log in</button>}

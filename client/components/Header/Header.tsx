@@ -31,7 +31,7 @@ function Header() {
           navOpened ? 'opacity-100' : 'hidden'
         }`}
       >
-        <Nav />
+        <Nav toggleMenu={toggleMenu} />
       </nav>
     </div>
   )
