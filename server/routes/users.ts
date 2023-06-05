@@ -3,7 +3,7 @@ import { validateAccessToken } from '../auth0'
 
 const router = express.Router()
 
-router.get('/:id', (req, res) => {
+router.get('/:id', validateAccessToken, (req, res) => {
   const id = req.params.id
 
   if (!id) {
