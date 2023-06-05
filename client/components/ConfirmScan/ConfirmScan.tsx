@@ -2,11 +2,10 @@ import Button from '../UI/Button/Button'
 
 interface Props {
   name: string
+  handleFollow: () => void
 }
 
 function ConfirmScan(props: Props) {
-  async function handleFollow() {}
-
   return (
     <div className="flex flex-col pl-4 h-screen items-center justify-center space-y-4">
       <p>Scan is successful</p>
@@ -20,7 +19,7 @@ function ConfirmScan(props: Props) {
       </p>
 
       <div className="space-x-4">
-        <Button onClick={handleFollow}>Follow</Button>
+        <Button onClick={props.handleFollow}>Follow</Button>
         <Button className="bg-white text-primary">Cancel</Button>
       </div>
     </div>
