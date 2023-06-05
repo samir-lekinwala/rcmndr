@@ -1,6 +1,6 @@
-import { Profile, ProfileDraft } from '../../types/Profile'
-import Button from './UI/Button/Button'
-import TextBox from './UI/TextBox/TextBox'
+import { Profile, ProfileDraft } from '../../../types/Profile'
+import Button from '../UI/Button/Button'
+import TextBox from '../UI/TextBox/TextBox'
 
 interface Props {
   profile?: Profile

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import Logo from '../Logo/Logo'
-import Nav from '../Nav'
+import Nav from '../Nav/Nav'
 
 function Header() {
   const [navOpened, setNavOpened] = useState(false)

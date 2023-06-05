@@ -8,14 +8,14 @@ import {
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { Auth0Provider } from '@auth0/auth0-react'
 
-import AppLayout from './components/AppLayout'
-import Test from './components/Test'
-import Code from './components/Code'
-import ProtectedComponent from './components/ProtectedComponent'
-import Profile from './Pages/Profile'
-import Home from './Pages/Home'
-import MySongs from './Pages/MySongs'
-import AddSongs from './Pages/AddSongs'
+import AppLayout from './components/AppLayout/AppLayout'
+import Test from './components/ScanQr/ScanQr'
+import Code from './components/Code/Code'
+import ProtectedComponent from './components/UI/ProtectedComponent'
+import Profile from './Pages/Profile/Profile'
+import Home from './Pages/Home/Home'
+import MySongs from './Pages/MySongs/MySongs'
+import AddSongs from './Pages/AddSongs/AddSongs'
 import ShowQR from './Pages/ShowQR/ShowQR'
 
 function AppProvider() {

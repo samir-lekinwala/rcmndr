@@ -1,9 +1,9 @@
 import { useMutation, useQueryClient } from 'react-query'
 import { useAuth0 } from '@auth0/auth0-react'
-import { addSong } from '../apis/songs'
-import { SongDraft } from '../../types/Song'
-import Button from '../components/UI/Button/Button'
-import TextBox from '../components/UI/TextBox/TextBox'
+import { addSong } from '../../apis/songs'
+import { SongDraft } from '../../../types/Song'
+import Button from '../../components/UI/Button/Button'
+import TextBox from '../../components/UI/TextBox/TextBox'
 import { useNavigate } from 'react-router-dom'
 
 function AddSongs() {

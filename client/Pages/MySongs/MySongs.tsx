@@ -1,9 +1,9 @@
 import { useQuery } from 'react-query'
 import { Link } from 'react-router-dom'
-
-import Icon from '../components/UI/Icon/Icon'
-import { getSongs } from '../apis/songs'
 import { useAuth0 } from '@auth0/auth0-react'
+
+import Icon from '../../components/UI/Icon/Icon'
+import { getSongs } from '../../apis/songs'
 
 function MySongs() {
   const { getAccessTokenSilently } = useAuth0()
