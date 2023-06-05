@@ -4,9 +4,11 @@ import { addSong } from '../apis/songs'
 import { SongDraft } from '../../types/Song'
 import Button from '../components/UI/Button/Button'
 import TextBox from '../components/UI/TextBox/TextBox'
+import { useNavigate } from 'react-router-dom'
 
 function AddSongs() {
   const { getAccessTokenSilently } = useAuth0()
+  const navigate = useNavigate()
   const queryClient = useQueryClient()
 
   const mutation = useMutation({
@@ -35,6 +37,7 @@ function AddSongs() {
 
     const token = await getAccessTokenSilently()
     mutation.mutate({ song, token })
+    navigate('/my-songs')
   }
 
   return (
