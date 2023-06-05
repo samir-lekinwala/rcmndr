@@ -1,5 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useQuery, useMutation } from 'react-query'
 
 import ConfirmScan from '../../components/ConfirmScan/ConfirmScan'
@@ -8,6 +8,7 @@ import { followUser, getUser } from '../../apis/user'
 function Code() {
   const { getAccessTokenSilently } = useAuth0()
   const { code } = useParams()
+  const navigate = useNavigate()
   const mutation = useMutation({
     mutationFn: ({ auth0, token }: { auth0: string; token: string }) =>
       followUser(auth0, token),
@@ -26,6 +27,7 @@ function Code() {
   async function handleFollow() {
     const token = await getAccessTokenSilently()
     mutation.mutate({ auth0: data?.auth0, token })
+    navigate('/my-friends')
   }
 
   return (
