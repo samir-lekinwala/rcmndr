@@ -6,6 +6,7 @@ exports.up = async function (knex) {
     table.string('artist').notNullable()
     table.string('genre')
     table.string('link')
+    table.string('comments')
   })
 }
 
