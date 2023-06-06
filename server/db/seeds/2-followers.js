@@ -1,15 +1,15 @@
 exports.seed = async function (knex) {
-  await knex('followers').insert([
+  await knex('following_list').insert([
     {
-      follower_id: 'auth0|6478f3fd75374ee3d7bc4d94',
-      following_id: 'auth0|102',
+      user_id: 'auth0|6478f3fd75374ee3d7bc4d94',
+      following_id: 'auth0|231',
     },
     {
-      follower_id: 'auth0|6478f3fd75374ee3d7bc4d94',
-      following_id: 'auth0|104',
+      user_id: 'auth0|6478f3fd75374ee3d7bc4d94',
+      following_id: 'auth0|321',
     },
-    { follower_id: 'auth0|101', following_id: 'auth0|102' },
-    { follower_id: 'auth0|101', following_id: 'auth0|103' },
-    { follower_id: 'auth0|101', following_id: 'auth0|104' },
+    { user_id: 'auth0|321', following_id: 'auth0|132' },
+    { user_id: 'auth0|321', following_id: 'auth0|231' },
+    { user_id: 'auth0|231', following_id: 'auth0|233' },
   ])
 }
