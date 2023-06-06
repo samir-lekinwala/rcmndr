@@ -1,4 +1,5 @@
 import request from 'superagent'
+import { Friend } from '../../types/User'
 
 export async function getUser(auth0: string, token: string) {
   const res = await request
@@ -16,4 +17,13 @@ export async function followUser(auth0: string, token: string) {
     .set('Content-Type', 'application/json')
 
   return res.body
+}
+
+export async function getFriends(token: string) {
+  const res = await request
+    .get(`/api/v1/users/friends`)
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+
+  return res.body as Friend[]
 }
