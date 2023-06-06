@@ -4,7 +4,7 @@ import { Friend } from '../../types/User'
 export async function getFriends(userId: string) {
   return (await db('following_list')
     .join('users', 'users.auth0_id', 'following_list.following_id')
-    .select('users.auth0_id', 'nickname', 'first_name as firstName')
+    .select('users.auth0_id as id', 'nickname', 'first_name as firstName')
     .where('user_id', userId)) as Friend[]
 }
 
@@ -23,7 +23,7 @@ export async function searchFriends(userId: string, query: string) {
     .distinct('auth0_id', 'nickname', 'first_name as firstName')
     .leftJoin('following_list', 'users.auth0_id', 'following_list.following_id')
     .leftJoin('songs', 'users.auth0_id', 'songs.user_id')
-    .select('auth0_id', 'nickname', 'first_name as firstName')
+    .select('auth0_id as id', 'nickname', 'first_name as firstName')
     .where(function () {
       this.where(
         db.raw('LOWER(nickname) LIKE ?', [`%${searchQuery.toLowerCase()}%`])
