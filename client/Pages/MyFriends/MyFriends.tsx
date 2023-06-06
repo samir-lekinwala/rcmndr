@@ -9,8 +9,6 @@ function MyFriends() {
     queryFn: async () => {
       const token = await getAccessTokenSilently()
       const friends = await getFriends(token)
-      console.log(friends)
-
       return friends
     },
   })
