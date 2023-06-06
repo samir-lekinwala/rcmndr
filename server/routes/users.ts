@@ -5,6 +5,32 @@ import { validateAccessToken } from '../auth0'
 
 const router = express.Router()
 
+// GET /api/v1/users/search?q=...
+router.get('/search', validateAccessToken, async (req, res) => {
+  const id = req.auth?.payload.sub
+  const query = req.query.q as string
+
+  if (!id) {
+    res.status(400).json({ message: 'Please provide an id' })
+    return
+  }
+
+  if (!query) {
+    res.json([])
+    return
+  }
+
+  try {
+    const friends = await db.searchFriends(id, query)
+    res.status(200).json(friends)
+  } catch (e) {
+    console.error(e)
+    if (e instanceof Error) {
+      res.status(500).json({ message: e.message })
+    }
+  }
+})
+
 // GET /api/v1/users/friends
 router.get('/friends', validateAccessToken, async (req, res) => {
   const id = req.auth?.payload.sub
@@ -25,26 +51,6 @@ router.get('/friends', validateAccessToken, async (req, res) => {
   }
 })
 
-router.get('/search/:query', validateAccessToken, async (req, res) => {
-  const id = req.auth?.payload.sub
-  const query = req.params.query
-
-  if (!id) {
-    res.status(400).json({ message: 'Please provide an id' })
-    return
-  }
-
-  try {
-    const friends = await db.searchFriends(id, query)
-    res.status(200).json(friends)
-  } catch (e) {
-    console.error(e)
-    if (e instanceof Error) {
-      res.status(500).json({ message: e.message })
-    }
-  }
-})
-
 // GET /api/v1/users/:id
 router.get('/:id', validateAccessToken, (req, res) => {
   const id = req.params.id
@@ -53,7 +59,7 @@ router.get('/:id', validateAccessToken, (req, res) => {
     res.status(400).json({ message: 'Please provide an id' })
   }
 
-  res.status(200).json({ nickname: 'test' })
+  res.status(200).json({ nickname: 'here' })
 })
 
 // POST /api/v1/users
