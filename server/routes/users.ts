@@ -25,6 +25,26 @@ router.get('/friends', validateAccessToken, async (req, res) => {
   }
 })
 
+router.get('/search/:query', validateAccessToken, async (req, res) => {
+  const id = req.auth?.payload.sub
+  const query = req.params.query
+
+  if (!id) {
+    res.status(400).json({ message: 'Please provide an id' })
+    return
+  }
+
+  try {
+    const friends = await db.searchFriends(id, query)
+    res.status(200).json(friends)
+  } catch (e) {
+    console.error(e)
+    if (e instanceof Error) {
+      res.status(500).json({ message: e.message })
+    }
+  }
+})
+
 // GET /api/v1/users/:id
 router.get('/:id', validateAccessToken, (req, res) => {
   const id = req.params.id
