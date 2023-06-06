@@ -4,6 +4,7 @@ exports.up = async function (knex) {
     table.string('nickname').notNullable().unique()
     table.string('first_name').notNullable()
     table.string('last_name').notNullable()
+    table.boolean('public')
   })
 }
 
