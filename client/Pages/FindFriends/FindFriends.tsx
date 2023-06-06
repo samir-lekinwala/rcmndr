@@ -5,19 +5,23 @@ import MyFriends from '../MyFriends/MyFriends'
 import TextBox from '../../components/UI/TextBox/TextBox'
 import { searchFriends } from '../../apis/user'
 import { Friend } from '../../../types/User'
+import { debounce } from 'lodash'
 
 function FindFriends() {
   const { getAccessTokenSilently } = useAuth0()
   const [searchQuery, setSearchQuery] = useState('')
   const [suggestedFriends, setSuggestedFriends] = useState([] as Friend[])
 
+  const handleSearch = debounce(async (query, token) => {
+    const suggestions = await searchFriends(query, token)
+    setSuggestedFriends(() => suggestions)
+  }, 1000)
+
   async function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchQuery(() => e.target.value.trim())
     const token = await getAccessTokenSilently()
-    const suggestions = await searchFriends(e.target.value.trim(), token)
-    console.log(suggestions)
 
-    setSuggestedFriends(() => suggestions)
+    handleSearch(e.target.value.trim(), token)
   }
 
   return (
