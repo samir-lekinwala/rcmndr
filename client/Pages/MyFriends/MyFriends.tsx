@@ -15,9 +15,9 @@ function MyFriends() {
     },
   })
   return (
-    <div>
-      <h1>My existing friends</h1>
-      <ul>
+    <div className="space-y-4">
+      <h1 className="text-xl font-semibold">My existing friends</h1>
+      <ul className="space-y-4">
         {data &&
           data?.map((friend) => <li key={friend.id}>{friend.nickname}</li>)}
       </ul>
