@@ -18,12 +18,17 @@ import MySongs from './Pages/MySongs/MySongs'
 import AddSongs from './Pages/AddSongs/AddSongs'
 import ShowQR from './Pages/ShowQR/ShowQR'
 import MyFriends from './Pages/MyFriends/MyFriends'
+import FindFriends from './Pages/FindFriends/FindFriends'
 
 function AppProvider() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<AppLayout />}>
         <Route index element={<Home />} />
+        <Route
+          path="find-friends"
+          element={<ProtectedComponent component={FindFriends} />}
+        />
         <Route
           path="scan"
           element={<ProtectedComponent component={ScanQr} />}
