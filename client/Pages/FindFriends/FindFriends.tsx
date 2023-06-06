@@ -7,7 +7,10 @@ function FindFriends() {
       <div className="space-y-2">
         <h1 className="text-4xl font-semibold">My friends</h1>
         <h2 className="text-xl font-semibold">Follow a new friend</h2>
-        <TextBox placeholder="Search by a genre, nickname or a real name" />
+        <div className="flex items-baseline gap-4">
+          <i className="fa-solid fa-search" />
+          <TextBox placeholder="Search by a genre, nickname or a real name" />
+        </div>
       </div>
       <div>
         <MyFriends />
