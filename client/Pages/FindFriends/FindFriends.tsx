@@ -29,15 +29,23 @@ function FindFriends() {
       <div className="space-y-2">
         <h1 className="text-4xl font-semibold">My friends</h1>
         <h2 className="text-xl font-semibold">Follow a new friend</h2>
-        <div className="flex items-baseline gap-4">
-          <i className="fa-solid fa-search" />
-          <TextBox
-            placeholder="Search by a genre, nickname or a real name"
-            onChange={handleChange}
-            value={searchQuery}
-          />
+        <div className="">
+          <div className="flex items-baseline gap-4">
+            <i className="fa-solid fa-search" />
+            <TextBox
+              placeholder="Search by a genre, nickname or a real name"
+              onChange={handleChange}
+              value={searchQuery}
+            />
+          </div>
+          <p className="pl-10 text-sm text-purple-400 text-center">
+            {suggestedFriends.length > 0
+              ? 'Suggested friends'
+              : 'No rcmndrs match your criteria'}
+          </p>
         </div>
       </div>
+      <h2></h2>
       <ul>
         {suggestedFriends.map((friend) => (
           <li key={friend.id}>
