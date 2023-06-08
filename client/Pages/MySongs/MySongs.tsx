@@ -29,10 +29,12 @@ function MySongs() {
   })
 
   function handleDeleteSong(songId: string) {
+    // eslint-disable-next-line no-console
     console.log(songId)
   }
 
   function handleEditSong(songId: string) {
+    // eslint-disable-next-line no-console
     console.log(songId)
   }
 

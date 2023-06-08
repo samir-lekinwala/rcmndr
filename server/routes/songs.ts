@@ -3,6 +3,7 @@ import express from 'express'
 import * as db from '../db/songs'
 import { validateAccessToken } from '../auth0'
 import { songDraftSchema } from '../../types/Song'
+import { logError } from '../logger'
 
 const router = express.Router()
 
@@ -16,8 +17,7 @@ router.get('/', validateAccessToken, async (req, res) => {
     const songs = await db.getSongs(userId)
     res.json(songs)
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error(error)
+    logError(error)
     res.status(500).json({ error: 'unable to retrieve songs from database' })
   }
 })
@@ -37,8 +37,7 @@ router.post('/', validateAccessToken, async (req, res) => {
     await db.insertSong(song)
     res.sendStatus(201)
   } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error(error)
+    logError(error)
     res.status(500).json({ error: 'unable to insert song into database' })
   }
 })

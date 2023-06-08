@@ -18,7 +18,7 @@ function FindFriends() {
       setSuggestedFriends(() => suggestions)
     }
     effect()
-  }, [searchQuery])
+  }, [searchQuery, getAccessTokenSilently])
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchQuery(() => e.target.value)
@@ -42,7 +42,6 @@ function FindFriends() {
           </p>
         </div>
       </div>
-      <h2></h2>
       <ul>
         {suggestedFriends.map((friend) => (
           <li key={friend.id}>

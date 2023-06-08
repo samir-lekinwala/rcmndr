@@ -2,6 +2,7 @@ import express from 'express'
 
 import * as db from '../db/users'
 import { validateAccessToken } from '../auth0'
+import { logError } from '../logger'
 
 const router = express.Router()
 
@@ -24,10 +25,8 @@ router.get('/search', validateAccessToken, async (req, res) => {
     const friends = await db.searchFriends(id, query)
     res.status(200).json(friends)
   } catch (e) {
-    console.error(e)
-    if (e instanceof Error) {
-      res.status(500).json({ message: e.message })
-    }
+    logError(e)
+    res.status(500).json({ message: 'Unable to search friends' })
   }
 })
 
@@ -44,10 +43,8 @@ router.get('/friends', validateAccessToken, async (req, res) => {
     const friends = await db.getFriends(id)
     res.status(200).json(friends)
   } catch (e) {
-    console.error(e)
-    if (e instanceof Error) {
-      res.status(500).json({ message: e.message })
-    }
+    logError(e)
+    res.status(500).json({ message: 'Unable to retrieve friends' })
   }
 })
 
@@ -59,7 +56,7 @@ router.get('/:id', validateAccessToken, (req, res) => {
     res.status(400).json({ message: 'Please provide an id' })
   }
 
-  res.status(200).json({ nickname: 'here' })
+  res.status(200).json({ nickname: 'nickname here' })
 })
 
 // POST /api/v1/users

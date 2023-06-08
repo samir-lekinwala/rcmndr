@@ -2,6 +2,7 @@ import express from 'express'
 
 import { getNotifications, setNotifications } from '../db/notifications'
 import { validateAccessToken } from '../auth0'
+import { logError } from '../logger'
 
 const router = express.Router()
 
@@ -16,10 +17,8 @@ router.get('/', validateAccessToken, async (req, res) => {
     const notifications = await getNotifications(userId)
     res.json(notifications)
   } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message)
-      res.status(500).json({ error: error.message })
-    }
+    logError(error)
+    res.status(500).json({ error: 'Unable to retrieve notifications' })
   }
 })
 
@@ -39,10 +38,8 @@ router.post('/', validateAccessToken, async (req, res) => {
     await setNotifications(userId, notificationIds)
     res.sendStatus(201)
   } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message)
-      res.status(500).json({ error: error.message })
-    }
+    logError(error)
+    res.status(500).json({ error: 'Unable to update notifications' })
   }
 })
 

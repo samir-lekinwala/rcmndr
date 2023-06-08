@@ -1,13 +1,19 @@
 import { QrReader } from 'react-qr-reader'
 import { useNavigate } from 'react-router-dom'
+import * as z from 'zod'
+
+const schema = z.object({
+  text: z.string(),
+})
 
 function Test() {
   const navigate = useNavigate()
 
-  function handleScan(result: any) {
-    if (result) {
-      navigate(`/code/${result.text}`)
-    }
+  function handleScan(result: unknown) {
+    const resultParsed = schema.safeParse(result)
+
+    if (!resultParsed.success) return
+    navigate(`/code/${resultParsed.data.text}`)
   }
 
   return (

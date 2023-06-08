@@ -4,12 +4,13 @@ import { vi, describe, it, expect, beforeEach } from 'vitest'
 import server from '../server'
 import * as db from '../db/songs'
 import { getMockToken } from './mockToken'
+import { logError } from '../logger'
 
 vi.mock('../db/songs')
+vi.mock('../logger')
 
 beforeEach(() => {
-  // eslint-disable-next-line no-console
-  console.error = vi.fn()
+  vi.mocked(logError).mockImplementation(() => vi.fn())
 })
 
 describe('GET /api/v1/songs', () => {
