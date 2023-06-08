@@ -4,7 +4,7 @@ import { getFriends } from '../../apis/user'
 
 function MyFriends() {
   const { getAccessTokenSilently } = useAuth0()
-  const { data, error } = useQuery({
+  const { data } = useQuery({
     queryKey: 'getFriends',
     queryFn: async () => {
       const token = await getAccessTokenSilently()
@@ -12,6 +12,7 @@ function MyFriends() {
       return friends
     },
   })
+
   return (
     <div className="space-y-4">
       <h1 className="text-xl font-semibold">My existing friends</h1>
