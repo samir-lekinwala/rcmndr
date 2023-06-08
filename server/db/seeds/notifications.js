@@ -10,7 +10,6 @@ exports.seed = async function (knex) {
   const users = await knex('users').select('auth0_id')
   let i = 0
   for (const { auth0_id } of users) {
-    console.log(auth0_id)
     // get all friends for each user
     const friends = await getFriends(auth0_id)
     for (const { id } of friends) {
