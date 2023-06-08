@@ -2,8 +2,8 @@ import { useQuery } from 'react-query'
 import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 
-import Icon from '../../components/UI/Icon/Icon'
 import { getSongs } from '../../apis/songs'
+import SongListItem from '../../components/SongListItem/SongListItem'
 
 function MySongs() {
   const { getAccessTokenSilently } = useAuth0()
@@ -34,27 +34,11 @@ function MySongs() {
             data &&
             data.map((song) => (
               <li key={song.id} className="flex flex-row gap-2">
-                <div className="self-center flex-none">
-                  <Icon>
-                    <i className="fa-solid fa-play text-black" />
-                  </Icon>
-                </div>
-                <div className="flex flex-col w-36 flex-auto">
-                  <h3>{song.title}</h3>
-                  <h4 className="text-xs text-lightPurple">{song.artist}</h4>
-                </div>
-                <div className="flex flex-row gap-2 self-center flex-none">
-                  <button onClick={() => handleEditSong(song.id)}>
-                    <Icon>
-                      <i className="fa-solid fa-pen" />
-                    </Icon>
-                  </button>
-                  <button onClick={() => handleDeleteSong(song.id)}>
-                    <Icon className="bg-warning">
-                      <i className="fa-solid fa-trash" />
-                    </Icon>
-                  </button>
-                </div>
+                <SongListItem
+                  song={song}
+                  handleDeleteSong={handleDeleteSong}
+                  handleEditSong={handleEditSong}
+                />
               </li>
             ))}
         </ul>
