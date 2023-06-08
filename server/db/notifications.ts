@@ -12,8 +12,7 @@ export async function getNotifications(userId: string) {
       'notifications.timestamp as notificationTimestamp',
       'users.nickname',
       'songs.title as songTitle',
-      'songs.genre as songGenre',
-      'timestamp'
+      'songs.genre as songGenre'
     )
 }
 
