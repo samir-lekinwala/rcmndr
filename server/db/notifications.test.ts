@@ -23,7 +23,7 @@ describe('setNotifications', () => {
   it('marks notifications as read', async () => {
     const userId = 'auth0|6478f3fd75374ee3d7bc4d94'
     const notifications = await getNotifications(userId)
-    const notificationIds = notifications.map((n) => n.id)
+    const notificationIds = notifications.map((n) => n.notificationId)
     await setNotifications(userId, notificationIds)
     const updatedNotifications = await getNotifications(userId)
     expect(updatedNotifications).toHaveLength(0)
