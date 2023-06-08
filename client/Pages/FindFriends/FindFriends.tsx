@@ -1,27 +1,27 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import MyFriends from '../MyFriends/MyFriends'
 import TextBox from '../../components/UI/TextBox/TextBox'
 import { searchFriends } from '../../apis/user'
 import { Friend } from '../../../types/User'
-import { debounce } from 'lodash'
 
 function FindFriends() {
   const { getAccessTokenSilently } = useAuth0()
   const [searchQuery, setSearchQuery] = useState('')
   const [suggestedFriends, setSuggestedFriends] = useState([] as Friend[])
 
-  const handleSearch = debounce(async (query, token) => {
-    const suggestions = await searchFriends(query, token)
-    setSuggestedFriends(() => suggestions)
-  }, 1000)
+  useEffect(() => {
+    const effect = async () => {
+      const token = await getAccessTokenSilently()
+      const suggestions = await searchFriends(searchQuery, token)
+      setSuggestedFriends(() => suggestions)
+    }
+    effect()
+  }, [searchQuery])
 
-  async function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setSearchQuery(() => e.target.value.trim())
-    const token = await getAccessTokenSilently()
-
-    handleSearch(e.target.value.trim(), token)
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setSearchQuery(() => e.target.value)
   }
 
   return (
@@ -39,9 +39,9 @@ function FindFriends() {
             />
           </div>
           <p className="pl-10 text-sm text-purple-400 text-center">
-            {suggestedFriends.length > 0
-              ? 'Suggested friends'
-              : 'No rcmndrs match your criteria'}
+            {suggestedFriends.length === 0 &&
+              searchQuery.length > 0 &&
+              'No rcmndrs match your criteria'}
           </p>
         </div>
       </div>
@@ -55,9 +55,7 @@ function FindFriends() {
           </li>
         ))}
       </ul>
-      <div>
-        <MyFriends />
-      </div>
+      <div>{suggestedFriends.length === 0 && <MyFriends />}</div>
     </div>
   )
 }
