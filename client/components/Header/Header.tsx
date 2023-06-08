@@ -14,9 +14,14 @@ function Header() {
     <div className="pl-4 pt-3 pr-4 flex justify-between items-center">
       <Logo />
       {!navOpened && (
-        <button onClick={toggleMenu}>
-          <i className="fa-solid fa-bars text-3xl"></i>
-        </button>
+        <div>
+          <button onClick={toggleMenu}>
+            <i className="fa-solid fa-bars text-4xl"></i>
+          </button>
+          <span className="absolute top-1 right-1 bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
+            3
+          </span>
+        </div>
       )}
       {navOpened && (
         <button onClick={toggleMenu}>
