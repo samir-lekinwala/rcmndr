@@ -4,15 +4,27 @@ import { useAuth0 } from '@auth0/auth0-react'
 
 import { getSongs } from '../../apis/songs'
 import SongListItem from '../../components/SongListItem/SongListItem'
+import { getUser } from '../../apis/user'
 
 function MySongs() {
-  const { getAccessTokenSilently } = useAuth0()
+  const { getAccessTokenSilently, user } = useAuth0()
 
-  const { data, isLoading } = useQuery({
+  const { data: songs, isLoading } = useQuery({
     queryKey: ['getSongs'],
     queryFn: async () => {
       const token = await getAccessTokenSilently()
       return await getSongs(token)
+    },
+  })
+
+  const { data: nickname } = useQuery({
+    queryKey: ['getUser'],
+    queryFn: async () => {
+      const token = await getAccessTokenSilently()
+      if (user && user.sub) {
+        const currentUser = await getUser(user?.sub, token)
+        return currentUser?.nickname
+      }
     },
   })
 
@@ -27,12 +39,12 @@ function MySongs() {
   return (
     <div>
       <div className="pl-4 pr-4 mt-8">
-        <h1 className="text-3xl">Brenegade</h1>
+        <h1 className="text-3xl">{nickname}</h1>
         <h2 className="text-xs">These are the tracks you have recommended</h2>
         <ul className="flex flex-col gap-4 mt-6">
           {!isLoading &&
-            data &&
-            data.map((song) => (
+            songs &&
+            songs.map((song) => (
               <li key={song.id} className="flex flex-row gap-2">
                 <SongListItem
                   song={song}
