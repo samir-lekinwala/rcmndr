@@ -9,36 +9,41 @@ export async function getFriends(userId: string) {
 }
 
 export async function searchFriends(userId: string, query: string) {
-  // search for non-friends users with the query,
-  // query could be genre, nickname, first name or last name
-  // the query should be case insensitive and it should match any part of the string
-  // and it should only include users that are not already friends with
-  // and it should not include the current user
-  // and it should include public users
+  const rawQuery = `
+SELECT DISTINCT  uu.auth0_id, uu.first_name, uu.last_name, uu.nickname
+FROM (
+  SELECT following_id
+  FROM following_list
+  WHERE user_id = ?
+) AS f
+CROSS JOIN (
+  SELECT DISTINCT auth0_id as user_id
+  FROM users
+  WHERE auth0_id <> ?
+) AS u
+LEFT JOIN following_list AS existing
+  ON existing.user_id =  ? AND existing.following_id = u.user_id
+RIGHT JOIN users as uu ON uu.auth0_id = existing.following_id 
+RIGHT JOIN songs as s ON s.user_id = uu.auth0_id
+WHERE existing.user_id IS NULL
+AND uu.auth0_id <> ?
+AND uu.public = true
+AND (LOWER(uu.nickname) LIKE ?
+OR LOWER(uu.first_name) LIKE ?
+OR LOWER(uu.last_name) LIKE ?
+OR LOWER(s.genre) LIKE ?)
+`
 
-  const searchQuery = query
-  const currentUserId = userId
+  const newUsersToFollow = await db.raw(rawQuery, [
+    userId,
+    userId,
+    userId,
+    userId,
+    `%${query}%`,
+    `%${query}%`,
+    `%${query}%`,
+    `%${query}%`,
+  ])
 
-  return (await db('users')
-    .distinct('auth0_id', 'nickname', 'first_name as firstName')
-    .leftJoin('following_list', 'users.auth0_id', 'following_list.following_id')
-    .leftJoin('songs', 'users.auth0_id', 'songs.user_id')
-    .select('auth0_id as id', 'nickname', 'first_name as firstName')
-    .where(function () {
-      this.where(
-        db.raw('LOWER(nickname) LIKE ?', [`%${searchQuery.toLowerCase()}%`])
-      )
-        .orWhere(
-          db.raw('LOWER(first_name) LIKE ?', [`%${searchQuery.toLowerCase()}%`])
-        )
-        .orWhere(
-          db.raw('LOWER(last_name) LIKE ?', [`%${searchQuery.toLowerCase()}%`])
-        )
-        .orWhere(
-          db.raw('LOWER(genre) LIKE ?', [`%${searchQuery.toLowerCase()}%`])
-        )
-    })
-    .andWhereNot('following_list.user_id', currentUserId) // not friends
-    .where('auth0_id', '!=', currentUserId) // not current user
-    .where('public', 1)) as Friend[] // public users
+  return newUsersToFollow as Friend[]
 }
