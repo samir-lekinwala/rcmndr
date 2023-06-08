@@ -11,7 +11,7 @@ function Header() {
   }
 
   return (
-    <div className="pl-4 pt-3 flex justify-between items-center">
+    <div className="pl-4 pt-3 pr-4 flex justify-between items-center">
       <Logo />
       {!navOpened && (
         <button onClick={toggleMenu}>
