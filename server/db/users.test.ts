@@ -18,8 +18,6 @@ describe('getFriends', () => {
 
   it('non added friends should be suggested', async () => {
     const friends = await searchFriends('auth0|6478f3fd75374ee3d7bc4d94', 'boi')
-
-    console.log(friends)
     expect(friends).toHaveLength(1)
   })
 })
