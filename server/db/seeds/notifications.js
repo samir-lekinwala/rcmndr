@@ -1,25 +1,46 @@
 exports.seed = async function (knex) {
-  // instead of manually inserting notifications for each user,
-  // we can use this function to generate notifications for each user
-  const getFriends = async (userId) => {
-    return await knex('following_list')
-      .join('users', 'users.auth0_id', 'following_list.following_id')
-      .select('users.auth0_id as id', 'nickname', 'first_name as firstName')
-      .where('user_id', userId)
-  }
-
-  // get all users
-  const users = await knex('users').select('auth0_id')
-  let i = 0
-  for (const { auth0_id } of users) {
-    // get all friends for each user
-    const friends = await getFriends(auth0_id)
-    for (const { id } of friends) {
-      // insert one notification for each friend
-      await knex('notifications').insert([
-        { id: i, user_id: auth0_id, friend_id: id, timestamp: Date.now() },
-      ])
-      i++
-    }
-  }
+  await knex('notifications').insert([
+    {
+      id: 0,
+      user_id: 'auth0|231',
+      song_id: 7,
+      friend_id: 'auth0|233',
+      timestamp: 1686199303816,
+    },
+    {
+      id: 1,
+      user_id: 'auth0|321',
+      song_id: 1,
+      friend_id: 'auth0|132',
+      timestamp: 1686199303819,
+    },
+    {
+      id: 2,
+      user_id: 'auth0|321',
+      song_id: 5,
+      friend_id: 'auth0|231',
+      timestamp: 1686199303821,
+    },
+    {
+      id: 3,
+      user_id: 'auth0|6478f3fd75374ee3d7bc4d94',
+      song_id: 5,
+      friend_id: 'auth0|231',
+      timestamp: 1686199303824,
+    },
+    {
+      id: 4,
+      user_id: 'auth0|6478f3fd75374ee3d7bc4d94',
+      song_id: 9,
+      friend_id: 'auth0|321',
+      timestamp: 1686199303826,
+    },
+    {
+      id: 5,
+      user_id: 'auth0|6478f3fd75374ee3d7bc4d94',
+      song_id: 10,
+      friend_id: 'auth0|321',
+      timestamp: 1686199303820,
+    },
+  ])
 }
