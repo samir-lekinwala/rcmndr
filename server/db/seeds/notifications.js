@@ -1,4 +1,6 @@
 exports.seed = async function (knex) {
+  // instead of manually inserting notifications for each user,
+  // we can use this function to generate notifications for each user
   const getFriends = async (userId) => {
     return await knex('following_list')
       .join('users', 'users.auth0_id', 'following_list.following_id')
