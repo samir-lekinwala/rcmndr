@@ -30,14 +30,11 @@ function FindFriends() {
         <h1 className="text-4xl font-semibold">My friends</h1>
         <h2 className="text-xl font-semibold">Follow a new friend</h2>
         <div className="">
-          <div className="flex items-baseline gap-4">
-            <i className="fa-solid fa-search" />
-            <TextBox
-              placeholder="Search by a genre, nickname or a real name"
-              onChange={handleChange}
-              value={searchQuery}
-            />
-          </div>
+          <TextBox
+            placeholder="Search by a genre, nickname or a real name"
+            onChange={handleChange}
+            value={searchQuery}
+          />
           <p className="pl-10 text-sm text-purple-400 text-center">
             {suggestedFriends.length === 0 &&
               searchQuery.length > 0 &&
