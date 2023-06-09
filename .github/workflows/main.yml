@@ -17,6 +17,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - run: echo 'secrets vite_auth0_domain ${{ secrets.VITE_AUTH0_DOMAIN }}'
+      - run: echo 'env vite_auth0_domain ${{ env.VITE_AUTH0_DOMAIN }}'
+      - run: echo 'github token ${{ secrets.GITHUB_TOKEN }}'
       - uses: actions/checkout@v2
       - name: Cache packages
         uses: actions/cache@v2
