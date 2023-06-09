@@ -3,9 +3,9 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-export const validateAccessToken = auth({
-  issuerBaseURL:
-    `https://${process.env.VITE_AUTH0_DOMAIN}` ||
-    'https://rcmndr-dev-academy.au.auth0.com',
-  audience: process.env.VITE_AUTH0_AUDIENCE || 'https://rcmndr/api',
-})
+const authConfig = {
+  issuerBaseURL: `https://${process.env.VITE_AUTH0_DOMAIN}`,
+  audience: process.env.VITE_AUTH0_AUDIENCE,
+}
+
+export const validateAccessToken = auth(authConfig)
