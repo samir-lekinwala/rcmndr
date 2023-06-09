@@ -53,7 +53,7 @@ const nockReply = {
 }
 
 // nock will intercept the http call and will return the nockReply object
-nock(`https://${process.env.VITE_AUTH0_DOMAIN}`)
+nock('https://rcmndr-dev-academy.au.auth0.com/')
   .persist()
   .get('/.well-known/jwks.json')
   .reply(200, nockReply)
@@ -72,8 +72,8 @@ export const getMockToken = () => {
   const options: SignOptions = {
     header: { kid: '0', alg: 'RS256' },
     expiresIn: '1d',
-    audience: process.env.VITE_AUTH0_AUDIENCE as string,
-    issuer: `https://${process.env.VITE_AUTH0_DOMAIN}/`,
+    audience: 'https://rcmndr/api',
+    issuer: 'https://rcmndr-dev-academy.au.auth0.com/',
   }
 
   return jwt.sign(payload, privateKey, options)
