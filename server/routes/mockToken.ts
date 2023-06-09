@@ -7,6 +7,9 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
+// eslint-disable-next-line no-console
+console.log(process.env)
+
 // this private key is for testing purposes only so that we can mock tokens
 const privateKey = `-----BEGIN RSA PRIVATE KEY-----
 MIIEowIBAAKCAQEAwaZ3afW0/zYy3HfJwAAr83PDdZvADuSJ6jTZk1+jprdHdG6P
