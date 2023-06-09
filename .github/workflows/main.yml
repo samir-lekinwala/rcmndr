@@ -5,7 +5,6 @@ env:
   VITE_AUTH0_DOMAIN: ${{ secrets.VITE_AUTH0_DOMAIN }}
   VITE_AUTH0_CLIENT_ID: ${{ secrets.VITE_AUTH0_CLIENT_ID }}
   VITE_AUTH0_AUDIENCE: ${{ secrets.VITE_AUTH0_AUDIENCE }}
-  MY_TEST: my_value
 
 on:
   push:
