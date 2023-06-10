@@ -19,10 +19,10 @@ function Form(props: Props) {
     }
 
     const form: Profile | ProfileDraft = {
-      auth0Id: props.profile?.auth0Id,
       firstName: target.firstName.value,
       lastName: target.lastName.value,
       nickname: target.nickname.value,
+      public: true,
     }
 
     props.handleSubmit(form)
