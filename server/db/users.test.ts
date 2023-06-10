@@ -10,7 +10,7 @@ beforeEach(async () => {
   await db.seed.run()
 })
 
-describe('getFriends', () => {
+describe('searchFriends', () => {
   it('added friends should not be suggested', async () => {
     const friends = await searchFriends('auth0|6478f3fd75374ee3d7bc4d94', 'rem')
     expect(friends).toHaveLength(0)
