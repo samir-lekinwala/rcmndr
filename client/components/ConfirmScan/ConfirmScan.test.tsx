@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { screen } from '@testing-library/react'
 import ConfirmScan from './ConfirmScan'
 import { renderComponent } from '../../test-utils'
@@ -11,12 +11,15 @@ describe('ConfirmScan', () => {
     expect(user).toBeInTheDocument()
   })
 
-  it('should render the follow button', async () => {
-    renderComponent(
-      <ConfirmScan name="not used here" handleFollow={() => { }} />
+  it('event handler should be called when Follow button is clicked', async () => {
+    const handleFollow = vi.fn()
+    const { user } = renderComponent(
+      <ConfirmScan name="jared" handleFollow={handleFollow} />
     )
 
-    const button = screen.getByRole('button', { name: 'Follow' })
-    expect(button).toBeInTheDocument()
+    const followButton = screen.getByText('Follow')
+    await user.click(followButton)
+
+    expect(handleFollow).toHaveBeenCalled()
   })
 })
