@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import { describe, it, expect, vi } from 'vitest'
 import { screen } from '@testing-library/react'
+
 import ProfileForm from './ProfileForm'
 import { renderComponent } from '../../test-utils'
 import { ProfileDraft } from '../../../types/Profile'

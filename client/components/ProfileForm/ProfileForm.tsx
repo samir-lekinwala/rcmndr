@@ -11,13 +11,17 @@ function ProfileForm(props: Props) {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
-    const elements = e.currentTarget.elements
+    const formData = new FormData(e.currentTarget)
+    const firstName = formData.get('firstName') as string
+    const lastName = formData.get('lastName') as string
+    const nickname = formData.get('nickname') as string
+    const isPublic = Boolean(formData.get('public'))
 
     const form = {
-      firstName: (elements.namedItem('firstName') as HTMLInputElement).value,
-      lastName: (elements.namedItem('lastName') as HTMLInputElement).value,
-      nickname: (elements.namedItem('nickname') as HTMLInputElement).value,
-      public: (elements.namedItem('public') as HTMLInputElement).checked,
+      firstName: firstName,
+      lastName: lastName,
+      nickname: nickname,
+      public: isPublic,
     }
 
     props.handleSubmit(form)
