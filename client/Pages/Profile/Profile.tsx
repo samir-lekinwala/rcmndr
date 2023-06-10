@@ -1,13 +1,23 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { useNavigate } from 'react-router-dom'
+import { useMutation } from 'react-query'
 
 import Form from '../../components/ProfileForm/ProfileForm'
 import { ProfileDraft } from '../../../types/Profile'
+import { createUser } from '../../apis/user'
 
 function Profile() {
+  const navigate = useNavigate()
   const { user, isAuthenticated, isLoading, getAccessTokenSilently } =
     useAuth0()
-  const navigate = useNavigate()
+
+  const mutation = useMutation({
+    mutationFn: ({ form, token }: { form: ProfileDraft; token: string }) =>
+      createUser(form, token),
+    onSuccess: () => {
+      navigate('/my-songs')
+    },
+  })
 
   if (isLoading) {
     return <div>Loading ...</div>
@@ -19,18 +29,8 @@ function Profile() {
 
   async function handleSubmit(form: ProfileDraft) {
     const token = await getAccessTokenSilently()
-    const response = await fetch('/api/v1/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(form),
-    })
-
-    if (response.ok) {
-      navigate('/my-songs')
-    }
+    mutation.mutate({ form, token })
+    navigate('/my-songs')
   }
 
   return (
