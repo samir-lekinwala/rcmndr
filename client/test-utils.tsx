@@ -10,8 +10,8 @@ expect.extend(matchers)
 afterEach(cleanup)
 
 export function renderComponent(component: JSX.Element) {
-  userEvent.setup()
-  return render(component)
+  const user = userEvent.setup()
+  return { user, ...render(component) }
 }
 
 export function renderWithRouter(location = '/') {
