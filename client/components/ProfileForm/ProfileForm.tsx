@@ -30,8 +30,8 @@ function ProfileForm(props: Props) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4">
-        <div>
+      <form onSubmit={handleSubmit} className="space-y-4 p-4">
+        <div className="space-y-2">
           <label htmlFor="nickname">Nickname *</label>
           <TextBox
             type="text"
@@ -40,6 +40,8 @@ function ProfileForm(props: Props) {
             required
             defaultValue={props.profile?.nickname}
           />
+        </div>
+        <div className="space-y-1">
           <label htmlFor="first-name">First Name *</label>
           <TextBox
             type="text"
@@ -48,6 +50,8 @@ function ProfileForm(props: Props) {
             required
             defaultValue={props.profile?.firstName}
           />
+        </div>
+        <div className="space-y-2">
           <label htmlFor="last-name">Last Name</label>
           <TextBox
             type="text"
@@ -56,7 +60,16 @@ function ProfileForm(props: Props) {
             defaultValue={props.profile?.lastName}
           />
         </div>
-        <div className="mx-auto">
+        <div className="space-x-2">
+          <input
+            type="checkbox"
+            name="public"
+            id="public"
+            defaultChecked={props.profile?.public}
+          />
+          <label htmlFor="public">Visible to everyone</label>
+        </div>
+        <div className="mx-auto text-center">
           <Button>Save</Button>
         </div>
       </form>
