@@ -7,7 +7,7 @@ interface Props {
   handleSubmit: (profile: Profile | ProfileDraft) => void
 }
 
-function Form(props: Props) {
+function ProfileForm(props: Props) {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
@@ -64,4 +64,4 @@ function Form(props: Props) {
   )
 }
 
-export default Form
+export default ProfileForm
