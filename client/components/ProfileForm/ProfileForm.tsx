@@ -11,18 +11,13 @@ function ProfileForm(props: Props) {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
-    const target = e.target as typeof e.target & {
-      auth0Id: string
-      firstName: { value: string }
-      lastName: { value: string }
-      nickname: { value: string }
-    }
+    const elements = e.currentTarget.elements
 
-    const form: Profile | ProfileDraft = {
-      firstName: target.firstName.value,
-      lastName: target.lastName.value,
-      nickname: target.nickname.value,
-      public: true,
+    const form = {
+      firstName: (elements.namedItem('firstName') as HTMLInputElement).value,
+      lastName: (elements.namedItem('lastName') as HTMLInputElement).value,
+      nickname: (elements.namedItem('nickname') as HTMLInputElement).value,
+      public: (elements.namedItem('public') as HTMLInputElement).checked,
     }
 
     props.handleSubmit(form)
