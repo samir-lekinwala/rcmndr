@@ -2,7 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { useNavigate } from 'react-router-dom'
 import { useMutation } from 'react-query'
 
-import Form from '../../components/ProfileForm/ProfileForm'
+import ProfileForm from '../../components/ProfileForm/ProfileForm'
 import { ProfileDraft } from '../../../types/Profile'
 import { createUser } from '../../apis/user'
 
@@ -35,7 +35,7 @@ function Profile() {
 
   return (
     <div>
-      <Form handleSubmit={handleSubmit} />
+      <ProfileForm handleSubmit={handleSubmit} />
     </div>
   )
 }
