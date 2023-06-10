@@ -6,4 +6,5 @@ export interface ProfileDraft {
   firstName: string
   lastName: string
   nickname: string
+  public: boolean
 }
