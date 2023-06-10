@@ -20,48 +20,41 @@ import ShowQR from './Pages/ShowQR/ShowQR'
 import MyFriends from './Pages/MyFriends/MyFriends'
 import FindFriends from './Pages/FindFriends/FindFriends'
 
-function AppProvider() {
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path="/" element={<AppLayout />}>
-        <Route index element={<Home />} />
-        <Route
-          path="find-friends"
-          element={<ProtectedComponent component={FindFriends} />}
-        />
-        <Route
-          path="scan"
-          element={<ProtectedComponent component={ScanQr} />}
-        />
-        <Route
-          path="code/:code"
-          element={<ProtectedComponent component={ConfirmScan} />}
-        />
-        <Route
-          path="show-qr"
-          element={<ProtectedComponent component={ShowQR} />}
-        />
-        <Route
-          path="my-songs"
-          element={<ProtectedComponent component={MySongs} />}
-        />
-        <Route
-          path="add-songs"
-          element={<ProtectedComponent component={AddSongs} />}
-        />
-        <Route
-          path="my-friends"
-          element={<ProtectedComponent component={MyFriends} />}
-        />
+export const routes = createRoutesFromElements(
+  <Route path="/" element={<AppLayout />}>
+    <Route index element={<Home />} />
+    <Route
+      path="find-friends"
+      element={<ProtectedComponent component={FindFriends} />}
+    />
+    <Route path="scan" element={<ProtectedComponent component={ScanQr} />} />
+    <Route
+      path="code/:code"
+      element={<ProtectedComponent component={ConfirmScan} />}
+    />
+    <Route path="show-qr" element={<ProtectedComponent component={ShowQR} />} />
+    <Route
+      path="my-songs"
+      element={<ProtectedComponent component={MySongs} />}
+    />
+    <Route
+      path="add-songs"
+      element={<ProtectedComponent component={AddSongs} />}
+    />
+    <Route
+      path="my-friends"
+      element={<ProtectedComponent component={MyFriends} />}
+    />
 
-        <Route
-          path="profile"
-          element={<ProtectedComponent component={Profile} />}
-        />
-      </Route>
-    )
-  )
-  return <RouterProvider router={router} />
+    <Route
+      path="profile"
+      element={<ProtectedComponent component={Profile} />}
+    />
+  </Route>
+)
+
+function AppProvider() {
+  return <RouterProvider router={createBrowserRouter(routes)} />
 }
 
 document.addEventListener('DOMContentLoaded', () => {
