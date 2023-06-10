@@ -12,6 +12,7 @@ describe('ProfileForm', () => {
         firstName: 'dummy-firstname',
         lastName: 'dummy-lastname',
         nickname: 'dummy-nickname',
+        public: true,
       })
     })
 
@@ -22,6 +23,7 @@ describe('ProfileForm', () => {
     await user.type(screen.getByLabelText('Nickname *'), 'dummy-nickname')
     await user.type(screen.getByLabelText('First Name *'), 'dummy-firstname')
     await user.type(screen.getByLabelText('Last Name'), 'dummy-lastname')
+    await user.click(screen.getByLabelText('Visible to everyone'))
 
     const form = screen.getByRole('button', { name: 'Save' })
     await user.click(form)
