@@ -5,20 +5,20 @@ import MyFriends from '../MyFriends/MyFriends'
 import TextBox from '../../components/UI/TextBox/TextBox'
 import { searchFriends } from '../../apis/user'
 import { Friend } from '../../../types/User'
+import { useQuery } from 'react-query'
 
 function FindFriends() {
   const { getAccessTokenSilently } = useAuth0()
   const [searchQuery, setSearchQuery] = useState('')
-  const [suggestedFriends, setSuggestedFriends] = useState([] as Friend[])
 
-  useEffect(() => {
-    const effect = async () => {
+  const { data: suggestedFriends, isLoading } = useQuery({
+    queryKey: ['getFriends', searchQuery],
+    queryFn: async () => {
       const token = await getAccessTokenSilently()
-      const suggestions = await searchFriends(searchQuery, token)
-      setSuggestedFriends(() => suggestions)
-    }
-    effect()
-  }, [searchQuery, getAccessTokenSilently])
+      const friends = await searchFriends(searchQuery, token)
+      return friends
+    },
+  })
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchQuery(() => e.target.value)
@@ -36,22 +36,29 @@ function FindFriends() {
             value={searchQuery}
           />
           <p className="pl-10 text-sm text-purple-400 text-center">
-            {suggestedFriends.length === 0 &&
+            {suggestedFriends &&
+              suggestedFriends.length === 0 &&
               searchQuery.length > 0 &&
               'No rcmndrs match your criteria'}
           </p>
         </div>
       </div>
+      <div className="h-4 border-gray-400">
+        {isLoading && <p>Loading...</p>}
+      </div>
       <ul>
-        {suggestedFriends.map((friend) => (
-          <li key={friend.id}>
-            <div className="flex items-center gap-4">
-              <p>{friend.nickname}</p>
-            </div>
-          </li>
-        ))}
+        {suggestedFriends &&
+          suggestedFriends.map((friend) => (
+            <li key={friend.id}>
+              <div className="flex items-center gap-4">
+                <p>{friend.nickname}</p>
+              </div>
+            </li>
+          ))}
       </ul>
-      <div>{suggestedFriends.length === 0 && <MyFriends />}</div>
+      <div>
+        {suggestedFriends && suggestedFriends.length === 0 && <MyFriends />}
+      </div>
     </div>
   )
 }
