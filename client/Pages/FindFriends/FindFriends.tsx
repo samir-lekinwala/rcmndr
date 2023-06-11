@@ -1,10 +1,9 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import MyFriends from '../MyFriends/MyFriends'
 import TextBox from '../../components/UI/TextBox/TextBox'
 import { searchFriends } from '../../apis/user'
-import { Friend } from '../../../types/User'
 import { useQuery } from 'react-query'
 
 function FindFriends() {

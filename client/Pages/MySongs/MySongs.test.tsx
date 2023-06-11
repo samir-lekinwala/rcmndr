@@ -1,10 +1,10 @@
 // @vitest-environment jsdom
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, vi } from 'vitest'
 import { screen } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
 import MySongs from './MySongs'
-import { renderComponent, renderWithRouter } from '../../test-utils'
+import { renderComponent } from '../../test-utils'
 import { getSongs } from '../../apis/songs'
 import { getUser } from '../../apis/user'
 import * as auth0 from '@auth0/auth0-react'
@@ -33,6 +33,7 @@ describe('MySongs', () => {
     vi.mocked(getUser).mockResolvedValue({
       nickname: 'testuser',
     })
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ; (auth0 as any).useAuth0 = vi.fn().mockReturnValue({
         getAccessTokenSilently: vi.fn().mockResolvedValue('dummy token'),
         user: {
