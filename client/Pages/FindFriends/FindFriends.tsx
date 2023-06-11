@@ -23,17 +23,28 @@ function FindFriends() {
     setSearchQuery(() => e.target.value)
   }
 
+  function clearSearch() {
+    setSearchQuery(() => '')
+  }
+
   return (
     <div className="p-4 mt-10 space-y-10">
       <div className="space-y-2">
         <h1 className="text-4xl font-semibold">My friends</h1>
         <h2 className="text-xl font-semibold">Follow a new friend</h2>
-        <div className="">
-          <TextBox
-            placeholder="Search by a genre, nickname or a real name"
-            onChange={handleChange}
-            value={searchQuery}
-          />
+        <div>
+          <div className="flex items-baseline">
+            <TextBox
+              placeholder="Search by a genre, nickname or a real name"
+              onChange={handleChange}
+              value={searchQuery}
+            />
+            {searchQuery.length > 0 && (
+              <button onClick={clearSearch}>
+                <i className="fa-solid fa-times -ml-6"></i>
+              </button>
+            )}
+          </div>
           <p className="pl-10 text-sm text-purple-400 text-center">
             {suggestedFriends &&
               suggestedFriends.length === 0 &&
