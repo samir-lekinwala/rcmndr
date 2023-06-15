@@ -6,7 +6,7 @@ const schema = z.object({
   text: z.string(),
 })
 
-function Test() {
+function ScanQrCode() {
   const navigate = useNavigate()
 
   function handleScan(result: unknown) {
@@ -26,4 +26,4 @@ function Test() {
     </>
   )
 }
-export default Test
+export default ScanQrCode

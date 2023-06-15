@@ -9,7 +9,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { Auth0Provider } from '@auth0/auth0-react'
 
 import AppLayout from './components/AppLayout/AppLayout'
-import ScanQr from './components/ScanQr/ScanQr'
+import ScanQr from './components/ScanQrCode/ScanQrCode'
 import ConfirmScan from './Pages/ConfirmScan/ConfirmScan'
 import ProtectedComponent from './components/UI/ProtectedComponent'
 import Profile from './Pages/Profile/Profile'
