@@ -10,14 +10,14 @@ interface Props {
 function SongListItem(props: Props) {
   const { song, handleDeleteSong, handleEditSong } = props
   return (
-    <>
+    <li className="list-none flex gap-4">
       <div className="self-center flex-none">
         <Icon>
           <i className="fa-solid fa-play text-black" />
         </Icon>
       </div>
       <div className="flex flex-col w-36 flex-auto">
-        <h3>{song.title}</h3>
+        <h3 className="text-white">{song.title}</h3>
         <h4 className="text-xs text-lightPurple">{song.artist}</h4>
       </div>
       <div className="flex flex-row gap-2 self-center flex-none">
@@ -32,7 +32,7 @@ function SongListItem(props: Props) {
           </Icon>
         </button>
       </div>
-    </>
+    </li>
   )
 }
 
