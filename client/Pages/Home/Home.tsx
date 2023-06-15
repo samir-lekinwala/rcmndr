@@ -1,5 +1,5 @@
 import LoginButton from '../../components/Login/Login'
-import RegisterButton from '../../components/Register/Register'
+import RegisterButton from '../../components/RegisterButton/RegisterButton'
 
 function Home() {
   return (
