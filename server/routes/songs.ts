@@ -22,24 +22,4 @@ router.get('/', validateAccessToken, async (req, res) => {
   }
 })
 
-// POST /api/v1/songs/
-router.post('/', validateAccessToken, async (req, res) => {
-  try {
-    const userId = req.auth?.payload.sub
-    if (!userId) {
-      return res.status(401).json({ error: 'unauthorized' })
-    }
-    const song = {
-      user_id: userId,
-      ...songDraftSchema.parse(req.body),
-    }
-
-    await db.insertSong(song)
-    res.sendStatus(201)
-  } catch (error) {
-    logError(error)
-    res.status(500).json({ error: 'unable to insert song into database' })
-  }
-})
-
 export default router

@@ -15,7 +15,6 @@ import ProtectedComponent from './components/UI/ProtectedComponent'
 import Profile from './Pages/Profile/Profile'
 import Home from './Pages/Home/Home'
 import MySongs from './Pages/MySongs/MySongs'
-import AddSongs from './Pages/AddSongs/AddSongs'
 import ShowQR from './Pages/ShowQR/ShowQR'
 import MyFriends from './Pages/MyFriends/MyFriends'
 import FindFriends from './Pages/FindFriends/FindFriends'
@@ -36,10 +35,6 @@ export const routes = createRoutesFromElements(
     <Route
       path="my-songs"
       element={<ProtectedComponent component={MySongs} />}
-    />
-    <Route
-      path="add-songs"
-      element={<ProtectedComponent component={AddSongs} />}
     />
     <Route
       path="my-friends"

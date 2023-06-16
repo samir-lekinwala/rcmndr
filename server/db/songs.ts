@@ -6,7 +6,3 @@ export async function getSongs(userId: string) {
     .where('user_id', userId)
     .select('id', 'title', 'artist', 'genre', 'link', 'comments')) as Song[]
 }
-
-export async function insertSong(song: SongDraft) {
-  await db('songs').insert(song)
-}

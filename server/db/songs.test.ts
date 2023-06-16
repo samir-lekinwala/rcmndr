@@ -79,35 +79,4 @@ describe('songs', () => {
       },
     ])
   })
-
-  it('inserts a new song', async () => {
-    const newSong = {
-      user_id: '2',
-      title: 'Song 4',
-      artist: 'Artist 4',
-      genre: 'Genre 4',
-      link: 'link4',
-    }
-
-    await db.insertSong(newSong)
-
-    const songs = await db.getSongs('2')
-    expect(songs).toHaveLength(2)
-    expect(songs).toMatchObject([
-      {
-        id: 3,
-        title: 'Song 3',
-        artist: 'Artist 3',
-        genre: 'Genre 3',
-        link: 'link3',
-      },
-      {
-        id: 4,
-        title: 'Song 4',
-        artist: 'Artist 4',
-        genre: 'Genre 4',
-        link: 'link4',
-      },
-    ])
-  })
 })
