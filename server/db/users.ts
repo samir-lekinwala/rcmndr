@@ -19,7 +19,11 @@ export async function getFriends(userId: string) {
     .where('user_id', userId)) as Friend[]
 }
 
-export async function searchFriends(userId: string, query: string) {
+// this db function searches for users that are not already being followed by the user
+// and that are not the user itself
+// and that are public
+// and that match nickname, first name, last name, or genre
+export async function searchFriends(userId: string, q: string) {
   const rawQuery = `
 SELECT DISTINCT  uu.auth0_id, uu.first_name, uu.last_name, uu.nickname
 FROM (
@@ -50,10 +54,10 @@ OR LOWER(s.genre) LIKE ?)
     userId,
     userId,
     userId,
-    `%${query}%`,
-    `%${query}%`,
-    `%${query}%`,
-    `%${query}%`,
+    `%${q}%`,
+    `%${q}%`,
+    `%${q}%`,
+    `%${q}%`,
   ])
 
   return newUsersToFollow as Friend[]
