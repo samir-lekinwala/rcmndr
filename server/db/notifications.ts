@@ -1,7 +1,8 @@
 import db from './connection'
+import { Notification } from '../../types/Notifications'
 
 export async function getNotifications(userId: string) {
-  return db('notifications')
+  return (await db('notifications')
     .join('users', 'notifications.friend_id', 'users.auth0_id')
     .where('notifications.user_id', userId)
     .andWhere('is_read', false)
@@ -11,7 +12,7 @@ export async function getNotifications(userId: string) {
       'notifications.timestamp as notificationTimestamp',
       'notifications.message',
       'users.nickname'
-    )
+    )) as Notification[]
 }
 
 export async function setNotifications(

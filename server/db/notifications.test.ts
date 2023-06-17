@@ -1,7 +1,11 @@
 import { beforeAll, beforeEach, describe, it, expect } from 'vitest'
 
 import db from './connection'
-import { getNotifications, setNotifications } from './notifications'
+import {
+  Notification,
+  getNotifications,
+  setNotifications,
+} from './notifications'
 
 beforeAll(async () => {
   await db.migrate.latest()
@@ -17,21 +21,24 @@ describe('getNotifications', () => {
     const notifications = await getNotifications(userId)
 
     expect(notifications).toHaveLength(3)
-    expect(notifications).toMatchObject([
+    expect(notifications).toEqual([
       {
+        notificationId: 4,
+        notificationTimestamp: 1686199303826,
+        message: 'abc is following you',
         nickname: 'D1am0nd',
-        songTitle: 'Cat Fantastic',
-        songGenre: 'Math Rock',
       },
       {
+        notificationId: 3,
+        notificationTimestamp: 1686199303824,
+        message: 'abc is following you',
         nickname: 'Remmy',
-        songTitle: 'I WIll Be Okay Everything',
-        songGenre: 'Emo',
       },
       {
+        notificationId: 5,
+        notificationTimestamp: 1686199303820,
+        message: 'abc is following you',
         nickname: 'D1am0nd',
-        songTitle: 'Mr Milk',
-        songGenre: 'Alt Rock',
       },
     ])
   })
