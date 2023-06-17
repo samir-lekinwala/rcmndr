@@ -15,9 +15,9 @@ export async function getNotifications(userId: string) {
     )) as Notification[]
 }
 
-export async function setNotifications(
+export async function insertNotifications(
   userId: string,
-  notificationIds: string[]
+  notificationIds: number[]
 ) {
   return db('notifications')
     .whereIn('id', notificationIds)

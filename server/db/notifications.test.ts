@@ -1,11 +1,7 @@
 import { beforeAll, beforeEach, describe, it, expect } from 'vitest'
 
 import db from './connection'
-import {
-  Notification,
-  getNotifications,
-  setNotifications,
-} from './notifications'
+import { getNotifications, insertNotifications } from './notifications'
 
 beforeAll(async () => {
   await db.migrate.latest()
@@ -49,7 +45,7 @@ describe('setNotifications', () => {
     const userId = 'auth0|6478f3fd75374ee3d7bc4d94'
     const notifications = await getNotifications(userId)
     const notificationIds = notifications.map((n) => n.notificationId)
-    await setNotifications(userId, notificationIds)
+    await insertNotifications(userId, notificationIds)
     const updatedNotifications = await getNotifications(userId)
     expect(updatedNotifications).toHaveLength(0)
   })
