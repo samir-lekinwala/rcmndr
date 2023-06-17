@@ -1,14 +1,14 @@
-exports.up = function (knex) {
+exports.up = function(knex) {
   return knex.schema.createTable('notifications', (table) => {
     table.increments('id').primary()
     table.string('user_id').references('users.auth0_id') // the user who is receiving the notification
     table.string('friend_id').references('users.auth0_id') // the user who is sending the notification
-    table.string('song_id').references('songs.id') // the song that is being shared
+    table.string('message')
     table.boolean('is_read').defaultTo(false) // automatically set to false
     table.integer('timestamp') // the time the notification was sent
   })
 }
 
-exports.down = function (knex) {
+exports.down = function(knex) {
   return knex.schema.dropTable('notifications')
 }
