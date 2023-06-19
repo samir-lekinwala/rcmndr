@@ -1,6 +1,31 @@
 import db from './connection'
 import { Friend } from '../../types/User'
-import { ProfileDraft } from '../../types/Profile'
+import { Profile, ProfileDraft } from '../../types/Profile'
+
+export async function getUser(auth0Id: string) {
+  return (await db('users')
+    .where('auth0_id', auth0Id)
+    .first(
+      'auth0_id as auth0Id',
+      'nickname',
+      'first_name as firstName',
+      'last_name as lastName',
+      'public'
+    )) as Profile
+}
+
+export async function upsertProfile(profile: Profile | ProfileDraft) {
+  await db('users')
+    .insert({
+      auth0_id: 'auth0Id' in profile ? profile.auth0Id : null,
+      nickname: profile.nickname,
+      first_name: profile.firstName,
+      last_name: profile.lastName,
+      public: profile.public,
+    })
+    .onConflict('auth0_id')
+    .merge()
+}
 
 export async function insertUser(profile: ProfileDraft, auth0Id: string) {
   await db('users').insert({

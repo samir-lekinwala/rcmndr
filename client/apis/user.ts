@@ -1,8 +1,11 @@
 import request from 'superagent'
 import { Friend } from '../../types/User'
-import { ProfileDraft } from '../../types/Profile'
+import { Profile, ProfileDraft } from '../../types/Profile'
 
-export async function createUser(form: ProfileDraft, token: string) {
+export async function upsertProfile(
+  form: ProfileDraft | Profile,
+  token: string
+) {
   await request
     .post('/api/v1/users')
     .set('Authorization', `Bearer ${token}`)
@@ -10,13 +13,13 @@ export async function createUser(form: ProfileDraft, token: string) {
     .send(form)
 }
 
-export async function getUser(auth0: string, token: string) {
+export async function getUser(token: string) {
   const res = await request
-    .get(`/api/v1/users/${auth0}`)
+    .get('/api/v1/users/')
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
 
-  return res.body
+  return res.body as Profile
 }
 
 export async function followUser(auth0: string, token: string) {

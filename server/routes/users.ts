@@ -3,7 +3,7 @@ import express from 'express'
 import * as db from '../db/users'
 import { validateAccessToken } from '../auth0'
 import { logError } from '../logger'
-import { profileDraftSchema } from '../../types/Profile'
+import { profileDraftSchema, profileSchema } from '../../types/Profile'
 
 const router = express.Router()
 
@@ -31,34 +31,55 @@ router.get('/friends', validateAccessToken, async (req, res) => {
 })
 
 // GET /api/v1/users/:id
-router.get('/:id', validateAccessToken, (req, res) => {
-  const id = req.params.id
+router.get('/', validateAccessToken, async (req, res) => {
+  const auth0Id = req.auth?.payload.sub
 
-  if (!id) {
+  if (!auth0Id) {
     res.status(400).json({ message: 'Please provide an id' })
+    return
   }
 
-  res.status(200).json({ nickname: 'nickname here' })
+  try {
+    const user = await db.getUser(auth0Id)
+    res.status(200).json(user)
+  } catch (error) {
+    logError(error)
+    res.status(500).json({ message: 'Unable to insert new user to database' })
+  }
 })
 
 // POST /api/v1/users
+// this route is used for both creating and updating a user
 router.post('/', validateAccessToken, async (req, res) => {
   const form = req.body
-  const auth0Id = req.auth?.payload.sub
 
   if (!form) {
     res.status(400).json({ message: 'Please provide a form' })
     return
   }
-  if (!auth0Id) {
-    res.status(400).json({ message: 'Please provide an auth0 id' })
-    return
-  }
 
   try {
-    const profile = profileDraftSchema.parse(form)
-    await db.insertUser(profile, auth0Id)
-    res.sendStatus(201)
+    const profileResult = profileSchema.safeParse(form)
+    const profileDraftResult = profileDraftSchema.safeParse(form)
+
+    if (!profileResult.success && !profileDraftResult.success) {
+      res.status(400).json({ message: 'Invalid form' })
+      return
+    }
+
+    if (profileResult.success) {
+      // this is a create
+      await db.upsertProfile(profileResult.data)
+      res.sendStatus(200)
+      return
+    }
+
+    if (profileDraftResult.success) {
+      // this is an update
+      await db.upsertProfile(profileDraftResult.data)
+      res.sendStatus(201)
+      return
+    }
   } catch (e) {
     logError(e)
     res.status(500).json({ message: 'Unable to insert new user to database' })

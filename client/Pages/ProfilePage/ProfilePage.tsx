@@ -3,17 +3,24 @@ import { useNavigate } from 'react-router-dom'
 import { useMutation } from 'react-query'
 
 import ProfileForm from '../../components/ProfileForm/ProfileForm'
-import { ProfileDraft } from '../../../types/Profile'
-import { createUser } from '../../apis/user'
+import { Profile, ProfileDraft } from '../../../types/Profile'
+import { upsertProfile } from '../../apis/user'
+import useFetchUser from '../../hooks/useFetchProfile'
 
-function Profile() {
+function ProfilePage() {
   const navigate = useNavigate()
   const { user, isAuthenticated, isLoading, getAccessTokenSilently } =
     useAuth0()
 
+  const userQuery = useFetchUser()
   const mutation = useMutation({
-    mutationFn: ({ form, token }: { form: ProfileDraft; token: string }) =>
-      createUser(form, token),
+    mutationFn: ({
+      form,
+      token,
+    }: {
+      form: ProfileDraft | Profile
+      token: string
+    }) => upsertProfile(form, token),
     onSuccess: () => {
       navigate('/my-songs')
     },
@@ -27,7 +34,7 @@ function Profile() {
     return <div>Not authenticated</div>
   }
 
-  async function handleSubmit(form: ProfileDraft) {
+  async function handleSubmit(form: ProfileDraft | Profile) {
     const token = await getAccessTokenSilently()
     mutation.mutate({ form, token })
     navigate('/my-songs')
@@ -35,9 +42,9 @@ function Profile() {
 
   return (
     <div>
-      <ProfileForm handleSubmit={handleSubmit} />
+      <ProfileForm handleSubmit={handleSubmit} profile={userQuery.data} />
     </div>
   )
 }
 
-export default Profile
+export default ProfilePage

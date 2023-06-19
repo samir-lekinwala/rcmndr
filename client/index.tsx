@@ -12,11 +12,12 @@ import AppLayout from './components/AppLayout/AppLayout'
 import ScanQr from './components/ScanQrCode/ScanQrCode'
 import ConfirmScan from './Pages/ConfirmScan/ConfirmScan'
 import ProtectedComponent from './components/UI/ProtectedComponent'
-import Profile from './Pages/Profile/Profile'
+import ProfilePage from './Pages/ProfilePage/ProfilePage'
 import Home from './Pages/Home/Home'
 import ShowQR from './Pages/ShowQR/ShowQR'
 import MyFriends from './Pages/MyFriends/MyFriends'
 import FindFriends from './Pages/FindFriends/FindFriends'
+import MySongs from './Pages/MySongs/MySongs'
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />}>
@@ -37,7 +38,11 @@ export const routes = createRoutesFromElements(
     />
     <Route
       path="profile"
-      element={<ProtectedComponent component={Profile} />}
+      element={<ProtectedComponent component={ProfilePage} />}
+    />
+    <Route
+      path="my-songs"
+      element={<ProtectedComponent component={MySongs} />}
     />
   </Route>
 )
