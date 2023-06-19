@@ -14,10 +14,10 @@ export async function getUser(auth0Id: string) {
     )) as Profile
 }
 
-export async function upsertProfile(profile: Profile | ProfileDraft) {
+export async function upsertProfile(profile: Profile) {
   await db('users')
     .insert({
-      auth0_id: 'auth0Id' in profile ? profile.auth0Id : null,
+      auth0_id: profile.auth0Id,
       nickname: profile.nickname,
       first_name: profile.firstName,
       last_name: profile.lastName,

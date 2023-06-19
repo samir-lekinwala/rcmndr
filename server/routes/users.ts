@@ -74,9 +74,11 @@ router.post('/', validateAccessToken, async (req, res) => {
       return
     }
 
-    if (profileDraftResult.success) {
+    if (profileDraftResult.success && req.auth?.payload.sub) {
+      const auth0Id = req.auth?.payload.sub
+      const data = { ...profileDraftResult.data, auth0Id }
       // this is an update
-      await db.upsertProfile(profileDraftResult.data)
+      await db.upsertProfile(data)
       res.sendStatus(201)
       return
     }
