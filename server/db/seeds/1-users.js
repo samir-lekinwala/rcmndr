@@ -1,4 +1,4 @@
-exports.seed = async functionknex) {
+exports.seed = async function (knex) {
   await knex('users').insert([
     {
       auth0_id: 'auth0|6478f3fd75374ee3d7bc4d94',
