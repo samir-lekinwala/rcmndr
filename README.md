@@ -20,7 +20,7 @@ Clone this repo
 ```js
 cd rcmndr
 git checkout <not your name> // don't use yournames
-npm install --legacy-deps
+npm install --legacy-peer-deps
 npm run knex migrate:latest
 npm run knex seed:run
 cp .env.example .env
