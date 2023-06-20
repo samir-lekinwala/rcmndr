@@ -1,17 +1,5 @@
-import { useAuth0 } from '@auth0/auth0-react'
-import { useQuery } from 'react-query'
-import { getFriends } from '../../apis/user'
-
 function MyFriends() {
-  const { getAccessTokenSilently } = useAuth0()
-  const { data } = useQuery({
-    queryKey: 'getFriends',
-    queryFn: async () => {
-      const token = await getAccessTokenSilently()
-      const friends = await getFriends(token)
-      return friends
-    },
-  })
+  const data = [{ id: 1, nickname: 'First user' }]
 
   return (
     <div className="space-y-4">
