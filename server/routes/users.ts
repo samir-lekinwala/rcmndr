@@ -70,7 +70,7 @@ router.post('/', validateAccessToken, async (req, res) => {
     if (profileResult.success) {
       // this is a create
       await db.upsertProfile(profileResult.data)
-      res.sendStatus(200)
+      res.sendStatus(201)
       return
     }
 
@@ -96,6 +96,7 @@ router.post('/:userId/follow', validateAccessToken, async (req, res) => {
     res.status(400).json({ message: 'Please provide an id' })
   }
 
+  // TODO: implement
   res.sendStatus(201)
 })
 
