@@ -30,7 +30,7 @@ router.get('/friends', validateAccessToken, async (req, res) => {
   }
 })
 
-// GET /api/v1/users/:id
+// GET /api/v1/users/
 router.get('/', validateAccessToken, async (req, res) => {
   const auth0Id = req.auth?.payload.sub
 
