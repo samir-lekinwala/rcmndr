@@ -9,12 +9,9 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { Auth0Provider } from '@auth0/auth0-react'
 
 import AppLayout from './components/AppLayout/AppLayout'
-import ScanQr from './components/ScanQrCode/ScanQrCode'
-import ConfirmScan from './Pages/ConfirmScan/ConfirmScan'
 import ProtectedComponent from './components/UI/ProtectedComponent'
 import ProfilePage from './Pages/ProfilePage/ProfilePage'
 import Home from './Pages/Home/Home'
-import ShowQR from './Pages/ShowQR/ShowQR'
 import MyFriends from './Pages/MyFriends/MyFriends'
 import FindFriends from './Pages/FindFriends/FindFriends'
 import MySongs from './Pages/MySongs/MySongs'
@@ -26,12 +23,6 @@ export const routes = createRoutesFromElements(
       path="find-friends"
       element={<ProtectedComponent component={FindFriends} />}
     />
-    <Route path="scan" element={<ProtectedComponent component={ScanQr} />} />
-    <Route
-      path="code/:code"
-      element={<ProtectedComponent component={ConfirmScan} />}
-    />
-    <Route path="show-qr" element={<ProtectedComponent component={ShowQR} />} />
     <Route
       path="my-friends"
       element={<ProtectedComponent component={MyFriends} />}
