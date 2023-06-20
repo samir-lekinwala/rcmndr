@@ -11,7 +11,7 @@ rcmndr (no vowels for hipster cred) is a social media app for sharing music reco
 ## External documentation
 
 - [Wireframes on Figma](https://www.figma.com/file/4nBKJh6rgLuEqbX054Zw1i/rcmndr?node-id=0%3A1)
-- [db diagram on dbdiagram.io]()
+- [ERD](./ERD.png)
 
 ## Local installation steps:
 
