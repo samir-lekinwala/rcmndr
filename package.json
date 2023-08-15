@@ -34,6 +34,7 @@
   "devDependencies": {
     "@auth0/auth0-react": "^2.1.0",
     "@devacademy/eslint-config": "^1.9.1",
+    "@faker-js/faker": "^8.0.2",
     "@redux-devtools/extension": "^3.2.5",
     "@storybook/addon-essentials": "^7.0.18",
     "@storybook/addon-interactions": "^7.0.18",
