@@ -7,7 +7,7 @@ function useFetchUser() {
   const { user, getAccessTokenSilently } = useAuth0()
 
   const { data, isLoading } = useQuery({
-    queryKey: 'getUser',
+    queryKey: ['getUser'],
     queryFn: async () => {
       const accessToken = await getAccessTokenSilently()
       if (user && user.sub) {
