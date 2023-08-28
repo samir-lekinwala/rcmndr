@@ -51,7 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const queryClient = new QueryClient({
     queryCache: new QueryCache({
       onError: (error) => {
-        toast.error(`Something went wrong: ${error.message}`)
+        if (error instanceof Error) {
+          toast.error(`Something went wrong: ${error.message}`)
+        }
       },
     }),
   })
