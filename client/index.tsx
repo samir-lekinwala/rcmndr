@@ -5,8 +5,13 @@ import {
   createRoutesFromElements,
   Route,
 } from 'react-router-dom'
-import { QueryClient, QueryClientProvider } from 'react-query'
+import {
+  QueryCache,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 import { Auth0Provider } from '@auth0/auth0-react'
+import { toast } from 'react-hot-toast'
 
 import AppLayout from './components/AppLayout/AppLayout'
 import ProtectedComponent from './components/UI/ProtectedComponent'
@@ -43,7 +48,14 @@ function AppProvider() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const queryClient = new QueryClient()
+  const queryClient = new QueryClient({
+    queryCache: new QueryCache({
+      onError: (error) => {
+        toast.error(`Something went wrong: ${error.message}`)
+      },
+    }),
+  })
+
   createRoot(document.getElementById('app') as HTMLElement).render(
     <Auth0Provider
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
