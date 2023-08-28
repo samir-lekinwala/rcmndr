@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import { useAuth0 } from '@auth0/auth0-react'
 
 import { getUser } from '../apis/user'
@@ -7,7 +7,7 @@ function useFetchUser() {
   const { user, getAccessTokenSilently } = useAuth0()
 
   const { data, isLoading } = useQuery({
-    queryKey: 'getUser',
+    queryKey: ['getUser'],
     queryFn: async () => {
       const accessToken = await getAccessTokenSilently()
       if (user && user.sub) {
