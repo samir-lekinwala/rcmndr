@@ -1,12 +1,11 @@
-import { afterEach, expect } from 'vitest'
+import { afterEach } from 'vitest'
 import { cleanup, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { RouterProvider, createMemoryRouter } from 'react-router-dom'
-import matchers from '@testing-library/jest-dom/matchers'
+import '@testing-library/jest-dom/vitest'
 
 import { routes } from './index'
 
-expect.extend(matchers)
 afterEach(cleanup)
 
 export function renderComponent(component: JSX.Element) {
