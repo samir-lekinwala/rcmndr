@@ -1,4 +1,4 @@
-exports.up = function(knex) {
+exports.up = function (knex) {
   return knex.schema.createTable('notifications', (table) => {
     table.increments('id').primary()
     table.string('user_id').references('users.auth0_id') // the user who is receiving the notification
@@ -9,6 +9,6 @@ exports.up = function(knex) {
   })
 }
 
-exports.down = function(knex) {
+exports.down = function (knex) {
   return knex.schema.dropTable('notifications')
 }
