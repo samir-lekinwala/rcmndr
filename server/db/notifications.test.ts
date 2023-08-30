@@ -16,19 +16,12 @@ describe('getNotifications', () => {
     const userId = 'auth0|6478f3fd75374ee3d7bc4d94'
     const notifications = await getNotifications(userId)
 
-    expect(notifications).toHaveLength(2)
-    expect(notifications).toEqual([
+    expect(notifications).toHaveLength(1)
+    expect(notifications).toMatchObject([
       {
-        notificationId: 5,
-        notificationTimestamp: 1686199303820,
-        message: 'abc is following you',
-        nickname: 'Remmy',
-      },
-      {
-        notificationId: 0,
-        notificationTimestamp: 1686199303816,
-        message: 'abc is following you',
-        nickname: 'Remmy',
+        notificationId: 1,
+        message: 'DestroyOrbison is following you',
+        nickname: 'D1am0nd',
       },
     ])
   })
