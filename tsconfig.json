@@ -15,12 +15,17 @@
     /* Interop Constraints */
     "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
     "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
-    "allowJs": true,
+    "lib": [
+      "es2021",
+      "dom"
+    ] /* Specify a set of bundled library declaration files that describe the target runtime environment. */,
 
+    "allowJs": true,
     /* Type Checking */
     "strict": true /* Enable all strict
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */,
-    "noEmit": true
+    "noEmit": true,
+    "skipLibCheck": true
   },
   "include": ["server/**/*", "client/**/*"]
 }
