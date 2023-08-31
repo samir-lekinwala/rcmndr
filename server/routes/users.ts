@@ -3,7 +3,7 @@ import express from 'express'
 import * as db from '../db/users'
 import { validateAccessToken } from '../auth0'
 import { logError } from '../logger'
-import { profileDraftSchema, profileSchema } from '../../types/Profile'
+import { profileDraftSchema } from '../../types/Profile'
 
 const router = express.Router()
 
@@ -51,7 +51,13 @@ router.get('/', validateAccessToken, async (req, res) => {
 // POST /api/v1/users
 // this route is used for both creating and updating a user
 router.post('/', validateAccessToken, async (req, res) => {
+  const auth0Id = req.auth?.payload.sub
   const form = req.body
+
+  if (!auth0Id) {
+    res.status(400).json({ message: 'Missing auth0 id' })
+    return
+  }
 
   if (!form) {
     res.status(400).json({ message: 'Please provide a form' })
@@ -59,26 +65,16 @@ router.post('/', validateAccessToken, async (req, res) => {
   }
 
   try {
-    const profileResult = profileSchema.safeParse(form)
-    const profileDraftResult = profileDraftSchema.safeParse(form)
+    const profileResult = profileDraftSchema.safeParse(form)
 
-    if (!profileResult.success && !profileDraftResult.success) {
+    if (!profileResult.success) {
       res.status(400).json({ message: 'Invalid form' })
       return
     }
 
     if (profileResult.success) {
-      // this is a create
-      await db.upsertProfile(profileResult.data)
-      res.sendStatus(201)
-      return
-    }
-
-    if (profileDraftResult.success && req.auth?.payload.sub) {
-      const auth0Id = req.auth?.payload.sub
-      const data = { ...profileDraftResult.data, auth0Id }
-      // this is an update
-      await db.upsertProfile(data)
+      const profile = { ...profileResult.data, auth0Id }
+      await db.upsertProfile(profile)
       res.sendStatus(201)
       return
     }

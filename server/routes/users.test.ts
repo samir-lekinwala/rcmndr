@@ -3,7 +3,7 @@ import request from 'supertest'
 import server from '../server'
 import * as db from '../db/users'
 import { getMockToken } from './mockToken'
-import { Profile, ProfileDraft } from '../../types/Profile'
+import { Profile } from '../../types/Profile'
 
 vi.mock('../db/users')
 vi.mock('../logger.ts')
@@ -68,7 +68,8 @@ describe('GET /api/v1/users', () => {
 
 describe('POST /api/v1/users', () => {
   it('should return 201 when creating a new profile', async () => {
-    const fakeProfile: ProfileDraft = {
+    const fakeProfile: Profile = {
+      auth0Id: '123',
       nickname: 'banana',
       firstName: 'Ripe',
       lastName: 'Banana',
@@ -112,7 +113,8 @@ describe('POST /api/v1/users', () => {
   })
 
   it('should return 500 when no access token is passed', async () => {
-    const fakeProfile: ProfileDraft = {
+    const fakeProfile: Profile = {
+      auth0Id: '123',
       nickname: 'banana',
       firstName: 'Ripe',
       lastName: 'Banana',
