@@ -1,6 +1,6 @@
 import db from './connection'
 import { Friend } from '../../types/User'
-import { Profile, ProfileDraft } from '../../types/Profile'
+import { Profile } from '../../types/Profile'
 
 export async function getUser(auth0Id: string) {
   return (await db('users')
@@ -25,16 +25,6 @@ export async function upsertProfile(profile: Profile) {
     })
     .onConflict('auth0_id')
     .merge()
-}
-
-export async function insertUser(profile: ProfileDraft, auth0Id: string) {
-  await db('users').insert({
-    auth0_id: auth0Id,
-    nickname: profile.nickname,
-    first_name: profile.firstName,
-    last_name: profile.lastName,
-    public: profile.public,
-  })
 }
 
 export async function getFriends(userId: string) {
