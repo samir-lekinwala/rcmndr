@@ -1,30 +1,13 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import { useNavigate } from 'react-router-dom'
-import { useMutation } from '@tanstack/react-query'
 
 import ProfileForm from '../../components/ProfileForm/ProfileForm'
 import { Profile, ProfileDraft } from '../../../types/Profile'
-import { upsertProfile } from '../../apis/user'
-import useFetchUser from '../../hooks/useFetchProfile'
+import useProfile from '../../hooks/useProfile'
 
 function ProfilePage() {
-  const navigate = useNavigate()
-  const { user, isAuthenticated, isLoading, getAccessTokenSilently } =
-    useAuth0()
+  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0()
 
-  const userQuery = useFetchUser()
-  const mutation = useMutation({
-    mutationFn: ({
-      form,
-      token,
-    }: {
-      form: ProfileDraft | Profile
-      token: string
-    }) => upsertProfile(form, token),
-    onSuccess: () => {
-      navigate('/my-songs')
-    },
-  })
+  const { data, isLoading, mutation } = useProfile()
 
   if (isLoading) {
     return <div>Loading ...</div>
@@ -37,12 +20,11 @@ function ProfilePage() {
   async function handleSubmit(form: ProfileDraft | Profile) {
     const token = await getAccessTokenSilently()
     mutation.mutate({ form, token })
-    navigate('/my-songs')
   }
 
   return (
     <div>
-      <ProfileForm handleSubmit={handleSubmit} profile={userQuery.data} />
+      <ProfileForm handleSubmit={handleSubmit} profile={data} />
     </div>
   )
 }
