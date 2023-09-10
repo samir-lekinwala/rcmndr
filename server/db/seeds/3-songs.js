@@ -1,4 +1,4 @@
-exports.seed = async function (knex) {
+export async function seed(knex) {
   const users = await knex('users').select('auth0_id')
   return knex('songs').insert([
     {

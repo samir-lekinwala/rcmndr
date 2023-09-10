@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "server/index.ts",
+  "type": "module",
   "scripts": {
     "start": "ts-node server/index.ts",
     "dev": "run-p dev:client dev:server dev:css",

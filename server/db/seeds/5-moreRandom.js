@@ -1,6 +1,6 @@
-const { faker } = require('@faker-js/faker')
+import { faker } from '@faker-js/faker'
 
-exports.seed = async function (knex) {
+export async function seed(knex) {
   faker.seed(123)
   await insertMoreUsers(knex)
   await insertFollowers(knex)
