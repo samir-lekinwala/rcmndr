@@ -1,8 +1,7 @@
 const { faker } = require('@faker-js/faker')
 
-faker.seed(123)
-
 exports.seed = async function (knex) {
+  faker.seed(123)
   await insertMoreUsers(knex)
   await insertFollowers(knex)
   await insertSongs(knex)
