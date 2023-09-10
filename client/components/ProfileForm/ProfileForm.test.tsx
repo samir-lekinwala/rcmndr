@@ -1,4 +1,3 @@
-// @vitest-environment jsdom
 import { describe, it, expect, vi } from 'vitest'
 import { screen } from '@testing-library/react'
 
@@ -7,6 +6,16 @@ import { renderComponent } from '../../test-utils'
 import { ProfileDraft } from '../../../types/Profile'
 
 describe('ProfileForm', () => {
+  it('should render form', () => {
+    const handleSubmit = vi.fn()
+    renderComponent(<ProfileForm handleSubmit={handleSubmit} />)
+
+    expect(screen.getByLabelText('Nickname *')).toBeInTheDocument()
+    expect(screen.getByLabelText('First Name *')).toBeInTheDocument()
+    expect(screen.getByLabelText('Last Name')).toBeInTheDocument()
+    expect(screen.getByLabelText('Visible to everyone')).toBeInTheDocument()
+  })
+
   it('event handler should be called when form is submitted', async () => {
     const handleSubmit = vi.fn((form: ProfileDraft) => {
       expect(form).toMatchObject({
