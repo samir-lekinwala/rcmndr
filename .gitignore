@@ -133,3 +133,6 @@ dist
 .pnp.*
 server/db/dev.sqlite3
 public/main.css
+
+# vscode settings
+.vscode/settings.json
