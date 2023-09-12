@@ -23,9 +23,11 @@ git checkout <not your name> // don't use yournames
 npm install --legacy-peer-deps
 npm run knex migrate:latest
 npm run knex seed:run
-cp .env.example .env
+cp .env.example .env # <==== IMPORTANT
 npm run dev
 ```
+
+Ask one of the facilitators to share the values for the `.env` file on discord before running the app.
 
 The app will be running on http://localhost:5173.
 
