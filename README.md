@@ -66,6 +66,27 @@ A hotfix branch will happen if a bug is spotted in production. Only dev leads sh
 - zod: for runtime validation
 - @tanstack/query: async client state management library
 
+### Getting an access token
+
+Suppose, you've created a new user called hello@example.com and the password is abc_123 and you want to generate an access token for this user so that you can test your server-side routes.
+
+- Open Insomnia and fill in the following information
+
+- URL: POST `https://rcmndr-dev-academy.au.auth0.com/oauth/token`
+- Change the body to `Form` and fill the following key/value pairs:
+
+| key           | value                                           |
+| ------------- | ----------------------------------------------- |
+| audience      | https://rcmndr/api                              |
+| grant_type    | password                                        |
+| client_id     | <copy and paste it from the .env file>          |
+| client_secret | <copy and paste it from the .env file>          |
+| username      | the email of the user (e.g `hello@example.com`) |
+| password      | and the password for that user (e.g `abc_123`)  |
+
+**NOTE**: access tokens expire after 24 hours, and you will need to generate a new token by using the same endpoint with the values from above.
+It's a good idea to keep the HTTP request in insomnia because you'll need it for later.
+
 ### Unit/Integration tests
 
 To test an individual test, use **npx**:
