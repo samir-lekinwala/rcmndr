@@ -51,7 +51,7 @@ The ONLY branch that should be merged to is the `main` (once all tests have pass
 
 When starting on a new feature you need to branch off of the `main` branch
 
-Features should be named something like `feature/123-adding-songs`. The first half (feature) let's folks know what kind of branch this is. A feature branch is in development and is not ready for deployment yet. The second half is a descriptive name of the feature you are building.
+Features should be named something like `f/123-adding-songs`. The first half (f) let's folks know what kind of branch this is. A feature branch is in development and is not ready for deployment yet. The second half is a descriptive name of the feature you are building.
 
 ### hotfix
 
@@ -111,3 +111,11 @@ it.only('my test name goes here', () => {
 ```
 
 Then you can run the test file individually, `npm test events.test.js`.
+
+## Asking for help
+
+Supporting a team of more than 4 developers can challenging for any dev lead and the best thing you can do as a junior when you ask for help is to ask good questions. Here are a few things to consider when asking for support:
+
+- What ticket you are working
+- Are you having a problem or do you have a clarification question?
+- If you're getting an error, show us the error and how can you reproduce it
