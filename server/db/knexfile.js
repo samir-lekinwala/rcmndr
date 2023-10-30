@@ -1,8 +1,13 @@
-const path = require('path')
-const dotenv = require('dotenv')
+import path from 'path'
+import url from 'node:url'
+import dotenv from 'dotenv'
+
+const __filename = url.fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
 dotenv.config({ path: path.join(__dirname, '../../.env') })
 
-module.exports = {
+export default {
   development: {
     client: 'sqlite3',
     connection: {
