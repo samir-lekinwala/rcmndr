@@ -1,6 +1,5 @@
 import express from 'express'
 import { renderToStaticMarkup } from 'react-dom/server'
-import { auth, requiredScopes } from 'express-oauth2-jwt-bearer'
 import * as jose from 'jose'
 
 import Layout from '../components/Layout.tsx'
@@ -28,8 +27,10 @@ function requiresScope(requiredScope: string) {
       }
 
       next()
-    } catch (e) {
-      return res.status(403).send(`Forbidden: invalid token (${e.message})`)
+    } catch (err) {
+      if (err instanceof Error) {
+        return res.status(403).send(`Forbidden: invalid token (${e.message})`)
+      }
     }
   }
 }
@@ -38,7 +39,6 @@ router.post(
   '/callback',
   express.urlencoded({ extended: false }),
   (req, res) => {
-    console.log(req)
     res.oidc.callback({
       redirectUri: '/admin/dashboard',
     })
