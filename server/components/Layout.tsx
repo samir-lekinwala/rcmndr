@@ -4,7 +4,7 @@ interface Props {
 
 function Layout({ children }: Props) {
   return (
-    <html>
+    <html lang="en">
       <head></head>
       <body>
         <header>
