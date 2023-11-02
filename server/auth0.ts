@@ -33,7 +33,7 @@ const authConfig = {
 
 export const validateAccessToken = auth(authConfig)
 
-export function requiresScope(requiredScope: string) {
+export function requiresPermission(requiredPermission: string) {
   return (
     req: express.Request,
     res: express.Response,
@@ -50,10 +50,10 @@ export function requiresScope(requiredScope: string) {
     }
 
     try {
-      const decoded = jose.decodeJwt(accessToken) as { scope: string }
-      const scopes = decoded && decoded.scope ? decoded.scope.split(' ') : []
+      const decoded = jose.decodeJwt(accessToken) as { permissions: string[] }
+      const permissions = decoded && (decoded.permissions || [])
 
-      if (!scopes.includes(requiredScope)) {
+      if (!permissions.includes(requiredPermission)) {
         return res.status(403).send('Forbidden: insufficient scope')
       }
 

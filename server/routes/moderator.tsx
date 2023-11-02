@@ -16,17 +16,21 @@ router.get('/home', (_, res) => {
   )
 })
 
-router.get('/dashboard', auth.requiresScope('update:users'), (req, res) => {
-  res.send(
-    renderToStaticMarkup(
-      <Layout>
-        <main>
-          <p>{JSON.stringify(req.oidc.user, null, 2)}</p>
-          <p>{JSON.stringify(req.oidc.accessToken, null, 2)}</p>
-        </main>
-      </Layout>
+router.get(
+  '/dashboard',
+  auth.requiresPermission('moderate:songs'),
+  (req, res) => {
+    res.send(
+      renderToStaticMarkup(
+        <Layout>
+          <main>
+            <p>{JSON.stringify(req.oidc.user, null, 2)}</p>
+            <p>{JSON.stringify(req.oidc.accessToken, null, 2)}</p>
+          </main>
+        </Layout>
+      )
     )
-  )
-})
+  }
+)
 
 export default router
