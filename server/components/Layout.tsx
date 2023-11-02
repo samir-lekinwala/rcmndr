@@ -6,7 +6,16 @@ function Layout({ children }: Props) {
   return (
     <html>
       <head></head>
-      <body>{children}</body>
+      <body>
+
+        <header>
+          <a href='/logout'>Logout</a>
+          <a href='/login'>Login</a>
+        </header>
+        <main>
+          {children}
+        </main>
+      </body>
     </html>
   )
 }

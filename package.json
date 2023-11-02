@@ -26,6 +26,8 @@
   "dependencies": {
     "express": "^4.18.2",
     "express-oauth2-jwt-bearer": "^1.5.0",
+    "express-openid-connect": "^2.17.0",
+    "jose": "^5.0.1",
     "knex": "^2.5.1",
     "pg": "^8.11.3",
     "sqlite3": "^5.1.6",
