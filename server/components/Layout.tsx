@@ -7,14 +7,11 @@ function Layout({ children }: Props) {
     <html>
       <head></head>
       <body>
-
         <header>
-          <a href='/logout'>Logout</a>
-          <a href='/login'>Login</a>
+          <a href="http://localhost:3000/logout">Logout</a>
+          <a href="http://localhost:3000/login">Login</a>
         </header>
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
       </body>
     </html>
   )
