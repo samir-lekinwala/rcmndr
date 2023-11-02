@@ -16,13 +16,8 @@ server.use(express.json())
 server.use('/api/v1/users', userRouter)
 server.use('/api/v1/songs', songRouter)
 server.use('/api/v1/notifications', notifications)
-
 server.use('/admin', adminRouter)
-server.get('/callback', (req, res) => {
-  res.oidc.callback({
-    redirectUri: '/admin/dsfsdfsd',
-  })
-})
+
 server.get('/login', (req, res) => {
   res.oidc.login({
     returnTo: '/admin/dashboard',
@@ -31,9 +26,11 @@ server.get('/login', (req, res) => {
     },
   })
 })
+
 server.get('/logout', (req, res) => {
   res.oidc.logout({ returnTo: '/admin/home' })
 })
+
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')))
   server.use('/assets', express.static(Path.resolve('./dist/assets')))
