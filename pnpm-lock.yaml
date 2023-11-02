@@ -13,10 +13,10 @@ dependencies:
     version: 1.6.0
   express-openid-connect:
     specifier: ^2.17.0
-    version: 2.17.0(express@4.18.2)
+    version: 2.17.1(express@4.18.2)
   jose:
     specifier: ^5.0.1
-    version: 5.0.1
+    version: 5.0.2
   knex:
     specifier: ^2.5.1
     version: 2.5.1(pg@8.11.3)(sqlite3@5.1.6)
@@ -33,7 +33,7 @@ dependencies:
 devDependencies:
   '@auth0/auth0-react':
     specifier: ^2.2.1
-    version: 2.2.2(react-dom@18.2.0)(react@18.2.0)
+    version: 2.2.3(react-dom@18.2.0)(react@18.2.0)
   '@devacademy/eslint-config':
     specifier: ^1.9.1
     version: 1.9.1(@typescript-eslint/eslint-plugin@6.9.1)(eslint-plugin-import@2.29.0)(eslint-plugin-jsx-a11y@6.8.0)(eslint-plugin-node@11.1.0)(eslint-plugin-promise@6.1.1)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.33.2)(eslint@8.52.0)
@@ -108,7 +108,7 @@ devDependencies:
     version: 6.9.1(@typescript-eslint/parser@6.9.1)(eslint@8.52.0)(typescript@5.2.2)
   '@vitejs/plugin-react':
     specifier: ^4.0.4
-    version: 4.1.0(vite@4.5.0)
+    version: 4.1.1(vite@4.5.0)
   '@vitest/coverage-c8':
     specifier: ^0.31.4
     version: 0.31.4(vitest@0.34.6)
@@ -242,8 +242,8 @@ packages:
       '@jridgewell/trace-mapping': 0.3.20
     dev: true
 
-  /@auth0/auth0-react@2.2.2(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-+E0Cj2J4v14ael56pBdoaGO2m5LLB4qLShhw3E/okmUeA7WmKOrveRn19wl0f6cl0YzwrDKXAkmqFlP6ARMznw==}
+  /@auth0/auth0-react@2.2.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-3B0KA/ky1yA6iQK8045N8U0ZBkmDB3ElCSwJuxNbAoKmZBc4+DjzZhWRxYsgb9PrfHC14Lr2h4950A3PEFDULA==}
     peerDependencies:
       react: ^16.11.0 || ^17 || ^18
       react-dom: ^16.11.0 || ^17 || ^18
@@ -4716,8 +4716,8 @@ packages:
       - supports-color
     dev: true
 
-  /@vitejs/plugin-react@4.1.0(vite@4.5.0):
-    resolution: {integrity: sha512-rM0SqazU9iqPUraQ2JlIvReeaxOoRj6n+PzB1C0cBzIbd8qP336nC39/R9yPi3wVcah7E7j/kdU1uCUqMEU4OQ==}
+  /@vitejs/plugin-react@4.1.1(vite@4.5.0):
+    resolution: {integrity: sha512-Jie2HERK+uh27e+ORXXwEP5h0Y2lS9T2PRGbfebiHGlwzDO0dEnd2aNtOR/qjBlPb1YgxwAONeblL1xqLikLag==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.2.0
@@ -7050,8 +7050,8 @@ packages:
       jose: 4.15.4
     dev: false
 
-  /express-openid-connect@2.17.0(express@4.18.2):
-    resolution: {integrity: sha512-1/QZKbh+JQgBxX7RpB93iKSfLDXJ8tGMtzPpOf87LQps84A7SIls3YRZBbAqwamYcg4CDmlbHAaYSh0tlTNF8A==}
+  /express-openid-connect@2.17.1(express@4.18.2):
+    resolution: {integrity: sha512-5pVK6PNV09x6UN29R9Mer0XF3hwQq2HxiFsjZvLuIQ9ezeTUGbqrefzBOpzciz1S/1WWVaVPDIcj4EBpD8WB3Q==}
     engines: {node: ^10.19.0 || >=12.0.0 < 13 || >=13.7.0 < 14 || >= 14.2.0}
     peerDependencies:
       express: '>= 4.17.0'
@@ -8426,8 +8426,8 @@ packages:
     resolution: {integrity: sha512-W+oqK4H+r5sITxfxpSU+MMdr/YSWGvgZMQDIsNoBDGGy4i7GBPTtvFKibQzW06n3U3TqHjhvBJsirShsEJ6eeQ==}
     dev: false
 
-  /jose@5.0.1:
-    resolution: {integrity: sha512-gRVzy7s3RRdGbXmcTdlOswJOjhwPLx1ijIgAqLY6ktzFpOJxxYn4l0fC2vHaHHi4YBX/5FOL3aY+6W0cvQgpug==}
+  /jose@5.0.2:
+    resolution: {integrity: sha512-YfXZO3UOHOGmDGEjYh4e6Pf1H+iiiShTH5y/DUcDquy90S8q8/yI0aBNUXokGczm9k+YuXvSO0k+nAmo77Eb1w==}
     dev: false
 
   /js-tokens@4.0.0:
