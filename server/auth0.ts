@@ -1,4 +1,6 @@
 import { auth } from 'express-oauth2-jwt-bearer'
+import * as jose from 'jose'
+import express from 'express'
 import * as oidc from 'express-openid-connect'
 import dotenv from 'dotenv'
 
@@ -30,3 +32,36 @@ const authConfig = {
 }
 
 export const validateAccessToken = auth(authConfig)
+
+export function requiresScope(requiredScope: string) {
+  return (
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction
+  ) => {
+    // Safely extract the access token
+    const accessToken =
+      req.oidc && req.oidc.accessToken
+        ? req.oidc.accessToken.access_token
+        : null
+
+    if (!accessToken || typeof accessToken !== 'string') {
+      return res.status(403).send('Forbidden: no or invalid access token')
+    }
+
+    try {
+      const decoded = jose.decodeJwt(accessToken) as { scope: string }
+      const scopes = decoded && decoded.scope ? decoded.scope.split(' ') : []
+
+      if (!scopes.includes(requiredScope)) {
+        return res.status(403).send('Forbidden: insufficient scope')
+      }
+
+      next()
+    } catch (err) {
+      if (err instanceof Error) {
+        return res.status(403).send(`Forbidden: invalid token (${err.message})`)
+      }
+    }
+  }
+}
