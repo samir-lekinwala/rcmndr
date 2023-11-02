@@ -2,12 +2,16 @@ import express from 'express'
 import { renderToStaticMarkup } from 'react-dom/server'
 import * as jose from 'jose'
 
-import Layout from '../components/Layout.tsx'
+import Layout from '../components/Layout'
 
 const router = express.Router()
 
 function requiresScope(requiredScope: string) {
-  return (req, res, next) => {
+  return (
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction
+  ) => {
     // Safely extract the access token
     const accessToken =
       req.oidc && req.oidc.accessToken
@@ -19,7 +23,7 @@ function requiresScope(requiredScope: string) {
     }
 
     try {
-      const decoded = jose.decodeJwt(accessToken) // Decode without verification
+      const decoded = jose.decodeJwt(accessToken) as { scope: string }
       const scopes = decoded && decoded.scope ? decoded.scope.split(' ') : []
 
       if (!scopes.includes(requiredScope)) {
@@ -29,7 +33,7 @@ function requiresScope(requiredScope: string) {
       next()
     } catch (err) {
       if (err instanceof Error) {
-        return res.status(403).send(`Forbidden: invalid token (${e.message})`)
+        return res.status(403).send(`Forbidden: invalid token (${err.message})`)
       }
     }
   }
