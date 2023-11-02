@@ -8,8 +8,8 @@ function Layout({ children }: Props) {
       <head></head>
       <body>
         <header>
-          <a href="http://localhost:3000/logout">Logout</a>
-          <a href="http://localhost:3000/login">Login</a>
+          <a href="/logout">Logout</a>
+          <a href="/login">Login</a>
         </header>
         <main>{children}</main>
       </body>

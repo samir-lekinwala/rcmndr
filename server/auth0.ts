@@ -20,7 +20,7 @@ export const oidcConfig: oidc.ConfigParams = {
   secret: 'LONG_RANDOM_STRING',
   routes: {
     login: false,
-    postLogoutRedirect: '/admin/home',
+    postLogoutRedirect: '/moderator/home',
   },
 }
 
