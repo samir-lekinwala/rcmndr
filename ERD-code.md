@@ -60,4 +60,5 @@ Ref: following_list.user_id > users.auth0_id
 Ref: following_list.following_id > users.auth0_id
 Ref: notifications.user_id > users.auth0_id
 Ref: notifications.friend_id > users.auth0_id
+Ref: songs.user_id > users.auth0_id
 ```
