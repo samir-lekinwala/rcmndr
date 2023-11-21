@@ -13,27 +13,41 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**/*.{js,ts,tsx,css,html,ico,png,svg}'],
       },
-      //   manifest: {
-      //     name: 'rcmndr',
-      //     short_name: 'rcmndr',
-      //     start_url: '/',
-      //     orientation: 'portrait',
-      //     display: 'standalone',
-      //     background_color: '#FF17CE',
-      //     theme_color: '#1B0636',
-      //     icons: [
-      //       {
-      //         src: '/favicon-16x16.png',
-      //         sizes: '16x16',
-      //         type: 'image/png',
-      //       },
-      //       {
-      //         src: '/favicon-32x32.png',
-      //         sizes: '32x32',
-      //         type: 'image/png',
-      //       },
-      //     ],
-      //   },
+        manifest: {
+          name: 'rcmndr.',
+          short_name: 'rcmndr.',
+          start_url: '/',
+          orientation: 'portrait',
+          display: 'standalone',
+          background_color: '#FF17CE',
+          theme_color: '#1B0636',
+          icons: [
+            {
+              src: '/favicon-16x16.png',
+              sizes: '16x16',
+              type: 'image/png',
+              purpose: "any maskable"
+            },
+            {
+              src: '/favicon-32x32.png',
+              sizes: '32x32',
+              type: 'image/png',
+              purpose: "any maskable"
+            },
+            {
+              src: './favicon-144x144.png',
+              sizes: '32x32',
+              type: 'image/png',
+              purpose: "any maskable",
+            },
+            {
+              src: './android-chrome-512x512.png',
+              sizes: '512x512',
+              type: 'image/png',
+              purpose: 'any maskable'
+            }
+          ],
+        },
     }),
   ],
   server: {
