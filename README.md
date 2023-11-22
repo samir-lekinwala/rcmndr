@@ -119,5 +119,3 @@ Supporting a team of more than 4 developers can challenging for any dev lead and
 - What ticket you are working
 - Are you having a problem or do you have a clarification question?
 - If you're getting an error, show us the error and how can you reproduce it
-
-16-dynamically-changing-document.titl
