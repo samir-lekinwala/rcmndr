@@ -10,7 +10,7 @@ router.get('/home', (_, res) => {
   res.send(
     renderToStaticMarkup(
       <Layout>
-        <main>This the landing page for unsigned admins</main>
+        <main>This is the landing page for unsigned admins</main>
       </Layout>
     )
   )
@@ -24,6 +24,7 @@ router.get(
       renderToStaticMarkup(
         <Layout>
           <main>
+            <p>You are signed in and you have the correct permissions</p>
             <p>{JSON.stringify(req.oidc.user, null, 2)}</p>
             <p>{JSON.stringify(req.oidc.accessToken, null, 2)}</p>
           </main>
