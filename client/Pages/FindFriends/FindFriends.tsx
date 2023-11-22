@@ -1,11 +1,7 @@
-import { useEffect } from 'react'
 import Button from '../../components/UI/Button/Button'
 import TextBox from '../../components/UI/TextBox/TextBox'
 
 function FindFriends() {
-  useEffect(() => {
-    document.title = 'FindFriends'
-  }, [])
   return (
     <div className="p-4 mt-10 space-y-10">
       <div className="space-y-2">

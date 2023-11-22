@@ -121,7 +121,3 @@ Supporting a team of more than 4 developers can challenging for any dev lead and
 - If you're getting an error, show us the error and how can you reproduce it
 
 16-dynamically-changing-document.titl
-
-#1: Figure out the current client routes
-#2: Each route has one element, which is one of the components
-#3: Inside the each routes components, update relative title
