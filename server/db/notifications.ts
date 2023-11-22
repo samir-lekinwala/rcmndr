@@ -14,13 +14,3 @@ export async function getNotifications(userId: string) {
       'users.nickname'
     )) as Notification[]
 }
-
-export async function insertNotifications(
-  userId: string,
-  notificationIds: number[]
-) {
-  return db('notifications')
-    .whereIn('id', notificationIds)
-    .andWhere('user_id', userId)
-    .update({ is_read: true })
-}
