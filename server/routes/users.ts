@@ -92,7 +92,7 @@ router.post('/:userId/follow', validateAccessToken, async (req, res) => {
     res.status(400).json({ message: 'Please provide an id' })
   }
 
-  // TODO: notify user when they get a new follower 
+  // TODO: notify user when they get a new follower
   res.sendStatus(201)
 })
 

@@ -1,4 +1,5 @@
 ### ERD code
+
 This is the code used for the current version of the ERD in [dbdiagram.io](https://dbdiagram.io/)
 
 ```
@@ -13,7 +14,7 @@ Table users {
   nickname varchar [unique]
   first_name varchar [not null]
   last_name varchar [not null]
-  public boolean 
+  public boolean
 }
 
 Table songs {
