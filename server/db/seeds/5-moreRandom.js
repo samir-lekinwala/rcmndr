@@ -43,6 +43,7 @@ async function insertSongs(knex) {
           title: faker.music.songName(),
           artist: `${faker.word.adjective()} ${faker.word.noun()}`,
           link: faker.internet.url(),
+          is_banned: faker.number.int({ min: 0, max: 1 }), // 0 means false and 1 means true
         })
       )
     )

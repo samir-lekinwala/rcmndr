@@ -7,6 +7,7 @@ export async function up(knex) {
     table.string('genre')
     table.string('link')
     table.string('comments')
+    table.boolean('is_banned')
   })
 }
 
