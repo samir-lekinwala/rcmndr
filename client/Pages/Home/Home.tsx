@@ -1,7 +1,11 @@
+import { useEffect } from 'react'
 import LoginButton from '../../components/Login/Login'
 import RegisterButton from '../../components/RegisterButton/RegisterButton'
 
 function Home() {
+  useEffect(() => {
+    document.title = 'Home'
+  }, [])
   return (
     <div className="pt-44 pl-4 flex flex-col gap-4">
       <div>

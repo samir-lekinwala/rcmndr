@@ -1,5 +1,10 @@
+import { useEffect } from 'react'
+
 function MyFriends() {
   const data = [{ id: 1, nickname: 'First user' }]
+  useEffect(() => {
+    document.title = 'MyFriends'
+  }, [])
 
   return (
     <div className="space-y-4">
