@@ -31,7 +31,7 @@ function useProfile() {
       token: string
     }) => upsertProfile(form, token),
     onSuccess: () => {
-      queryClient.invalidateQueries(['user'])
+      queryClient.invalidateQueries({ queryKey: ['user'] })
       navigate('/my-songs')
     },
   })
