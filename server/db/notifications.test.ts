@@ -1,7 +1,7 @@
 import { beforeAll, beforeEach, describe, it, expect } from 'vitest'
 
 import db from './connection'
-import { getNotifications, insertNotifications } from './notifications'
+import { getNotifications } from './notifications'
 
 beforeAll(async () => {
   await db.migrate.latest()
@@ -26,4 +26,3 @@ describe('getNotifications', () => {
     ])
   })
 })
-
