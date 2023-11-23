@@ -11,6 +11,7 @@ const router = express.Router()
 router.get('/search', validateAccessToken, async (req, res) => {
   // TODO: implement
   const qValue = req.query.q as string
+  console.log(qValue)
   const id = req.auth?.payload.sub as string
   // console.log(searchValue)
   // const data = await db.searchFriends(id, qValue)
