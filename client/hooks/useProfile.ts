@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { upsertProfile } from '../apis/user'
 import { getUser } from '../apis/user'
 import { Profile, ProfileDraft } from '../../types/Profile'
+import { AddSongDraft } from '../../types/Song'
 
 function useProfile() {
   const navigate = useNavigate()

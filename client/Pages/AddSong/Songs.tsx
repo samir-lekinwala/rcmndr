@@ -18,7 +18,6 @@ function Songs() {
 
   async function handleSubmit(form: AddSongDraft) {
     const token = await getAccessTokenSilently()
-    console.log(form)
     mutation.mutate({ form, token })
   }
 
