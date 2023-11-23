@@ -73,11 +73,11 @@ function FindFriends() {
       </div>
       <ul>
         <li>
-          <div className="max-w-md mx-auto px-4">
+          <div className="mx-auto ">
             {searchData?.map((u) => (
               <div
                 key={u.auth0_id}
-                className="flex justify-between items-center border-b py-2"
+                className="flex justify-between items-center  py-2"
               >
                 <p key={u.auth0_id}>{u.first_name}</p>
                 <button onClick={() => handleFollow(u.auth0_id)}>
