@@ -12,11 +12,9 @@ export async function getSongs(token: string) {
 }
 
 export async function addSong(form: AddSongDraft, token: string) {
-  console.log('success')
   await request
     .post('/api/v1/songs')
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
     .send(form)
-  console.log('success')
 }
