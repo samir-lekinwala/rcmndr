@@ -22,7 +22,7 @@ it('should return all songs that aren`t banned', async () => {
     is_banned: 0,
   }
 
-  const allSongs = await getSongs()
-  expect(allSongs).toHaveLength(25)
+  const allSongs = await getSongs(songData.user_id)
+  expect(allSongs).toHaveLength(7)
   expect(allSongs[0]).toMatchObject(songData)
 })
