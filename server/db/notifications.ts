@@ -14,8 +14,3 @@ export async function getNotifications(userId: string) {
       'users.nickname'
     )) as Notification[]
 }
-
-//where to index to improve the performance
-
-//1. notifications.user_id, filter condition
-//2. is_read, filter condition
