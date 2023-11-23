@@ -15,6 +15,13 @@ export const addSongDraft = songDraftSchema.extend({
   comments: z.string().nullable(),
 })
 
+
+export const addSongWithUserId = addSongDraft.extend({
+  userId: z.string(),
+})
+
 export type SongDraft = z.infer<typeof songDraftSchema>
 export type Song = z.infer<typeof song>
 export type AddSongDraft = z.infer<typeof addSongDraft>
+export type AddSongWithUserId = z.infer<typeof addSongWithUserId>
+
