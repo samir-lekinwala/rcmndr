@@ -38,7 +38,7 @@ function AddSong(props: Props) {
             name="songtitle"
             id="songtitle"
             required
-            defaultValue="The full title of the song"
+            placeholder="The full title of the song"
           />
         </div>
         <div className="space-y-1">
@@ -48,7 +48,7 @@ function AddSong(props: Props) {
             name="artist"
             id="artist"
             required
-            defaultValue="Name of the artist / singer / group"
+            placeholder="Name of the artist / singer / group"
           />
         </div>
         <div className="space-y-2">
@@ -57,25 +57,25 @@ function AddSong(props: Props) {
             type="text"
             name="genre"
             id="genre"
-            defaultValue="Genre of music"
+            placeholder="Genre of music"
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="link">Link*</label>
+          <label htmlFor="link">Link</label>
           <TextBox
             type="text"
             name="link"
             id="link"
-            defaultValue="A link so others can listen (optional)"
+            placeholder="A link so others can listen (optional)"
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="comments">Comment*</label>
+          <label htmlFor="comments">Comment</label>
           <TextBox
             type="text"
             name="comments"
             id="comments"
-            defaultValue="What do you like about this song?"
+            placeholder="What do you like about this song?"
           />
         </div>
         <div className="mx-auto text-center">
