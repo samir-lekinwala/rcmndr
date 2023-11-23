@@ -14,6 +14,9 @@ export async function getUser(auth0Id: string) {
     )) as Profile
 }
 
+//where to index to improve the performance
+// 1. auth0_id, filter condition
+
 export async function upsertProfile(profile: Profile) {
   await db('users')
     .insert({
