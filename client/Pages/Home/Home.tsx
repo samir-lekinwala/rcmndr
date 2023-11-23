@@ -6,10 +6,7 @@ function Home() {
   const slogan = ['collate.', 'recommend.', 'discover.']
   return (
     <div>
-      <div
-        className="pt-44 pl-4 flex flex-col gap-4"
-        style={{ marginBottom: `40px` }}
-      >
+      <div className="pt-44 pl-4 flex flex-col gap-4 mb-[40px]">
         {slogan.map((word, i) => (
           <div key={word}>
             <motion.p
