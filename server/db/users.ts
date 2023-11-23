@@ -77,3 +77,10 @@ OR LOWER(s.genre) LIKE ?)
 
   return newUsersToFollow as Friend[]
 }
+
+export async function followFriends(friendId: string, userId: string) {
+  return await db('following_list').insert({
+    user_id: userId,
+    following_id: friendId,
+  })
+}
