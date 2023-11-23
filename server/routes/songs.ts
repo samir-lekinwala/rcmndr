@@ -8,7 +8,6 @@ const router = express.Router()
 
 router.get('/', validateAccessToken, async (req, res) => {
   const auth0Id = req.auth?.payload.sub
-  console.log(auth0Id)
   if (!auth0Id) {
     res.status(400).json({ message: 'Please provide an id' })
     return
@@ -18,7 +17,7 @@ router.get('/', validateAccessToken, async (req, res) => {
     const allSongs = await getSongs(auth0Id)
     res.status(200).json(allSongs)
   } catch (error) {
-    res.status(500).json({ message: 'wow no friends aye haha' })
+    res.status(500).json({ message: 'database error' })
   }
 })
 

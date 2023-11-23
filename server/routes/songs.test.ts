@@ -29,4 +29,19 @@ describe('GET /api/v1/songs', () => {
     expect(response.status).toBe(200)
     expect(response.body).toEqual(songData)
   })
+
+  it('should return 401 when no access token is passed', async () => {
+    vi.mocked(db.getSongs).mockRejectedValue(new Error('test'))
+    const response = await request(server).get('/api/v1/songs')
+    expect(response.status).toBe(401)
+  })
+
+  it('should return 500 when getSongs fails', async () => {
+    vi.mocked(db.getSongs).mockRejectedValue(new Error('test'))
+    const response = await request(server)
+      .get('/api/v1/songs')
+      .set('authorization', `Bearer ${getMockToken()}`)
+    expect(response.status).toBe(500)
+    expect(response.body).toEqual({ message: 'database error' })
+  })
 })
