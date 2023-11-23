@@ -12,7 +12,7 @@ export const song = songDraftSchema.extend({
 })
 
 export const addSongDraft = songDraftSchema.extend({
-  comment: z.string().nullable(),
+  comments: z.string().nullable(),
 })
 
 export type SongDraft = z.infer<typeof songDraftSchema>
