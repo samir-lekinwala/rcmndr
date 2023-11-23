@@ -5,6 +5,7 @@ import useSearchFrends from '../../hooks/useSearchFrends'
 import { useQuery } from '@tanstack/react-query'
 import { followFriends, searchFriends } from '../../apis/user'
 import { useAuth0 } from '@auth0/auth0-react'
+import Icon from '../../components/UI/Icon/Icon'
 
 interface user {
   auth0_id: string
@@ -72,12 +73,21 @@ function FindFriends() {
       </div>
       <ul>
         <li>
-          {searchData?.map((u) => (
-            <div key={u.auth0_id}>
-              <p key={u.auth0_id}>{u.first_name}</p>
-              <button onClick={() => handleFollow(u.auth0_id)}>Follow</button>
-            </div>
-          ))}
+          <div className="max-w-md mx-auto px-4">
+            {searchData?.map((u) => (
+              <div
+                key={u.auth0_id}
+                className="flex justify-between items-center border-b py-2"
+              >
+                <p key={u.auth0_id}>{u.first_name}</p>
+                <button onClick={() => handleFollow(u.auth0_id)}>
+                  <Icon>
+                    <i className="fa-solid fa-heart"></i>
+                  </Icon>
+                </button>
+              </div>
+            ))}
+          </div>
         </li>
       </ul>
       <div>
