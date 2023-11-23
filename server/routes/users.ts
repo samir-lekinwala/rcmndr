@@ -112,10 +112,13 @@ router.post('/', validateAccessToken, async (req, res) => {
 // POST /api/v1/users/:userId/follow
 router.post('/:userId/follow', validateAccessToken, async (req, res) => {
   const userId = req.params.userId
+  const auth0Id = req.auth?.payload.sub as string
 
   if (!userId) {
     res.status(400).json({ message: 'Please provide an id' })
   }
+
+  await db.followFriends(userId, auth0Id)
 
   // TODO: notify user when they get a new follower
   res.sendStatus(201)
