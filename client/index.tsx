@@ -15,14 +15,19 @@ import { toast } from 'react-hot-toast'
 
 import AppLayout from './components/AppLayout/AppLayout'
 import ProtectedComponent from './components/UI/ProtectedComponent'
-import ProfilePage from './Pages/ProfilePage/ProfilePage'
+// import ProfilePage from './Pages/ProfilePage/ProfilePage'
 import Home from './Pages/Home/Home'
-import MyFriends from './Pages/MyFriends/MyFriends'
-import FindFriends from './Pages/FindFriends/FindFriends'
-import MySongs from './Pages/MySongs/MySongs'
+// import MyFriends from './Pages/MyFriends/MyFriends'
+// import FindFriends from './Pages/FindFriends/FindFriends'
+// import MySongs from './Pages/MySongs/MySongs'
 import { Suspense } from 'react'
 import Loading from './components/Loading/Loading'
+import { lazy } from 'react'
 
+const FindFriends = lazy(() => import('./Pages/FindFriends/FindFriends'))
+const MyFriends = lazy(() => import('./Pages/MyFriends/MyFriends'))
+const ProfilePage = lazy(() => import('./Pages/ProfilePage/ProfilePage'))
+const MySongs = lazy(() => import('./Pages/MySongs/MySongs'))
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />}>
     <Route index element={<Home />} />
