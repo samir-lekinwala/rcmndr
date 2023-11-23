@@ -20,7 +20,7 @@ import Home from './Pages/Home/Home'
 import MyFriends from './Pages/MyFriends/MyFriends'
 import FindFriends from './Pages/FindFriends/FindFriends'
 import MySongs from './Pages/MySongs/MySongs'
-import AddSong from './components/AddSong/AddSong'
+import Songs from './Pages/AddSong/Songs'
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />}>
@@ -41,10 +41,7 @@ export const routes = createRoutesFromElements(
       path="my-songs"
       element={<ProtectedComponent component={MySongs} />}
     />
-    <Route
-      path="add-song"
-      element={<ProtectedComponent component={AddSong} />}
-    />
+    <Route path="add-song" element={<ProtectedComponent component={Songs} />} />
   </Route>
 )
 

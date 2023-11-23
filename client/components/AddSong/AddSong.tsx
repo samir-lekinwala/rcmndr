@@ -30,7 +30,7 @@ function AddSong(props: Props) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="space-y-4 p-4">
+      <form onSubmit={handleSubmit} className="space-y-6 pt-8">
         <div className="space-y-2">
           <label htmlFor="songtitle">Song title*</label>
           <TextBox
@@ -39,6 +39,7 @@ function AddSong(props: Props) {
             id="songtitle"
             required
             placeholder="The full title of the song"
+            className="p-4"
           />
         </div>
         <div className="space-y-1">
@@ -49,6 +50,7 @@ function AddSong(props: Props) {
             id="artist"
             required
             placeholder="Name of the artist / singer / group"
+            className="p-4"
           />
         </div>
         <div className="space-y-2">
@@ -58,6 +60,7 @@ function AddSong(props: Props) {
             name="genre"
             id="genre"
             placeholder="Genre of music"
+            className="p-4"
           />
         </div>
         <div className="space-y-2">
@@ -67,6 +70,7 @@ function AddSong(props: Props) {
             name="link"
             id="link"
             placeholder="A link so others can listen (optional)"
+            className="p-4"
           />
         </div>
         <div className="space-y-2">
@@ -76,6 +80,7 @@ function AddSong(props: Props) {
             name="comments"
             id="comments"
             placeholder="What do you like about this song?"
+            className="p-4"
           />
         </div>
         <div className="mx-auto text-center">
