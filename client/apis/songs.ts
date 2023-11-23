@@ -10,3 +10,10 @@ export async function getSongs(token: string) {
     .set('Authorization', `Bearer ${token}`)
   return response.body as Song[]
 }
+
+export async function addSong(token: string) {
+  const response = await request
+    .get(baseUrl)
+    .set('Authorization', `Bearer ${token}`)
+  return response.body as Song[]
+}
