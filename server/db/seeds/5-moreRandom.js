@@ -79,13 +79,11 @@ function insertMoreUsers(knex) {
 }
 
 async function insertReport(knex) {
-  const count = await knex('reports').count('id as count').first()
   const userIds = await knex('users').pluck('auth0_id')
   const reasonsId = await knex('reasons').pluck('id')
   const songsId = await knex('songs').pluck('id')
 
-  const reports = Array.from({ length: 5 }).map((i, j) => ({
-    id: i * reasonsId.length + j + 1 + count.count,
+  const reports = Array.from({ length: 5 }).map((_, i) => ({
     created_on: faker.date.past(),
     reported_by: faker.helpers.arrayElement(userIds),
     reason_id: faker.helpers.arrayElement(reasonsId),
