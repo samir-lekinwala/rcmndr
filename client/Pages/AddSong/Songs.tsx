@@ -6,7 +6,7 @@ import useProfile from '../../hooks/useProfile'
 function Songs() {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0()
 
-  const { isLoading, mutation } = useProfile()
+  const { isLoading, addSongMutation } = useProfile()
 
   if (isLoading) {
     return <div>Loading ...</div>
@@ -18,7 +18,7 @@ function Songs() {
 
   async function handleSubmit(form: AddSongDraft) {
     const token = await getAccessTokenSilently()
-    mutation.mutate({ form, token })
+    addSongMutation.mutate({ form, token })
   }
 
   return (

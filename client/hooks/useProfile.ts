@@ -6,6 +6,7 @@ import { upsertProfile } from '../apis/user'
 import { getUser } from '../apis/user'
 import { Profile, ProfileDraft } from '../../types/Profile'
 import { AddSongDraft } from '../../types/Song'
+import { addSong } from '../apis/songs'
 
 function useProfile() {
   const navigate = useNavigate()
@@ -37,7 +38,16 @@ function useProfile() {
     },
   })
 
-  return { data, isLoading, mutation }
+  const addSongMutation = useMutation({
+    mutationFn: ({ form, token }: { form: AddSongDraft; token: string }) =>
+      addSong(form, token),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['user'] })
+      navigate('/my-songs')
+    },
+  })
+
+  return { data, isLoading, mutation, addSongMutation }
 }
 
 export default useProfile
