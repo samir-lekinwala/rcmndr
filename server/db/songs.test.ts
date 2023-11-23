@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, beforeEach } from 'vitest'
+import { it, expect, beforeAll, beforeEach } from 'vitest'
 import db from './connection'
 import { getSongs } from './songs'
 

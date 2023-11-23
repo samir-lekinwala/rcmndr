@@ -1,7 +1,8 @@
+import { Song } from '../../types/Song'
 import db from './connection'
 
-export async function getSongs() {
-  return await db('songs')
+export async function getSongs(auth0Id: string) {
+  return (await db('songs')
     .select(
       'id',
       'user_id',
@@ -12,5 +13,6 @@ export async function getSongs() {
       'comments',
       'is_banned'
     )
-    .where('is_banned', false)
+    .where('user_id', auth0Id)
+    .where('is_banned', false)) as Song[]
 }
