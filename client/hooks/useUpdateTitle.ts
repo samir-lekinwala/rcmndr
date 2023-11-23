@@ -1,11 +1,7 @@
 import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
 
-export default function useUpdateTitle() {
-  const location = useLocation()
+export default function useUpdateTitle(title: string) {
   useEffect(() => {
-    document.title = location.pathname.slice(1)
-      ? location.pathname.slice(1)
-      : 'Home'
-  }, [location])
+    document.title = title
+  }, [title])
 }
