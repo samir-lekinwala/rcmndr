@@ -3,7 +3,7 @@ import Button from '../../components/UI/Button/Button'
 import TextBox from '../../components/UI/TextBox/TextBox'
 import useSearchFrends from '../../hooks/useSearchFrends'
 import { useQuery } from '@tanstack/react-query'
-import { searchFriends } from '../../apis/user'
+import { followFriends, searchFriends } from '../../apis/user'
 import { useAuth0 } from '@auth0/auth0-react'
 
 interface user {
@@ -46,7 +46,10 @@ function FindFriends() {
     }
   }
 
-  async function handleFollow() {}
+  async function handleFollow(friend_id: string) {
+    const accessToken = await getAccessTokenSilently()
+    followFriends(friend_id, accessToken)
+  }
 
   return (
     <div className="p-4 mt-10 space-y-10">
@@ -72,7 +75,7 @@ function FindFriends() {
           {searchData?.map((u) => (
             <div key={u.auth0_id}>
               <p key={u.auth0_id}>{u.first_name}</p>
-              <button onClick={handleFollow}>Follow</button>
+              <button onClick={() => handleFollow(u.auth0_id)}>Follow</button>
             </div>
           ))}
         </li>

@@ -53,5 +53,6 @@ export async function followFriends(friendId: string, token: string) {
     .post(`/api/v1/users/${friendId}/follow`)
     .set('Authorization', `Bearer ${token}`)
     .set('Content-Type', 'application/json')
+  console.log(res.body)
   return res.body
 }
