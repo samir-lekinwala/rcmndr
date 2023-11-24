@@ -1,10 +1,10 @@
 import * as z from 'zod'
 
 export const songDraftSchema = z.object({
-  title: z.string(),
-  artist: z.string(),
+  title: z.string().min(2),
+  artist: z.string().min(1),
   genre: z.string().nullable(),
-  link: z.string().nullable(),
+  link: z.string().nullable().optional(),
 })
 
 export const song = songDraftSchema.extend({
@@ -12,9 +12,8 @@ export const song = songDraftSchema.extend({
 })
 
 export const addSongDraft = songDraftSchema.extend({
-  comments: z.string().nullable(),
+  comments: z.string().nullable().optional(),
 })
-
 
 export const addSongWithUserId = addSongDraft.extend({
   userId: z.string(),
@@ -24,4 +23,3 @@ export type SongDraft = z.infer<typeof songDraftSchema>
 export type Song = z.infer<typeof song>
 export type AddSongDraft = z.infer<typeof addSongDraft>
 export type AddSongWithUserId = z.infer<typeof addSongWithUserId>
-
