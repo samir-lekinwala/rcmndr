@@ -1,8 +1,7 @@
 export default function Loading() {
   return (
-    <p>
-      {' '}
-      <i>Loading...</i>
+    <p className=" text-center">
+      <i className="text-white">Loading...</i>
     </p>
   )
 }
