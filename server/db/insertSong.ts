@@ -2,8 +2,6 @@ import db from './connection'
 import { AddSongWithUserId } from '../../types/Song'
 
 export async function insertSong(song: AddSongWithUserId) {
-  // console.log('db!')
-  // return song
   await db('songs').insert({
     user_id: song.userId,
     title: song.title,
