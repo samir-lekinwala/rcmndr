@@ -3,7 +3,7 @@ import Background from '../../components/UI/Background/Background'
 
 function ErrorPage() {
   return (
-    <div>
+    <div className="bg-darkPurple h-screen text-white">
       <Background>
         <Header />
         <div className="self-centered">
