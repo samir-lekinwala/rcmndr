@@ -16,7 +16,7 @@ function Header() {
   return (
     <div className="pl-4 pt-3 pr-4 flex justify-between items-center">
       <Logo />
-      {isFetching ? <SpinningLoader /> : null}
+      {Boolean(isFetching) && <SpinningLoader />}
       {!navOpened && (
         <div>
           <button onClick={toggleMenu}>
