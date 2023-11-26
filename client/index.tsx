@@ -30,7 +30,14 @@ const ProfilePage = lazy(() => import('./Pages/ProfilePage/ProfilePage'))
 const MySongs = lazy(() => import('./Pages/MySongs/MySongs'))
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />}>
-    <Route index element={<Home />} />
+    <Route
+      index
+      element={
+        <Suspense fallback={<Loading />}>
+          <Home />
+        </Suspense>
+      }
+    />
     <Route
       path="find-friends"
       element={
