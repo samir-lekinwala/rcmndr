@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query'
-import { Song } from '../../../types/Song'
 import SongListItem from '../../components/SongListItem/SongListItem'
 import { getSongs } from '../../apis/songs'
 import { useAuth0 } from '@auth0/auth0-react'
@@ -19,10 +18,12 @@ function MySongs() {
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['mySongs'],
-    queryFn: () => getAccessTokenSilently().then((token) => getSongs(token)),
+    queryFn: async () => {
+      const token = await getAccessTokenSilently()
+      const songs = await getSongs(token)
+      return songs
+    },
   })
-
-  console.log(data)
 
   if (!isAuthenticated && !user) {
     return <div>Not authenticated</div>
@@ -40,6 +41,8 @@ function MySongs() {
 
   function handleDeleteSong() {}
 
+  function handlePlaySong() {}
+
   return (
     <div>
       <h1>My Songs</h1>
@@ -49,6 +52,7 @@ function MySongs() {
             return (
               <SongListItem
                 key={track.id}
+                handlePlaySong={handlePlaySong}
                 handleEditSong={handleEditSong}
                 handleDeleteSong={handleDeleteSong}
                 song={track}
