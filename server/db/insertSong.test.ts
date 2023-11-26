@@ -1,7 +1,6 @@
 import { describe, it, beforeAll, beforeEach } from 'vitest'
 import db from './connection'
 import { insertSong } from './insertSong'
-import { SongDraft } from '../../types/Song'
 
 beforeAll(async () => {
   await db.migrate.latest()
