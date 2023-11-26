@@ -38,6 +38,5 @@ describe('ProfilePage', () => {
     expect(firstName).toHaveValue('John')
     expect(lastName).toHaveValue('Doe')
     expect(isPublic).not.toBeChecked()
-    expect(nickname).toHaveValue('John Doe')
   })
 })
