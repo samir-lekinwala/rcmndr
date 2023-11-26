@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 interface Props {
   children: React.ReactNode
 }
@@ -5,8 +6,14 @@ interface Props {
 function Layout({ children }: Props) {
   return (
     <html lang="en">
-      <head></head>
-      <body>
+      <head>
+        <script
+          src="https://unpkg.com/htmx.org@1.9.9"
+          integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX"
+          crossOrigin="anonymous"
+        ></script>
+      </head>
+      <body hx-boost="true">
         <header>
           <a href="/logout">Logout</a>
           <a href="/login">Login</a>
