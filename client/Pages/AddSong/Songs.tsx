@@ -1,12 +1,12 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { AddSongDraft } from '../../../types/Song'
 import AddSong from '../../components/AddSong/AddSong'
-import useProfile from '../../hooks/useProfile'
+import useInsertSong from '../../hooks/useInsertSong'
 
 function Songs() {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0()
 
-  const { isLoading, addSongMutation } = useProfile()
+  const { isLoading, mutation } = useInsertSong()
 
   if (isLoading) {
     return <div>Loading ...</div>
@@ -18,7 +18,7 @@ function Songs() {
 
   async function handleSubmit(form: AddSongDraft) {
     const token = await getAccessTokenSilently()
-    addSongMutation.mutate({ form, token })
+    mutation.mutate({ form, token })
   }
 
   return (
