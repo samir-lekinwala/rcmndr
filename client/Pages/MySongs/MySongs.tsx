@@ -5,15 +5,6 @@ import { useAuth0 } from '@auth0/auth0-react'
 import useUpdateTitle from '../../hooks/useUpdateTitle'
 
 function MySongs() {
-  // const data: Song[] = [
-  //   {
-  //     id: '1',
-  //     title: 'Hengelo',
-  //     artist: 'Spring Offensive',
-  //     genre: 'Indie Rock',
-  //     link: 'https://open.spotify.com/track/4rqpg85XNApASjAvqjHlb1?si=2bdc00343f3e47f2',
-  //   },
-  // ]
   useUpdateTitle('MySongs')
 
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0()

@@ -1,6 +1,7 @@
 import express from 'express'
 import { getSongs } from '../db/songs'
 import { validateAccessToken } from '../auth0'
+import { logError } from '../logger'
 
 const router = express.Router()
 
@@ -17,6 +18,7 @@ router.get('/', validateAccessToken, async (req, res) => {
     const allSongs = await getSongs(auth0Id)
     res.status(200).json(allSongs)
   } catch (error) {
+    logError(error)
     res.status(500).json({ message: 'database error' })
   }
 })
