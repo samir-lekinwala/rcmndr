@@ -24,10 +24,11 @@ function ErrorPage() {
 
           {/* displaying button linking to home page */}
           <div>
-            <Link to="/">
-              <button className="w-auto py-2 px-4 rounded-lg hover:shadow-[0px_0px_9px_2px_#FF17CE] bg-white text-primary">
-                Home
-              </button>
+            <Link
+              to="/"
+              className="w-auto py-2 px-4 rounded-lg hover:shadow-[0px_0px_9px_2px_#FF17CE] bg-white text-primary"
+            >
+              Home
             </Link>
           </div>
         </div>
