@@ -1,8 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import Button from '../../components/UI/Button/Button'
 import Background from '../../components/UI/Background/Background'
 import ErrorPage from './ErrorPage'
+import {
+  RouterProvider,
+  createMemoryRouter,
+  Route,
+  Outlet,
+  createRoutesFromElements,
+} from 'react-router-dom'
 
 const meta: Meta<typeof ErrorPage> = {
   title: 'ERROR PAGE <!>',
@@ -11,14 +17,24 @@ const meta: Meta<typeof ErrorPage> = {
 
 type Story = StoryObj<typeof ErrorPage>
 
+const routes = createMemoryRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Outlet />}>
+      <Route
+        index
+        element={
+          <Background>
+            <ErrorPage />
+          </Background>
+        }
+      />
+    </Route>
+  )
+)
+
 export const MyPrimary: Story = {
   name: 'Primary',
-  render: () => (
-    <Background>
-      <ErrorPage />
-      <Button>BACK TO HOME </Button>,
-    </Background>
-  ),
+  render: () => <RouterProvider router={routes}></RouterProvider>,
 }
 
 export default meta
