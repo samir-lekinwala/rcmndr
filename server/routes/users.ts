@@ -29,7 +29,7 @@ router.get('/search', validateAccessToken, async (req, res) => {
     res.status(200).json(data)
   } catch (error) {
     logError(error)
-    res.status(500).json({ message: 'Unable to insert new user to database' })
+    res.status(500).json({ message: 'Unable to retrieve friends' })
   }
 })
 
