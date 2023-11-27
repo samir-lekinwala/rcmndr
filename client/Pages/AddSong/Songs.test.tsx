@@ -20,8 +20,6 @@ describe('Songs', () => {
   it('should render song form', async () => {
     const scope = nock('http://localhost').get('/api/v1/songs').reply(200)
 
-    // console.log(scope)
-
     const container = renderWithQuery(<Songs />)
     await waitFor(() => expect(scope.isDone()).toBeTruthy())
 
