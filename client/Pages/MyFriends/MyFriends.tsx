@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { getFriends } from '../../apis/user'
 import useUpdateTitle from '../../hooks/useUpdateTitle'
 import { useAuth0 } from '@auth0/auth0-react'
-import { FriendsListItem } from '../../components/FriendsListItem/FriendsListItem'
+import FriendsListItem from '../../components/FriendsListItem/FriendsListItem'
 
 function MyFriends() {
   useUpdateTitle('MyFriends')
@@ -17,6 +17,10 @@ function MyFriends() {
     },
   })
 
+  function handleDeleteFriend () {
+
+  }
+
   if (!isAuthenticated && !user) {
     return <div>Not authenticated</div>
   }
@@ -28,7 +32,7 @@ function MyFriends() {
   if (isError) {
     return <p>something went wrong</p>
   }
-  
+
   return (
     <div>
       {/* Todo: add search functionality */}
@@ -37,7 +41,10 @@ function MyFriends() {
         {data &&
           data.map((friend) => {
             return (
-              <FriendsListItem key={friend.id}/>
+              <FriendsListItem 
+              key={friend.id}
+              friend={friend}
+              handleDeleteFriend={handleDeleteFriend}/>
             )
           })}
       </div>

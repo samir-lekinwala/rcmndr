@@ -30,7 +30,7 @@ export async function upsertProfile(profile: Profile) {
 export async function getFriends(userId: string) {
   return (await db('following_list')
     .join('users', 'users.auth0_id', 'following_list.following_id')
-    .select('users.auth0_id as id', 'nickname', 'first_name as firstName')
+    .select('users.auth0_id as id', 'nickname', 'first_name as firstName', 'last_name as lastName')
     .where('user_id', userId)) as Friend[]
 }
 
