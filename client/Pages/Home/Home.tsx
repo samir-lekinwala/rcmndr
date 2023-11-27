@@ -9,7 +9,6 @@ function Home() {
 
   return (
     <div>
-      {/* <div className="pt-44 pl-4 flex flex-col gap-4 mb-[40px]"> */}
       <div className="flex flex-col pt-44 pb-10 px-4 gap-4">
         {slogan.map((word, i) => (
           <div key={word}>
