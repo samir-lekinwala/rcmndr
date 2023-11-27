@@ -72,7 +72,6 @@ export const routes = createRoutesFromElements(
         </Suspense>
       }
     />
-    <Route path="add-song" element={<ProtectedComponent component={Songs} />} />
   </Route>
 )
 
