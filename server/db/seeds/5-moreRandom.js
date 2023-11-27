@@ -55,6 +55,7 @@ async function insertSongs(knex) {
 
 async function insertFollowers(knex) {
   const userIds = await knex('users').pluck('auth0_id')
+  console.log('user ids', userIds)
   const followingList = userIds.map((id) => ({
     user_id: id,
     following_id: faker.helpers.arrayElement(
