@@ -2,6 +2,7 @@ import request from 'superagent'
 import { Friend } from '../../types/User'
 import { Profile, ProfileDraft } from '../../types/Profile'
 
+// removed profile type from upsertProfile - the id shouldn't be included
 export async function upsertProfile(
   form: ProfileDraft | Profile,
   token: string
