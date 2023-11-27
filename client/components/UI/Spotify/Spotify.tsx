@@ -1,34 +1,33 @@
-import { log } from 'node:console'
 import { Song } from '../../../../types/Song'
 
 interface Props {
   song: Song
 }
 
-function Spotify({ song }) {
-  // check spotify
-  function checkSpotify(song) {
-    const spotify = song.link.split('.')
-    if (spotify[1] === spotify) return true
-    else return false
-  }
+function Spotify({ song }: Props) {
+  const checked = song.link?.includes('spotify')
 
-  // create dynamic name
+  if (song && checked) {
+    const spotify = song.link?.split('.')
 
-  return (
-    <>
+    const track = spotify && spotify[2].split('/')
+
+    const splitTrack = track && track[2].split('?')
+
+    const spotifyID = splitTrack && splitTrack[0]
+
+    return (
       <iframe
         title={song.title}
         className="p-4"
-        src="https://open.spotify.com/embed/track/6ICdz2wvVMDC4u801OwHA2?utm_source=generator"
+        src={`https://open.spotify.com/embed/track/${spotifyID}?utm_source=generator`}
         width="100%"
         height="152"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
       ></iframe>
-      {/* {JSON.stringify(song)} */}
-    </>
-  )
+    )
+  }
 }
 
 export default Spotify
