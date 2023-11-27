@@ -160,3 +160,19 @@ describe('GET /api/v1/users/search?q=banana', () => {
     expect(response.body).toEqual({ message: 'Unable to retrieve friends' })
   })
 })
+
+describe('POST /api/v1/users/:userId/follow', () => {
+  it('should accept an object returns 201', async () => {
+    vi.mocked(db.followFriends).mockResolvedValue()
+    const res = await request(server)
+      .post('/api/v1/users/123/follow')
+      .send({
+        id: '123',
+        nickname: 'banana',
+        firstName: 'Banana',
+      })
+      .set('authorization', `Bearer ${getMockToken()}`)
+
+    expect(res.status).toBe(201)
+  })
+})
