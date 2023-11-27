@@ -77,3 +77,10 @@ OR LOWER(s.genre) LIKE ?)
 
   return newUsersToFollow as Friend[]
 }
+
+export async function unfollowFriend(userId: string, friendId: string) {
+  return (await db('following_list')
+    .where('user_id', userId)
+    .where('following_id', friendId)
+    .del())
+}

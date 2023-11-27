@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query'
-import { getFriends } from '../../apis/user'
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { getFriends, unfollowUser } from '../../apis/user'
 import useUpdateTitle from '../../hooks/useUpdateTitle'
 import { useAuth0 } from '@auth0/auth0-react'
 import FriendsListItem from '../../components/FriendsListItem/FriendsListItem'
@@ -16,9 +16,19 @@ function MyFriends() {
       return songs
     },
   })
+  const queryClient = useQueryClient()
+  const mutation = useMutation({
+    mutationFn: async (id: string) => {
+      const token = await getAccessTokenSilently()
+      unfollowUser(id, token)
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(['myFriends'])
+    },
+  })
 
-  function handleDeleteFriend () {
-
+  function handleDeleteFriend(id: string) {
+    mutation.mutate(id)
   }
 
   if (!isAuthenticated && !user) {
@@ -41,10 +51,11 @@ function MyFriends() {
         {data &&
           data.map((friend) => {
             return (
-              <FriendsListItem 
-              key={friend.id}
-              friend={friend}
-              handleDeleteFriend={handleDeleteFriend}/>
+              <FriendsListItem
+                key={friend.id}
+                friend={friend}
+                handleDeleteFriend={() => handleDeleteFriend(friend.id)}
+              />
             )
           })}
       </div>
@@ -53,5 +64,3 @@ function MyFriends() {
 }
 
 export default MyFriends
-
-
