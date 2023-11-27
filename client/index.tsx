@@ -12,14 +12,12 @@ import {
 } from '@tanstack/react-query'
 import { Auth0Provider } from '@auth0/auth0-react'
 import { toast } from 'react-hot-toast'
+import { Suspense } from 'react'
+import { lazy } from 'react'
 
 import AppLayout from './components/AppLayout/AppLayout'
 import ProtectedComponent from './components/UI/ProtectedComponent'
-//import Home from './Pages/Home/Home'
-
-import { Suspense } from 'react'
 import Loading from './components/Loading/Loading'
-import { lazy } from 'react'
 import ErrorPage from './Pages/ErrorPage/ErrorPage'
 
 const Home = lazy(() => import('./Pages/Home/Home'))
@@ -27,9 +25,8 @@ const FindFriends = lazy(() => import('./Pages/FindFriends/FindFriends'))
 const MyFriends = lazy(() => import('./Pages/MyFriends/MyFriends'))
 const ProfilePage = lazy(() => import('./Pages/ProfilePage/ProfilePage'))
 const MySongs = lazy(() => import('./Pages/MySongs/MySongs'))
-export const routes = createRoutesFromElements(
 
-  
+export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
     <Route
       index
@@ -51,7 +48,6 @@ export const routes = createRoutesFromElements(
       path="my-friends"
       element={
         <Suspense fallback={<Loading />}>
-          {' '}
           <ProtectedComponent component={MyFriends} />
         </Suspense>
       }
