@@ -1,9 +1,8 @@
 import { Friend } from "../../../types/User"
 import { useQuery } from '@tanstack/react-query'
 import SongListItem from '../../components/SongListItem/SongListItem'
-import { getFriendSongs, getSongs } from '../../apis/songs'
+import { getFriendSongs} from '../../apis/songs'
 import { useAuth0 } from '@auth0/auth0-react'
-import useUpdateTitle from '../../hooks/useUpdateTitle'
 
 interface FriendProps {
   friend: Friend
