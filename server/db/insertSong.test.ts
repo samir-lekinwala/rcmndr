@@ -14,11 +14,11 @@ describe('add song', () => {
   it('should add a new song', async () => {
     const newSong = {
       userId: 'auth0|6478f3fd75374ee3d7bc4d94',
-      title: 'banaba',
-      artist: 'ripe',
-      genre: 'Banana',
-      link: 'banana.com',
-      comments: 'no comment',
+      title: 'test-title',
+      artist: 'test-artist',
+      genre: 'test-genre',
+      link: 'www.test.com',
+      comments: 'test-comment',
     }
     await insertSong(newSong)
 
@@ -26,11 +26,11 @@ describe('add song', () => {
     expect(exitingSongs).toHaveLength(36)
     expect(exitingSongs).toContainEqual({
       user_id: 'auth0|6478f3fd75374ee3d7bc4d94',
-      title: 'banaba',
-      artist: 'ripe',
-      genre: 'Banana',
-      link: 'banana.com',
-      comments: 'no comment',
+      title: 'test-title',
+      artist: 'test-artist',
+      genre: 'test-genre',
+      link: 'www.test.com',
+      comments: 'test-comment',
       is_banned: 0,
       id: 107,
     })
