@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import Background from '../UI/Background/Background'
 import AddSong from './AddSong'
-// import { AddSongDraft } from '../../../types/Song'
 
 const meta: Meta<typeof AddSong> = {
   title: 'addSong',
