@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         audience: import.meta.env.VITE_AUTH0_AUDIENCE as string,
-        redirect_uri: window.location.origin,
+        redirect_uri: `${window.location.origin}/my-friends`,
       }}
     >
       <QueryClientProvider client={queryClient}>
