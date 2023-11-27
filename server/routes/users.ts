@@ -104,7 +104,7 @@ try {
   if (!userId) {
     res.status(400).json({ message: 'Please provide an id to unfollow' })
   }
-  db.unfollowFriend(userId as string, friendId)
+  await db.unfollowFriend(userId as string, friendId)
   res.sendStatus(200)
 } catch (error) {
   logError(error)

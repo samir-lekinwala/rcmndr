@@ -20,7 +20,7 @@ function MyFriends() {
   const mutation = useMutation({
     mutationFn: async (id: string) => {
       const token = await getAccessTokenSilently()
-      unfollowUser(id, token)
+      await unfollowUser(id, token)
     },
     onSuccess: () => {
       queryClient.invalidateQueries(['myFriends'])

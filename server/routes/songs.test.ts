@@ -25,11 +25,11 @@ describe('POST /api/v1/songs', () => {
       .set('authorization', `Bearer ${getMockToken()}`)
       .send(fakeSong)
     expect(response.status).toBe(201)
+  })})
 
-import * as db from '../db/songs'
-import { getMockToken } from './mockToken'
 import { Song } from '../../types/Song'
 import dotenv from 'dotenv'
+import { getSongs } from '../db/songs'
 
 dotenv.config()
 
@@ -48,7 +48,7 @@ describe('GET /api/v1/songs', () => {
       },
     ]
 
-    vi.mocked(db.getSongs).mockResolvedValue(songData)
+    vi.mocked(getSongs).mockResolvedValue(songData)
     const response = await request(server)
       .get('/api/v1/songs')
       .set('authorization', `Bearer ${getMockToken()}`)
@@ -57,13 +57,13 @@ describe('GET /api/v1/songs', () => {
   })
 
   it('should return 401 when no access token is passed', async () => {
-    vi.mocked(db.getSongs).mockRejectedValue(new Error('test'))
+    vi.mocked(getSongs).mockRejectedValue(new Error('test'))
     const response = await request(server).get('/api/v1/songs')
     expect(response.status).toBe(401)
   })
 
   it('should return 500 when getSongs fails', async () => {
-    vi.mocked(db.getSongs).mockRejectedValue(new Error('test'))
+    vi.mocked(getSongs).mockRejectedValue(new Error('test'))
     const response = await request(server)
       .get('/api/v1/songs')
       .set('authorization', `Bearer ${getMockToken()}`)
