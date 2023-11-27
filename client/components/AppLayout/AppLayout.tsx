@@ -5,7 +5,7 @@ import { Toaster } from 'react-hot-toast'
 
 function AppLayout() {
   return (
-    <div className="bg-darkPurple h-screen text-white">
+    <div className="bg-darkPurple text-white">
       <Toaster />
       <Header />
       <Outlet />
