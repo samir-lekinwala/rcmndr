@@ -13,10 +13,10 @@ describe('POST /api/v1/songs', () => {
   it('should return 201 when adding a new song', async () => {
     const fakeSong: AddSongWithUserId = {
       userId: '123',
-      title: 'banana',
-      artist: 'Ripe',
-      genre: 'Banana',
-      link: 'banana.com',
+      title: 'test-title',
+      artist: 'test-artist',
+      genre: 'test-genre',
+      link: 'test-link',
     }
 
     vi.mocked(db.insertSong).mockResolvedValue()
