@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import Button from '../../components/UI/Button/Button'
 import TextBox from '../../components/UI/TextBox/TextBox'
-import useSearchFrends from '../../hooks/useSearchFrends'
-import { useQuery } from '@tanstack/react-query'
 import { followFriends, searchFriends } from '../../apis/user'
 import { useAuth0 } from '@auth0/auth0-react'
 import Icon from '../../components/UI/Icon/Icon'
@@ -20,30 +18,16 @@ function FindFriends() {
 
   const { user, getAccessTokenSilently } = useAuth0()
 
-  // const { data, isLoading } = useQuery({
-  //   queryKey: ['searchFriends'],
-  //   queryFn: async () => {
-  //     const accessToken = await getAccessTokenSilently()
-  //     if (user && user.sub) {
-  //       const response = await searchFriends(input, accessToken)
-  //       return response
-  //     }
-  //   },
-  // })
-
   function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
-    // console.log(e.currentTarget.value)
     setInput(e.currentTarget.value)
-    console.log(input)
   }
 
   async function handleFind() {
     const accessToken = await getAccessTokenSilently()
     if (user && user.sub) {
       const response = await searchFriends(input, accessToken)
-      // console.log(response)
+
       setSearchData(response)
-      console.log('searchData', searchData)
     }
   }
 
