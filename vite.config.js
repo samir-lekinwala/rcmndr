@@ -57,6 +57,15 @@ export default defineConfig({
             purpose: 'maskable',
           },
         ],
+        screenshots: [
+          {
+            src: '/screenshot-rcmndr.png',
+            sizes: '640x320',
+            type: 'image/png',
+            form_factor: 'wide',
+            label: 'still rcmndr',
+          },
+        ],
       },
     }),
   ],
