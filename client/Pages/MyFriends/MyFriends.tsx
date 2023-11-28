@@ -3,6 +3,7 @@ import { getFriends, unfollowUser } from '../../apis/user'
 import useUpdateTitle from '../../hooks/useUpdateTitle'
 import { useAuth0 } from '@auth0/auth0-react'
 import FriendsListItem from '../../components/FriendsListItem/FriendsListItem'
+import FindFriends from '../FindFriends/FindFriends'
 
 function MyFriends() {
   useUpdateTitle('MyFriends')
@@ -23,7 +24,7 @@ function MyFriends() {
       await unfollowUser(id, token)
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({queryKey: ['myFriends']})
+      queryClient.invalidateQueries({ queryKey: ['myFriends'] })
     },
   })
 
@@ -45,7 +46,7 @@ function MyFriends() {
 
   return (
     <div>
-      {/* Todo: add search functionality */}
+      <FindFriends />
       <h1>My friends</h1>
       <div>
         {data &&
