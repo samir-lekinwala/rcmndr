@@ -11,5 +11,4 @@ export async function insertSong(song: AddSongWithUserId) {
     comments: song.comments,
     is_banned: 0,
   })
-
 }
