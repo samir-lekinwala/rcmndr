@@ -8,8 +8,29 @@ import { profileDraftSchema } from '../../types/Profile'
 const router = express.Router()
 
 // GET /api/v1/users/search?q=banana
-router.get('/search', validateAccessToken, async () => {
-  // TODO: implement
+router.get('/search', validateAccessToken, async (req, res) => {
+  const qValue = req.query.q as string
+
+  const id = req.auth?.payload.sub as string
+
+  if (!id) {
+    res.status(400).json({ message: 'Please provide an id' })
+    return
+  }
+
+  if (!qValue) {
+    res.status(400).json({ message: 'Please provide a q value' })
+    return
+  }
+
+  try {
+    const data = await db.searchFriends(id, qValue)
+
+    res.status(200).json(data)
+  } catch (error) {
+    logError(error)
+    res.status(500).json({ message: 'Unable to retrieve friends' })
+  }
 })
 
 // GET /api/v1/users/friends
@@ -87,10 +108,9 @@ router.post('/', validateAccessToken, async (req, res) => {
 // POST /api/v1/users/:userId/follow
 router.post('/:userId/follow', validateAccessToken, async (req, res) => {
   const userId = req.params.userId
+  const auth0Id = req.auth?.payload.sub as string
 
-  if (!userId) {
-    res.status(400).json({ message: 'Please provide an id' })
-  }
+  await db.followFriends(userId, auth0Id)
 
   // TODO: notify user when they get a new follower
   res.sendStatus(201)

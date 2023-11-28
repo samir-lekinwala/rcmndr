@@ -46,3 +46,20 @@ export async function getFriends(token: string) {
 
   return res.body as Friend[]
 }
+
+export async function searchFriends(qValue: string, token: string) {
+  const res = await request
+    .get(`/api/v1/users/search?q=${qValue}`)
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+  return res.body
+}
+
+export async function followFriends(friendId: string, token: string) {
+  const res = await request
+    .post(`/api/v1/users/${friendId}/follow`)
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+
+  return res.body
+}
