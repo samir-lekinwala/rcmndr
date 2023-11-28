@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from 'vitest'
 import { waitFor } from '@testing-library/react'
 import nock from 'nock'
-
 import { renderWithQuery } from '../../test-utils'
+
 import Songs from './Songs'
 
 vi.mock('@auth0/auth0-react', () => ({
@@ -18,7 +18,7 @@ vi.mock('@auth0/auth0-react', () => ({
 
 describe('Songs', () => {
   it('should render song form', async () => {
-    const scope = nock('http://localhost').get('/api/v1/songs').reply(200)
+    const scope = nock('http://localhost').get('/api/v1/songs/').reply(200)
 
     const container = renderWithQuery(<Songs />)
     await waitFor(() => expect(scope.isDone()).toBeTruthy())
