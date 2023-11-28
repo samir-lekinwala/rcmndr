@@ -4,7 +4,7 @@ export const songDraftSchema = z.object({
   title: z.string().min(2),
   artist: z.string().min(1),
   genre: z.string().nullable(),
-  link: z.string().nullable().optional(),
+  link: z.string().nullable(),
 })
 
 export const song = songDraftSchema.extend({
