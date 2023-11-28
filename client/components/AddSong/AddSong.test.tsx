@@ -9,11 +9,11 @@ describe('AddSong', () => {
     const handleSubmit = vi.fn()
     renderComponent(<AddSong handleSubmit={handleSubmit} />)
 
-    expect(screen.getByLabelText('Song title*')).toBeInTheDocument()
-    expect(screen.getByLabelText('Artist*')).toBeInTheDocument()
-    expect(screen.getByLabelText('Genre*')).toBeInTheDocument()
-    expect(screen.getByLabelText('Link')).toBeInTheDocument()
-    expect(screen.getByLabelText('Comment')).toBeInTheDocument()
+    expect(screen.getByLabelText(/song title/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/artist/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/genre/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/link/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/comment/i)).toBeInTheDocument()
     expect(screen.getByRole('button')).toBeInTheDocument()
   })
 

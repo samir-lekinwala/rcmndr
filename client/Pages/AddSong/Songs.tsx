@@ -6,11 +6,7 @@ import useInsertSong from '../../hooks/useInsertSong'
 function Songs() {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0()
 
-  const { isLoading, mutation } = useInsertSong()
-
-  if (isLoading) {
-    return <div>Loading ...</div>
-  }
+  const { mutation } = useInsertSong()
 
   if (!isAuthenticated && !user) {
     return <div>Not authenticated</div>
