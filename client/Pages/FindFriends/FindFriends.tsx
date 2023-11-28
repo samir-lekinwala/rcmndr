@@ -35,7 +35,7 @@ function FindFriends() {
     const accessToken = await getAccessTokenSilently()
     followFriends(friend_id, accessToken)
   }
-
+    
   return (
     <div className="p-4 mt-10 space-y-10">
       <div className="space-y-2">
