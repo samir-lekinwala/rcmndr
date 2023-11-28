@@ -18,6 +18,8 @@ function MySongs() {
     },
   })
 
+  // console.log(data)
+
   if (!isAuthenticated && !user) {
     return <div>Not authenticated</div>
   }
