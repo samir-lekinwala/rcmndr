@@ -5,8 +5,6 @@ export const songDraftSchema = z.object({
   artist: z.string().min(1),
   genre: z.string().nullable(),
   link: z.string().nullable(),
-  comments: z.string().nullable(),
-  is_banned: z.boolean(),
 })
 
 export const song = songDraftSchema.extend({
