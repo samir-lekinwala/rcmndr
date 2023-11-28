@@ -23,7 +23,7 @@ function MyFriends() {
       await unfollowUser(id, token)
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(['myFriends'])
+      queryClient.invalidateQueries({queryKey: ['myFriends']})
     },
   })
 
