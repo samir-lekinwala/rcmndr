@@ -25,6 +25,7 @@ const FindFriends = lazy(() => import('./Pages/FindFriends/FindFriends'))
 const MyFriends = lazy(() => import('./Pages/MyFriends/MyFriends'))
 const ProfilePage = lazy(() => import('./Pages/ProfilePage/ProfilePage'))
 const MySongs = lazy(() => import('./Pages/MySongs/MySongs'))
+const AddSong = lazy(() => import('./Pages/AddSong/Songs'))
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
@@ -68,6 +69,14 @@ export const routes = createRoutesFromElements(
         </Suspense>
       }
     />
+    <Route
+      path="add-song"
+      element={
+        <Suspense fallback={<Loading />}>
+          <ProtectedComponent component={AddSong} />
+        </Suspense>
+      }
+    />
   </Route>
 )
 
@@ -99,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         audience: import.meta.env.VITE_AUTH0_AUDIENCE as string,
-        redirect_uri: window.location.origin,
+        redirect_uri: `${window.location.origin}/my-friends`,
       }}
     >
       <QueryClientProvider client={queryClient}>

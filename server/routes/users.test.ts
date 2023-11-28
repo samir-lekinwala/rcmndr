@@ -14,7 +14,9 @@ describe('GET /api/v1/users/friends', () => {
       {
         id: '123',
         nickname: 'banana',
-        firstName: 'Banana',
+        firstName: 'Linda',
+        lastName: 'Stevenson',
+        public: true,
       },
     ]
 

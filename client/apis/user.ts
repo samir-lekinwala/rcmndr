@@ -2,6 +2,7 @@ import request from 'superagent'
 import { Friend } from '../../types/User'
 import { Profile, ProfileDraft } from '../../types/Profile'
 
+// removed profile type from upsertProfile - the id shouldn't be included
 export async function upsertProfile(
   form: ProfileDraft | Profile,
   token: string
@@ -29,6 +30,12 @@ export async function followUser(auth0: string, token: string) {
     .set('Content-Type', 'application/json')
 
   return res.body
+}
+
+export async function unfollowUser(friendId: string, token: string) {
+  await request
+    .delete(`/api/v1/users/${friendId}/follow`)
+    .set('Authorization', `Bearer ${token}`)
 }
 
 export async function getFriends(token: string) {

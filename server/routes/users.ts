@@ -96,4 +96,21 @@ router.post('/:userId/follow', validateAccessToken, async (req, res) => {
   res.sendStatus(201)
 })
 
+// DEL follower ----- /api/v1/users/:userId/follow
+router.delete('/:userId/follow', validateAccessToken, async (req, res) => {
+  const friendId = req.params.userId
+  const userId = req.auth?.payload.sub
+try {
+  if (!userId) {
+    res.status(400).json({ message: 'Please provide an id to unfollow' })
+  }
+  await db.unfollowFriend(userId as string, friendId)
+  res.sendStatus(200)
+} catch (error) {
+  logError(error)
+  res.status(500).json({ message: 'Unable to unfollow friend' })
+}
+
+})
+
 export default router
