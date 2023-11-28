@@ -38,7 +38,9 @@ function SongListItem(props: Props) {
           </button>
         </div>
       </li>
-      <Spotify song={song} />
+      <div>
+        <Spotify song={song} />
+      </div>
     </>
   )
 }
