@@ -172,7 +172,8 @@ describe('POST /api/v1/users/:userId/follow', () => {
       .send({
         id: '123',
         nickname: 'banana',
-        firstName: 'Banana',
+        firstName: 'Linda',
+        lastName: 'Stevenson',
       })
       .set('authorization', `Bearer ${getMockToken()}`)
 
