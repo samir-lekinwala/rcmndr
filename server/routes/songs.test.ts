@@ -31,8 +31,13 @@ describe('POST /api/v1/songs', () => {
       .set('authorization', `Bearer ${getMockToken()}`)
       .send(fakeSong)
     expect(response.status).toBe(201)
-  })})
+  })
+})
 
+dotenv.config()
+
+vi.mock('../db/songs')
+vi.mock('../logger.ts')
 
 // GET songs tests
 describe('GET /api/v1/songs', () => {

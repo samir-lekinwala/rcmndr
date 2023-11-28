@@ -32,6 +32,12 @@ export async function followUser(auth0: string, token: string) {
   return res.body
 }
 
+export async function unfollowUser(friendId: string, token: string) {
+  await request
+    .delete(`/api/v1/users/${friendId}/follow`)
+    .set('Authorization', `Bearer ${token}`)
+}
+
 export async function getFriends(token: string) {
   const res = await request
     .get(`/api/v1/users/friends`)
